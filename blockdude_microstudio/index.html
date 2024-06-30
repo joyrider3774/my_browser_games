@@ -1,0 +1,3005 @@
+<!DOCTYPE html><html><head><title>Blockdude</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui=1"><meta charset="UTF-8"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="description" content=""><link rel="manifest" href="manifest.json"><link rel="icon" type="image/png" href="icon64.png"><link rel="apple-touch-icon" sizes="180x180" href="icon180.png"><link rel="icon" type="image/png" sizes="32x32" href="icon32.png"><link rel="icon" type="image/png" sizes="16x16" href="icon16.png"><style>html,body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  overflow:hidden;
+  font-family: Verdana;
+}
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#canvaswrapper {
+  text-align: center ;
+}
+</style><style>@font-face { font-family: "BitCell" ; src: url("fonts/BitCell.ttf") format("truetype"); }</style><script>window.fonts = ["BitCell"]</script></head><body class="noselect custom-cursor" oncontextmenu="return false;"><div id="canvaswrapper"></div><script type="text/javascript">var resources = {"images":[{"file":"default-background.png","version":1,"size":40943,"properties":{}},{"file":"default-box.png","version":9,"size":385,"properties":{"frames":1,"fps":5}},{"file":"default-door.png","version":6,"size":198,"properties":{"frames":1,"fps":5}},{"file":"default-earthgrassleft.png","version":3,"size":201,"properties":{"frames":1,"fps":5}},{"file":"default-earthgrassright.png","version":1,"size":167,"properties":{}},{"file":"default-earthleft.png","version":2,"size":124,"properties":{"frames":1,"fps":5}},{"file":"default-earthmiddle.png","version":1,"size":100,"properties":{}},{"file":"default-earthright.png","version":2,"size":128,"properties":{"frames":1,"fps":5}},{"file":"default-floatingfloor.png","version":5,"size":299,"properties":{"frames":1,"fps":5}},{"file":"default-floatingfloorleft.png","version":2,"size":286,"properties":{"frames":1,"fps":5}},{"file":"default-floatingfloormiddle.png","version":3,"size":296,"properties":{"frames":1,"fps":5}},{"file":"default-floatingfloorright.png","version":3,"size":317,"properties":{"frames":1,"fps":5}},{"file":"default-floor.png","version":1,"size":297,"properties":{}},{"file":"default-floorleft.png","version":3,"size":293,"properties":{"frames":1,"fps":5}},{"file":"default-floorright.png","version":2,"size":336,"properties":{"frames":1,"fps":5}},{"file":"default-layer2.png","version":1,"size":4745,"properties":{}},{"file":"default-player.png","version":1,"size":8673,"properties":{}},{"file":"default-roof1.png","version":4,"size":186,"properties":{"frames":1,"fps":5}},{"file":"default-roof2.png","version":2,"size":186,"properties":{"frames":1,"fps":5}},{"file":"default-roofcornerboth.png","version":3,"size":166,"properties":{"frames":1,"fps":5}},{"file":"default-roofcornerleft.png","version":2,"size":133,"properties":{"frames":1,"fps":5}},{"file":"default-roofcornerright.png","version":2,"size":137,"properties":{"frames":1,"fps":5}},{"file":"default-roofdownleft.png","version":2,"size":191,"properties":{"frames":1,"fps":5}},{"file":"default-roofdownright.png","version":4,"size":207,"properties":{"frames":1,"fps":5}},{"file":"default-starttower.png","version":1,"size":251,"properties":{}},{"file":"default-titlescreen.png","version":1,"size":62752,"properties":{}},{"file":"default-tower.png","version":3,"size":309,"properties":{"frames":1,"fps":5}},{"file":"default-towershaft.png","version":3,"size":159,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-background.png","version":1,"size":34621,"properties":{}},{"file":"fpdefault-box.png","version":5,"size":385,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-door.png","version":6,"size":198,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-earthgrassleft.png","version":1,"size":1525,"properties":{}},{"file":"fpdefault-earthgrassright.png","version":1,"size":1525,"properties":{}},{"file":"fpdefault-earthleft.png","version":2,"size":732,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-earthmiddle.png","version":1,"size":1525,"properties":{}},{"file":"fpdefault-earthright.png","version":3,"size":795,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-floatingfloor.png","version":2,"size":299,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-floatingfloorleft.png","version":4,"size":286,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-floatingfloormiddle.png","version":2,"size":296,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-floatingfloorright.png","version":4,"size":317,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-floor.png","version":1,"size":1407,"properties":{}},{"file":"fpdefault-floorleft.png","version":2,"size":469,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-floorright.png","version":3,"size":500,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-layer2.png","version":1,"size":31326,"properties":{}},{"file":"fpdefault-player.png","version":1,"size":8673,"properties":{}},{"file":"fpdefault-roof1.png","version":2,"size":751,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-roof2.png","version":2,"size":760,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-roofcornerboth.png","version":3,"size":859,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-roofcornerleft.png","version":2,"size":870,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-roofcornerright.png","version":2,"size":863,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-roofdownleft.png","version":4,"size":666,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-roofdownright.png","version":3,"size":681,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-starttower.png","version":1,"size":1525,"properties":{}},{"file":"fpdefault-titlescreen.png","version":1,"size":62592,"properties":{}},{"file":"fpdefault-tower.png","version":3,"size":454,"properties":{"frames":1,"fps":5}},{"file":"fpdefault-towershaft.png","version":4,"size":637,"properties":{"frames":1,"fps":5}},{"file":"fptech-background.png","version":1,"size":14618,"properties":{}},{"file":"fptech-box.png","version":1,"size":1357,"properties":{}},{"file":"fptech-door.png","version":4,"size":195,"properties":{"frames":1,"fps":5}},{"file":"fptech-earthgrassleft.png","version":1,"size":1349,"properties":{}},{"file":"fptech-earthgrassright.png","version":1,"size":1349,"properties":{}},{"file":"fptech-earthleft.png","version":3,"size":246,"properties":{"frames":1,"fps":5}},{"file":"fptech-earthmiddle.png","version":2,"size":307,"properties":{"frames":1,"fps":5}},{"file":"fptech-earthright.png","version":2,"size":205,"properties":{"frames":1,"fps":5}},{"file":"fptech-floatingfloor.png","version":3,"size":485,"properties":{"frames":1,"fps":5}},{"file":"fptech-floatingfloorleft.png","version":3,"size":455,"properties":{"frames":1,"fps":5}},{"file":"fptech-floatingfloormiddle.png","version":3,"size":443,"properties":{"frames":1,"fps":5}},{"file":"fptech-floatingfloorright.png","version":2,"size":473,"properties":{"frames":1,"fps":5}},{"file":"fptech-floor.png","version":1,"size":1349,"properties":{}},{"file":"fptech-floorleft.png","version":2,"size":329,"properties":{"frames":1,"fps":5}},{"file":"fptech-floorright.png","version":3,"size":347,"properties":{"frames":1,"fps":5}},{"file":"fptech-layer2.png","version":1,"size":17052,"properties":{}},{"file":"fptech-player.png","version":1,"size":7998,"properties":{}},{"file":"fptech-roof1.png","version":2,"size":414,"properties":{"frames":1,"fps":5}},{"file":"fptech-roof2.png","version":3,"size":246,"properties":{"frames":1,"fps":5}},{"file":"fptech-roofcornerboth.png","version":2,"size":508,"properties":{"frames":1,"fps":5}},{"file":"fptech-roofcornerleft.png","version":2,"size":392,"properties":{"frames":1,"fps":5}},{"file":"fptech-roofcornerright.png","version":2,"size":575,"properties":{"frames":1,"fps":5}},{"file":"fptech-roofdownleft.png","version":3,"size":394,"properties":{"frames":1,"fps":5}},{"file":"fptech-roofdownright.png","version":3,"size":408,"properties":{"frames":1,"fps":5}},{"file":"fptech-starttower.png","version":1,"size":1355,"properties":{}},{"file":"fptech-titlescreen.png","version":1,"size":22328,"properties":{}},{"file":"fptech-tower.png","version":3,"size":373,"properties":{"frames":1,"fps":5}},{"file":"fptech-towershaft.png","version":5,"size":232,"properties":{"frames":1,"fps":5}},{"file":"icon.png","version":12,"size":448,"properties":{"frames":1,"fps":5}},{"file":"intro-background.png","version":1,"size":47016,"properties":{}},{"file":"intro-intro.png","version":14,"size":77034,"properties":{"frames":1,"fps":5}},{"file":"kenney-background.png","version":1,"size":5961,"properties":{}},{"file":"kenney-box.png","version":1,"size":138,"properties":{}},{"file":"kenney-door.png","version":1,"size":135,"properties":{}},{"file":"kenney-earthgrassleft.png","version":1,"size":5355,"properties":{}},{"file":"kenney-earthgrassright.png","version":1,"size":5349,"properties":{}},{"file":"kenney-earthleft.png","version":1,"size":140,"properties":{}},{"file":"kenney-earthmiddle.png","version":1,"size":150,"properties":{}},{"file":"kenney-earthright.png","version":1,"size":143,"properties":{}},{"file":"kenney-floatingfloor.png","version":1,"size":147,"properties":{}},{"file":"kenney-floatingfloorleft.png","version":1,"size":147,"properties":{}},{"file":"kenney-floatingfloormiddle.png","version":1,"size":142,"properties":{}},{"file":"kenney-floatingfloorright.png","version":1,"size":147,"properties":{}},{"file":"kenney-floor.png","version":1,"size":142,"properties":{}},{"file":"kenney-floorleft.png","version":1,"size":150,"properties":{}},{"file":"kenney-floorright.png","version":1,"size":152,"properties":{}},{"file":"kenney-layer2.png","version":1,"size":4745,"properties":{}},{"file":"kenney-player.png","version":1,"size":8204,"properties":{}},{"file":"kenney-roof1.png","version":1,"size":140,"properties":{}},{"file":"kenney-roof2.png","version":1,"size":140,"properties":{}},{"file":"kenney-roofcornerboth.png","version":1,"size":4891,"properties":{}},{"file":"kenney-roofcornerleft.png","version":1,"size":5113,"properties":{}},{"file":"kenney-roofcornerright.png","version":1,"size":5124,"properties":{}},{"file":"kenney-roofdownleft.png","version":1,"size":144,"properties":{}},{"file":"kenney-roofdownright.png","version":1,"size":150,"properties":{}},{"file":"kenney-starttower.png","version":1,"size":5354,"properties":{}},{"file":"kenney-titlescreen.png","version":1,"size":11020,"properties":{}},{"file":"kenney-tower.png","version":1,"size":4948,"properties":{}},{"file":"kenney-towershaft.png","version":1,"size":5193,"properties":{}},{"file":"poster.png","version":1,"size":458785,"properties":{"frames":1,"fps":5}},{"file":"ti83-background.png","version":1,"size":5450,"properties":{}},{"file":"ti83-box.png","version":1,"size":209,"properties":{}},{"file":"ti83-door.png","version":1,"size":232,"properties":{}},{"file":"ti83-earthgrassleft.png","version":1,"size":219,"properties":{}},{"file":"ti83-earthgrassright.png","version":1,"size":219,"properties":{}},{"file":"ti83-earthleft.png","version":1,"size":219,"properties":{}},{"file":"ti83-earthmiddle.png","version":1,"size":219,"properties":{}},{"file":"ti83-earthright.png","version":1,"size":219,"properties":{}},{"file":"ti83-floatingfloor.png","version":1,"size":219,"properties":{}},{"file":"ti83-floatingfloorleft.png","version":1,"size":219,"properties":{}},{"file":"ti83-floatingfloormiddle.png","version":1,"size":219,"properties":{}},{"file":"ti83-floatingfloorright.png","version":1,"size":219,"properties":{}},{"file":"ti83-floor.png","version":1,"size":219,"properties":{}},{"file":"ti83-floorleft.png","version":1,"size":219,"properties":{}},{"file":"ti83-floorright.png","version":1,"size":219,"properties":{}},{"file":"ti83-layer2.png","version":1,"size":4745,"properties":{}},{"file":"ti83-player.png","version":1,"size":6235,"properties":{}},{"file":"ti83-roof1.png","version":1,"size":219,"properties":{}},{"file":"ti83-roof2.png","version":1,"size":219,"properties":{}},{"file":"ti83-roofcornerboth.png","version":1,"size":219,"properties":{}},{"file":"ti83-roofcornerleft.png","version":1,"size":219,"properties":{}},{"file":"ti83-roofcornerright.png","version":1,"size":219,"properties":{}},{"file":"ti83-roofdownleft.png","version":1,"size":219,"properties":{}},{"file":"ti83-roofdownright.png","version":1,"size":219,"properties":{}},{"file":"ti83-starttower.png","version":1,"size":219,"properties":{}},{"file":"ti83-titlescreen.png","version":1,"size":25442,"properties":{}},{"file":"ti83-tower.png","version":1,"size":219,"properties":{}},{"file":"ti83-towershaft.png","version":1,"size":219,"properties":{}}],"assets":[{"file":"levelpacks-blockman-level1.txt","version":1,"size":2381,"properties":{}},{"file":"levelpacks-blockman-level10.txt","version":1,"size":3114,"properties":{}},{"file":"levelpacks-blockman-level11.txt","version":1,"size":3409,"properties":{}},{"file":"levelpacks-blockman-level12.txt","version":1,"size":2231,"properties":{}},{"file":"levelpacks-blockman-level13.txt","version":1,"size":2331,"properties":{}},{"file":"levelpacks-blockman-level14.txt","version":1,"size":2547,"properties":{}},{"file":"levelpacks-blockman-level15.txt","version":1,"size":2380,"properties":{}},{"file":"levelpacks-blockman-level16.txt","version":1,"size":2660,"properties":{}},{"file":"levelpacks-blockman-level17.txt","version":1,"size":2939,"properties":{}},{"file":"levelpacks-blockman-level18.txt","version":1,"size":2479,"properties":{}},{"file":"levelpacks-blockman-level19.txt","version":1,"size":3001,"properties":{}},{"file":"levelpacks-blockman-level2.txt","version":1,"size":2491,"properties":{}},{"file":"levelpacks-blockman-level20.txt","version":1,"size":2053,"properties":{}},{"file":"levelpacks-blockman-level21.txt","version":1,"size":2658,"properties":{}},{"file":"levelpacks-blockman-level3.txt","version":1,"size":2722,"properties":{}},{"file":"levelpacks-blockman-level4.txt","version":1,"size":2234,"properties":{}},{"file":"levelpacks-blockman-level5.txt","version":1,"size":2358,"properties":{}},{"file":"levelpacks-blockman-level6.txt","version":1,"size":2381,"properties":{}},{"file":"levelpacks-blockman-level7.txt","version":1,"size":2554,"properties":{}},{"file":"levelpacks-blockman-level8.txt","version":1,"size":2109,"properties":{}},{"file":"levelpacks-blockman-level9.txt","version":1,"size":2663,"properties":{}},{"file":"levelpacks-joyrider-level1.txt","version":1,"size":2908,"properties":{}},{"file":"levelpacks-joyrider-level2.txt","version":1,"size":2030,"properties":{}},{"file":"levelpacks-joyrider-level3.txt","version":1,"size":2224,"properties":{}},{"file":"levelpacks-joyrider-level4.txt","version":1,"size":3174,"properties":{}}],"maps":{},"sounds":[{"file":"back.ogg","version":1,"size":5739,"properties":{}},{"file":"error.ogg","version":1,"size":5206,"properties":{}},{"file":"menu.ogg","version":1,"size":6409,"properties":{}},{"file":"select.ogg","version":1,"size":5739,"properties":{}},{"file":"stageend.ogg","version":1,"size":75814,"properties":{}}],"music":[{"file":"title.ogg","version":1,"size":1364330,"properties":{}}]};
+var graphics = "M1";
+
+</script><script type="text/javascript">var orientation = 'landscape' ;
+var aspect = '16x9' ;
+var ms_libs = [] ;
+window.skip_service_worker = true;
+window.exported_project = true;
+window.ms_use_server = false ;
+</script><script src="runner.js"></script><script src="microengine.js"></script></body><script type="text/javascript">//
+//
+// The game is started with the code below.
+// Once you have received the "started" signal (see below),
+// you can do the following:
+// 1) Inject functions or objects into the global context of the microStudio engine, example:
+//
+//   window.player.setGlobal("special_callback",function(x) { console.info(x) }) ;
+//   // Your microScript code can now call the "special_callback" function
+//
+// 2) Call microScript global functions from your JavaScript code, example:
+//
+//   window.player.call("call_me_from_javascript",[10,1000]) ;
+//   // arguments to the function call are provided as an array
+//
+// 3) Run a microScript code snippet from your JavaScript code, example:
+//
+//   window.player.exec("player.position_x = 50",function(result) { console.log(result) ; }) ;
+//
+
+window.addEventListener("load",function() {
+  window.player = new Player(function(event) {
+    if (event.name == "started") {
+      // signal that the game is started
+    }
+    else if (event.name == "log") {
+      // console.info(event.data) ;
+    }
+  }) ;
+  document.body.focus() ;
+}) ;
+
+</script><script id="code" type="text/x-microscript">
+
+import_CViewPort = function() {
+CViewPort = class {
+    constructor(MinX, MinY, MaxX, MaxY, MinX2, MinY2, MaxX2, MaxY2) {
+        if ((MinX < NrOfCols) && (MinX >= 0) && (MaxX + 1 < NrOfCols) && (MaxX >= 0) &&
+            (MinY < NrOfRows) && (MinY >= 0) && (MaxY + 1 < NrOfRows) && (MaxY >= 0)) {
+            this.VPMinX = MinX;
+            this.VPMinY = MinY;
+            this.VPMaxX = MaxX + 1;
+            this.VPMaxY = MaxY + 1;
+            this.MinScreenX = this.VPMinX * TileWidth;
+            this.MinScreenY = this.VPMinY * TileHeight;
+            this.MaxScreenX = this.VPMaxX * TileHeight;
+            this.MaxScreenY = this.VPMaxY * TileWidth;
+        } else {
+            this.VPMinX = 0;
+            this.VPMinY = 0;
+            this.VPMaxX = NrOfColsVisible;
+            this.VPMaxY = NrOfRowsVisible;
+            this.MinScreenX = 0;
+            this.MinScreenY = 0;
+            this.MaxScreenX = WINDOW_WIDTH;
+            this.MaxScreenY = WINDOW_HEIGHT;
+        }
+
+        if ((MinX2 < NrOfCols) && (MinX2 >= 0) && (MaxX2 + 1 < NrOfCols) && (MaxX2 >= 0) &&
+            (MinY2 < NrOfRows) && (MinY2 >= 0) && (MaxY2 + 1 < NrOfRows) && (MaxY2 >= 0)) {
+            this.VPLimitMinX = MinX2;
+            this.VPLimitMinY = MinY2;
+            this.VPLimitMaxX = MaxX2 + 1;
+            this.VPLimitMaxY = MaxY2 + 1;
+        } else {
+            this.VPLimitMinX = 0;
+            this.VPLimitMinY = 0;
+            this.VPLimitMaxX = NrOfCols;
+            this.VPLimitMaxY = NrOfRows;
+        }
+
+        this.BackgroundX = 0;
+        this.BackgroundY = 0;
+        this.Width = this.VPMaxX - this.VPMinX;
+        this.Height = this.VPMaxY - this.VPMinY;
+        this.BackgroundXYPushed = false;
+    }
+    
+    PushBackgroundXY = function()
+    {
+      this.PushedX = this.BackgroundX;
+      this.PushedY = this.BackgroundY;
+      this.BackgroundXYPushed = true;
+    }
+    
+    PopBackgroundXY = function()
+    {
+      this.BackgroundX = this.PushedX;
+      this.BackgroundY = this.PushedY;
+      this.BackgroundXYPushed = false;
+    }
+
+    SetVPLimit(MinX, MinY, MaxX, MaxY) {
+        if ((MinX < NrOfCols) && (MinX >= 0) && (MaxX + 1 < NrOfCols) && (MaxX + 1 >= 0) &&
+            (MinY < NrOfRows) && (MinY >= 0) && (MaxY + 1 < NrOfRows) && (MaxY + 1 >= 0)) {
+            this.VPLimitMinX = MinX;
+            this.VPLimitMinY = MinY;
+            this.VPLimitMaxX = MaxX + 1;
+            this.VPLimitMaxY = MaxY + 1;
+        } else {
+            this.VPLimitMinX = 0;
+            this.VPLimitMinY = 0;
+            this.VPLimitMaxX = NrOfCols;
+            this.VPLimitMaxY = NrOfRows;
+        }
+
+        if (this.VPLimitMaxX - this.VPLimitMinX < this.Width) {
+            if (this.VPLimitMaxX - this.Width >= 0)
+                this.VPLimitMinX = this.VPLimitMaxX - this.Width;
+            else {
+                this.VPLimitMinX = 0;
+                this.VPLimitMaxX = this.VPLimitMinX + this.Width;
+            }
+        }
+        if (this.VPLimitMaxY - this.VPLimitMinY < this.Height) {
+            if (this.VPLimitMaxY - this.Height >= 0)
+                this.VPLimitMinY = this.VPLimitMaxY - this.Height;
+            else {
+                this.VPLimitMinY = 0;
+                this.VPLimitMaxY = this.VPLimitMinY + this.Height;
+            }
+        }
+    }
+
+    Move(Xi, Yi) {
+        if ((this.MinScreenX + Xi >= TileWidth * this.VPLimitMinX) && (this.MaxScreenX + Xi <= TileWidth * this.VPLimitMaxX) && 
+            (this.MinScreenY + Yi >= TileHeight * this.VPLimitMinY) && (this.MaxScreenY + Yi <= TileHeight * this.VPLimitMaxY)) {
+            this.MinScreenX += Xi;
+            this.MaxScreenX += Xi;
+            this.MinScreenY += Yi;
+            this.MaxScreenY += Yi;
+            this.VPMinX = this.MinScreenX / TileWidth;
+            this.VPMinY = this.MinScreenY / TileHeight;
+            this.VPMaxX = this.MaxScreenX / TileWidth;
+            this.VPMaxY = this.MaxScreenY / TileHeight;
+            this.BackgroundX += (Xi / 2);
+            this.BackgroundY += (Yi / 2);
+            this.Width = this.VPMaxX - this.VPMinX;
+            this.Height = this.VPMaxY - this.VPMinY;
+        }
+    }
+
+    SetViewPort(MinX, MinY, MaxX, MaxY) {
+        if ((MinX <= this.VPLimitMaxX) && (MinX >= this.VPLimitMinX) && (MaxX <= this.VPLimitMaxX) && (MaxX >= this.VPLimitMinX) &&
+            (MinY <= this.VPLimitMaxY) && (MinY >= this.VPLimitMinY) && (MaxY <= this.VPLimitMaxY) && (MaxY >= this.VPLimitMinY)) {
+            this.VPMinX = MinX;
+            this.VPMinY = MinY;
+            this.VPMaxX = MaxX + 1;
+            this.VPMaxY = MaxY + 1;
+            this.MinScreenX = this.VPMinX * TileWidth;
+            this.MinScreenY = this.VPMinY * TileHeight;
+            this.MaxScreenX = this.VPMaxX * TileWidth;
+            this.MaxScreenY = this.VPMaxY * TileHeight;
+        } else {
+            this.VPMinX = MinX;
+            this.VPMinY = MinY;
+            this.VPMaxX = MaxX + 1;
+            this.VPMaxY = MaxY + 1;
+            if (this.VPMinX < this.VPLimitMinX) {
+                this.VPMinX = this.VPLimitMinX;
+                this.VPMaxX = this.VPLimitMinX + NrOfColsVisible;
+            }
+            if (this.VPMaxX > this.VPLimitMaxX) {
+                this.VPMinX = this.VPLimitMaxX - NrOfColsVisible;
+                this.VPMaxX = this.VPLimitMaxX;
+            }
+            if (this.VPMinY < this.VPLimitMinY) {
+                this.VPMaxY = this.VPLimitMinY + NrOfRowsVisible;
+                this.VPMinY = this.VPLimitMinY;
+            }
+            if (this.VPMaxY > this.VPLimitMaxY) {
+                this.VPMinY = this.VPLimitMaxY - NrOfRowsVisible;
+                this.VPMaxY = this.VPLimitMaxY;
+            }
+            this.MinScreenX = this.VPMinX * TileWidth;
+            this.MinScreenY = this.VPMinY * TileHeight;
+            this.MaxScreenX = this.VPMaxX * TileWidth;
+            this.MaxScreenY = this.VPMaxY * TileHeight;
+        }
+        this.Width = this.VPMaxX - this.VPMinX;
+        this.Height = this.VPMaxY - this.VPMinY;
+    }
+}
+}
+
+import_CWorldPart = function() {
+CWorldPart = class {
+    constructor(PlayFieldXin, PlayFieldYin) {
+        this.MoveDelayCounter = 0;
+        this.FirstArriveEventFired = false;
+        this.Type = 0;
+        this.MoveSpeed = 0;
+        this.MoveDelay = 0;
+        this.Xi = 0;
+        this.Yi = 0;
+        this.X = PlayFieldXin * TileWidth;
+        this.Y = PlayFieldYin * TileHeight;
+        this.AnimPhase = 0;
+        this.PlayFieldX = PlayFieldXin;
+        this.PlayFieldY = PlayFieldYin;
+        this.Z = 0;
+        this.Group = 0;
+        this.BHistory = false;
+        this.Image = "";
+        this.MoveQue = [];
+        this.ParentList = null;
+        this.IsMoving = false;
+        this.Selected = false;
+    }
+
+    AddToMoveQue(PlayFieldXIn, PlayFieldYIn) {
+        const Temp = { X: PlayFieldXIn, Y: PlayFieldYIn };
+        if (this.MoveQue.length === 0) {
+            this.MoveQue.push(Temp);
+        } else {
+            this.MoveQue.unshift(Temp);
+        }
+    }
+
+    MovesInQue() {
+        return this.MoveQue.length > 0;
+    }
+
+    GetGroup() {
+        return this.Group;
+    }
+
+    GetType() {
+        return this.Type;
+    }
+
+    GetX() {
+        return this.X;
+    }
+
+    GetY() {
+        return this.Y;
+    }
+
+    GetPlayFieldX() {
+        return this.PlayFieldX;
+    }
+
+    GetPlayFieldY() {
+        return this.PlayFieldY;
+    }
+
+    GetZ() {
+        return this.Z;
+    }
+
+    GetAnimPhase() {
+        return this.AnimPhase;
+    }
+
+    SetAnimPhase(AnimPhaseIn) {
+        this.AnimPhase = AnimPhaseIn;
+    }
+
+    Event_ArrivedOnNewSpot() {
+        // Implement specific behavior when arriving at a new spot
+    }
+
+    Event_BeforeDraw() {
+        // Implement specific behavior before drawing
+    }
+
+    Event_LeaveCurrentSpot() {
+        // Implement specific behavior when leaving the current spot
+    }
+
+    Event_Moving(ScreenPosX, ScreenPosY, ScreenXi, ScreenYi) {
+        // Implement specific behavior while moving
+    }
+
+    SetPosition(PlayFieldXin, PlayFieldYin) {
+        if ((PlayFieldXin >= 0) && (PlayFieldXin < NrOfCols) && (PlayFieldYin >= 0) && (PlayFieldYin < NrOfRows)) {
+            this.PlayFieldX = PlayFieldXin;
+            this.PlayFieldY = PlayFieldYin;
+            this.X = PlayFieldXin * TileWidth;
+            this.Y = PlayFieldYin * TileHeight;
+        }
+    }
+
+    MoveTo(PlayFieldXin, PlayFieldYin) {
+        if (!this.IsMoving) {
+            if ((PlayFieldXin !== this.PlayFieldX) || (PlayFieldYin !== this.PlayFieldY)) {
+                if (this.CanMoveTo(PlayFieldXin, PlayFieldYin)) {
+                    this.PlayFieldX = PlayFieldXin;
+                    this.PlayFieldY = PlayFieldYin;
+                    if (this.X < PlayFieldXin * TileWidth) this.Xi = this.MoveSpeed;
+                    if (this.X > PlayFieldXin * TileWidth) this.Xi = -this.MoveSpeed;
+                    if (this.Y > PlayFieldYin * TileHeight) this.Yi = -this.MoveSpeed;
+                    if (this.Y < PlayFieldYin * TileHeight) this.Yi = this.MoveSpeed;
+                    this.IsMoving = true;
+                    this.Event_LeaveCurrentSpot();
+                }
+            }
+        }
+    }
+
+    Move() {
+        if (!this.FirstArriveEventFired) {
+            this.Event_ArrivedOnNewSpot();
+            this.FirstArriveEventFired = true;
+        }
+        if (this.IsMoving) {
+            if (this.MoveDelayCounter === this.MoveDelay) {
+                this.X += this.Xi;
+                this.Y += this.Yi;
+                this.Event_Moving(this.X, this.Y, this.Xi, this.Yi);
+                if ((this.X === this.PlayFieldX * TileWidth) && (this.Y === this.PlayFieldY * TileHeight)) {
+                    this.IsMoving = false;
+                    this.Xi = 0;
+                    this.Yi = 0;
+                    this.Event_ArrivedOnNewSpot();
+                }
+                this.MoveDelayCounter = -1;
+            }
+            this.MoveDelayCounter++;
+        } else if (this.MoveQue.length > 0) {
+            let Tmp = this.MoveQue.pop();
+            if (this.CanMoveTo(Tmp.X, Tmp.Y)) {
+                this.MoveTo(Tmp.X, Tmp.Y);
+            } else {
+                this.MoveQue = [];
+            }
+        }
+    }
+
+    Draw() {
+        if (this.Image) {
+            this.Event_BeforeDraw();
+            const DstRect = {
+                x: this.ParentList ? this.X - this.ParentList.ViewPort.MinScreenX : this.X,
+                y: this.ParentList ? this.Y - this.ParentList.ViewPort.MinScreenY : this.Y,
+                w: TileWidth + 0.5, // +0.5 to fix small gaps between sprites
+                h: TileHeight + 0.5
+            };
+            
+            const SrcRect = {
+                x: this.AnimPhase * TileWidth,
+                y: 0,
+                w: TileWidth ,
+                h: TileHeight
+            };
+            
+            let xadd = -WINDOW_WIDTH/2+5;
+            let yadd =0;
+            screen.drawSpritePart(this.Image, SrcRect.x, SrcRect.y, SrcRect.w, SrcRect.h,DstRect.x+xadd, screen.height/2 - DstRect.y + yadd, DstRect.w, DstRect.h);
+        }
+    }
+
+    CanMoveTo(PlayFieldXin, PlayFieldYin) {
+        return false;
+    }
+}
+}
+
+import_CPlayer = function() {
+  
+CPlayer = class extends CWorldPart {
+    constructor(PlayFieldXin, PlayFieldYin) {
+        super(PlayFieldXin, PlayFieldYin);
+        this.Image = SelectedSkin.IMGPlayer;
+        this.AnimBase = AnimBaseLeft;
+        this.AnimPhase = 0;
+        this.AnimPhases = 4;
+        this.AnimCounter = 1;
+        this.AnimDelay = 8;
+        this.MoveDelay = 0;
+        this.MoveSpeed = 2;
+        this.AnimDelayCounter = 0;
+        this.Type = IDPlayer;
+        this.NeedToMoveLeft = false;
+        this.NeedToMoveRight = false;
+        this.Z = ZPlayer;
+        this.Group = GroupPlayer;
+        this.HalfWindowWidth = WINDOW_WIDTH / 2;
+        this.HalfWindowHeight = WINDOW_HEIGHT / 2;
+        while(this.HalfWindowWidth % TileWidth !=0)
+		      this.HalfWindowWidth++;	
+	      while(this.HalfWindowHeight % TileHeight !=0)
+		      this.HalfWindowHeight++;
+    }
+
+    GetFloorFound() {
+        if (this.ParentList) {
+            // Check for floor or box below
+            for (let Teller = 0; Teller < this.ParentList.ItemCount; Teller++) {
+                if (this.ParentList.Items[Teller].GetPlayFieldX() === this.PlayFieldX &&
+                    this.ParentList.Items[Teller].GetPlayFieldY() === this.PlayFieldY + 1 &&
+                    (this.ParentList.Items[Teller].GetGroup() === GroupFloor ||
+                     this.ParentList.Items[Teller].GetGroup() === GroupBox)) {
+                    this.AnimPhases = 4;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    Move() {
+        
+      
+        if (!this.GetFloorFound() && this.ParentList) {
+            // No floor or box below, initiate movement down
+            this.AnimPhases = 1;
+            this.AnimCounter = 0;
+            this.MoveTo(this.PlayFieldX, this.PlayFieldY + 1);
+        }
+
+        if (!this.FirstArriveEventFired) {
+            this.Event_ArrivedOnNewSpot();
+            this.FirstArriveEventFired = true;
+        }
+
+        if (this.IsMoving) {
+            // Continue movement animation
+            if (this.MoveDelayCounter === this.MoveDelay) {
+                this.X += this.Xi;
+                this.Y += this.Yi;
+                this.Event_Moving(this.X, this.Y, this.Xi, this.Yi);
+                if (this.X === this.PlayFieldX * TileWidth && this.Y === this.PlayFieldY * TileHeight) {
+                    this.IsMoving = false;
+                    this.Xi = 0;
+                    this.Yi = 0;
+                    this.Event_ArrivedOnNewSpot();
+                }
+                this.MoveDelayCounter = -1;
+            }
+            this.MoveDelayCounter++;
+        } else if (this.MoveQue.length > 0) {
+            // Process queued moves
+            
+            let Tmp = this.MoveQue.pop();
+            if (this.CanMoveTo(Tmp.X, Tmp.Y)) {
+                this.MoveTo(Tmp.X, Tmp.Y);
+           
+            } else {
+                this.MoveQue = [];
+            }
+        }
+    }
+
+    CanMoveTo(PlayFieldXin, PlayFieldYin) {
+        let Teller, Teller2;
+        let Result = true;
+        let CanJump = false;
+        let FloorFound = false;
+
+        if (PlayFieldXin >= 0 && PlayFieldXin < NrOfCols && PlayFieldYin >= 0 && PlayFieldYin < NrOfRows) {
+            if (this.ParentList) {
+                // Check for potential jump scenarios
+                if (PlayFieldYin - this.PlayFieldY < 0) {
+                    for (Teller = 0; Teller < this.ParentList.ItemCount; Teller++) {
+                        // Check for adjacent blocks to jump onto
+                        if (((this.ParentList.Items[Teller].GetPlayFieldX() === this.PlayFieldX - 1 && this.AnimBase === AnimBaseLeft) ||
+                            (this.ParentList.Items[Teller].GetPlayFieldX() === this.PlayFieldX + 1 && this.AnimBase === AnimBaseRight)) &&
+                            (this.ParentList.Items[Teller].GetPlayFieldY() === this.PlayFieldY)){
+                            CanJump = true;
+
+                            // Check if the block below is clear for landing
+                            if (this.ParentList.Items[Teller].GetType() === IDBox) {
+                                for (Teller2 = 0; Teller2 < this.ParentList.ItemCount; Teller2++) {
+                                    if ((this.ParentList.Items[Teller2].GetPlayFieldX() === this.PlayFieldX - 1 && this.AnimBase === AnimBaseLeft) ||
+                                        (this.ParentList.Items[Teller2].GetPlayFieldX() === this.PlayFieldX + 1 && this.AnimBase === AnimBaseRight) &&
+                                        this.ParentList.Items[Teller2].GetPlayFieldY() === this.PlayFieldY + 1 &&
+                                        (this.ParentList.Items[Teller2].GetGroup() === GroupFloor || this.ParentList.Items[Teller2].GetGroup() === GroupBox)) {
+                                        FloorFound = true;
+                                        break;
+                                    }
+                                }
+                                if (!FloorFound) {
+                                    CanJump = false;
+                                }
+                            }
+                        }
+
+                        // Check if the intended position is obstructed
+                        if (((this.ParentList.Items[Teller].GetPlayFieldX() === this.PlayFieldX - 1 && this.AnimBase === AnimBaseLeft) ||
+                            (this.ParentList.Items[Teller].GetPlayFieldX() === this.PlayFieldX + 1 && this.AnimBase === AnimBaseRight)) &&
+                            this.ParentList.Items[Teller].GetPlayFieldY() === PlayFieldYin) {
+                            if (this.ParentList.Items[Teller].GetType() !== IDExit) {
+                                Result = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                // Check for attached boxes
+                for (Teller = 0; Teller < this.ParentList.ItemCount; Teller++) {
+                    if (this.ParentList.Items[Teller].GetGroup() === GroupBox &&
+                        this.ParentList.Items[Teller].IsAttachedToPlayer) {
+                        if (PlayFieldYin - this.PlayFieldY === 0 && this.ParentList.Items[Teller].MovesInQue()) {
+                            Result = false;
+                            break;
+                        }
+                    }
+                }
+
+                // Check if the intended position is obstructed by other Items
+                if (Result) {
+                    for (Teller = 0; Teller < this.ParentList.ItemCount; Teller++) {
+                        if (this.ParentList.Items[Teller].GetPlayFieldX() === PlayFieldXin &&
+                            this.ParentList.Items[Teller].GetPlayFieldY() === PlayFieldYin) {
+                            if (this.ParentList.Items[Teller].GetGroup() === GroupFloor) {
+                                Result = false;
+                                break;
+                            } else if (this.ParentList.Items[Teller].GetGroup() === GroupBox &&
+                                PlayFieldYin - this.PlayFieldY === 0) {
+                                Result = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+            } else {
+                Result = false;
+            }
+        } else {
+            Result = false;
+        }
+
+        // Return true if a jump is possible and the position is clear
+        if (PlayFieldYin - this.PlayFieldY < 0) {
+            return CanJump && Result;
+        } else {
+            return Result;
+        }
+    }
+
+    Event_BeforeDraw() {
+        if (this.IsMoving) {
+            this.AnimPhase = this.AnimBase + this.AnimCounter;
+            this.AnimDelayCounter++;
+            if (this.AnimDelayCounter === this.AnimDelay) {
+                this.AnimDelayCounter = 0;
+                this.AnimCounter++;
+                if (this.AnimCounter === this.AnimPhases) {
+                    this.AnimCounter = 0;
+                }
+            }
+        } else {
+            this.AnimPhase = this.AnimBase;
+        }
+    }
+
+    Event_ArrivedOnNewSpot() {
+        let Teller;
+        let FloorFound = false;
+
+        if (this.ParentList) {
+            // Check for floor or box below upon arrival
+            for (Teller = 0; Teller < this.ParentList.ItemCount; Teller++) {
+                if (this.ParentList.Items[Teller].GetPlayFieldX() === this.PlayFieldX &&
+                    this.ParentList.Items[Teller].GetPlayFieldY() === this.PlayFieldY + 1 &&
+                    (this.ParentList.Items[Teller].GetGroup() === GroupFloor ||
+                     this.ParentList.Items[Teller].GetGroup() === GroupBox)) {
+                    this.AnimPhases = 4;
+                    FloorFound = true;
+                    break;
+                }
+            }
+        }
+        
+        // Handle movement directions based on flags
+        if (this.NeedToMoveLeft) {
+            this.MoveTo(this.PlayFieldX - 1, this.PlayFieldY);
+            this.NeedToMoveLeft = false;
+        }
+        if (this.NeedToMoveRight) {
+            this.MoveTo(this.PlayFieldX + 1, this.PlayFieldY);
+            this.NeedToMoveRight = false;
+        }
+
+        if (!FloorFound && this.ParentList) {
+            // No floor or box below, initiate movement down
+            this.AnimCounter = 0;
+            this.AnimPhases = 1;
+            this.MoveTo(this.PlayFieldX, this.PlayFieldY + 1);
+        }
+    }
+
+    Event_Moving(ScreenPosX, ScreenPosY, ScreenXi, ScreenYi) {
+        // Adjust viewport based on player movement
+        if (ScreenPosX > this.ParentList.ViewPort.MaxScreenX - this.HalfWindowWidth && this.Xi > 0) {
+            this.ParentList.ViewPort.Move(this.Xi, this.Yi);
+        }
+        if (ScreenPosX < this.ParentList.ViewPort.MaxScreenX - this.HalfWindowWidth && this.Xi < 0) {
+            this.ParentList.ViewPort.Move(this.Xi, this.Yi);
+        }
+        if (ScreenPosY > this.ParentList.ViewPort.MaxScreenY - this.HalfWindowHeight && this.Yi > 0) {
+            this.ParentList.ViewPort.Move(this.Xi, this.Yi);
+        }
+        if (ScreenPosY < this.ParentList.ViewPort.MaxScreenY - this.HalfWindowHeight && this.Yi < 0) {
+            this.ParentList.ViewPort.Move(this.Xi, this.Yi);
+        }
+    }
+
+    MoveTo(PlayFieldXin, PlayFieldYin) {
+        let Teller;
+        if (!this.IsMoving) {
+            // Check if movement to the intended position is possible
+            if (this.CanMoveTo(PlayFieldXin, PlayFieldYin)) {
+                this.PlayFieldX = PlayFieldXin;
+                this.PlayFieldY = PlayFieldYin;
+
+                // Moving to the right
+                if (this.X < this.PlayFieldX * TileWidth) {
+                    this.Xi = this.MoveSpeed;
+                    this.AnimBase = AnimBaseRight;
+                    // Move adjacent boxes if any
+                    if (this.ParentList) {
+                        for (Teller = 0; Teller < this.ParentList.ItemCount; Teller++) {
+                            if (this.ParentList.Items[Teller].GetGroup() === GroupBox &&
+                                this.ParentList.Items[Teller].GetPlayFieldX() === this.PlayFieldX - 1 &&
+                                this.ParentList.Items[Teller].GetPlayFieldY() === this.PlayFieldY - 1) {
+                                this.ParentList.Items[Teller].MoveTo(this.PlayFieldX, this.PlayFieldY - 1);
+                                break;
+                            }
+                        }
+                    }
+                }
+                
+                // Moving to the left
+                if (this.X > this.PlayFieldX * TileWidth) {
+                    this.Xi = -this.MoveSpeed;
+                    this.AnimBase = AnimBaseLeft;
+                    // Move adjacent boxes if any
+                    if (this.ParentList) {
+                        for (Teller = 0; Teller < this.ParentList.ItemCount; Teller++) {
+                            if (this.ParentList.Items[Teller].GetGroup() === GroupBox &&
+                                this.ParentList.Items[Teller].GetPlayFieldX() === this.PlayFieldX + 1 &&
+                                this.ParentList.Items[Teller].GetPlayFieldY() === this.PlayFieldY - 1) {
+                                this.ParentList.Items[Teller].MoveTo(this.PlayFieldX, this.PlayFieldY - 1);
+                                break;
+                            }
+                        }
+                    }
+                }
+                
+                // Moving up
+                if (this.Y > this.PlayFieldY * TileHeight) {
+                    this.Yi = -this.MoveSpeed;
+                    if (this.AnimBase === AnimBaseLeft) {
+                        this.NeedToMoveLeft = true;
+                        this.AnimBase = AnimBaseLeftJump;
+                    } else if (this.AnimBase === AnimBaseRight) {
+                        this.AnimBase = AnimBaseRightJump;
+                        this.NeedToMoveRight = true;
+                    }
+                    if (this.ParentList) {
+                        for (Teller = 0; Teller < this.ParentList.ItemCount; Teller++) {
+                            if (this.ParentList.Items[Teller].GetGroup() === GroupBox &&
+                                this.PlayFieldY === this.ParentList.Items[Teller].GetPlayFieldY() &&
+                                this.ParentList.Items[Teller].GetPlayFieldX() === this.PlayFieldX) {
+                                this.ParentList.Items[Teller].MoveTo(this.PlayFieldX, this.PlayFieldY - 1);
+                                break;
+                            }
+                        }
+                    }
+                }
+                
+                // Moving down
+                if (this.Y < this.PlayFieldY * TileHeight) {
+                    this.Yi = this.MoveSpeed;
+                    if (this.ParentList) {
+                      for (Teller = 0; Teller < this.ParentList.ItemCount; Teller++) {
+                          if (this.ParentList.Items[Teller].GetGroup() === GroupBox &&
+                              this.ParentList.Items[Teller].GetPlayFieldY() === this.PlayFieldY - 1 &&
+                              this.ParentList.Items[Teller].GetPlayFieldX() === this.PlayFieldX) {
+                              this.ParentList.Items[Teller].MoveTo(this.PlayFieldX, this.PlayFieldY + 1);
+                              break;
+                          }
+                      }
+                   }
+                }
+
+                this.IsMoving = true;
+            } else {
+                // Adjust animation base for failed movement attempt
+                if (PlayFieldXin > this.PlayFieldX) {
+                    this.AnimBase = AnimBaseRight;
+                }
+                if (PlayFieldXin < this.PlayFieldX) {
+                    this.AnimBase = AnimBaseLeft;
+                }
+                this.AnimPhase = this.AnimBase + this.AnimCounter;
+            }
+        }
+    }
+}
+}
+
+import_CBox = function() {
+CBox = class extends CWorldPart {
+  constructor(PlayFieldXin, PlayFieldYin) {
+    super(PlayFieldXin, PlayFieldYin);
+    this.Image = SelectedSkin.IMGBox;
+    this.Type = IDBox;
+    this.Z = ZBox;
+    this.Group = GroupBox;
+	  this.MoveSpeed = 2;
+    this.IsAttachedToPlayer = false;
+    this.AttachedPlayer = null;
+  }
+
+  AttachToPlayer(player) {
+    this.IsAttachedToPlayer = true;
+    this.AttachedPlayer = player;
+  }
+
+  DetachFromPlayer() {
+    this.IsAttachedToPlayer = false;
+    this.AttachedPlayer = null;
+  }
+
+  GetAttachedPlayer() {
+    return this.AttachedPlayer;
+  }
+
+  Event_ArrivedOnNewSpot() 
+  {
+    let Teller = 0;
+    let PlayerBelow = false;
+
+    if (this.ParentList) 
+    {
+      // Check if there is a player below the box
+      for (Teller = 0; Teller < this.ParentList.ItemCount; Teller++) {
+        const item = this.ParentList.Items[Teller];
+        if (item.GetPlayFieldX() === this.PlayFieldX && 
+            item.GetPlayFieldY() === this.PlayFieldY + 1 &&
+            item.GetType() === IDPlayer) {
+            PlayerBelow = true;
+            break;
+        }
+      }
+
+      if (PlayerBelow) 
+      {
+        this.AttachToPlayer(this.ParentList.Items[Teller]);
+      } 
+      else 
+      {
+        if (this.IsAttachedToPlayer) {
+            this.DetachFromPlayer();
+        }
+      }
+    }
+  }
+
+  CanMoveTo(PlayFieldXin, PlayFieldYin) 
+  {
+    let Teller;
+    let Result = true;
+
+    if (PlayFieldXin >= 0 && PlayFieldXin < NrOfCols && PlayFieldYin >= 0 && PlayFieldYin < NrOfRows) 
+    {
+        if (this.ParentList) 
+        {
+            for (Teller = 0; Teller < this.ParentList.ItemCount; Teller++) 
+            {
+                const item = this.ParentList.Items[Teller];
+                if (item.GetPlayFieldX() === PlayFieldXin && item.GetPlayFieldY() === PlayFieldYin) 
+                {
+                    if (item.GetGroup() === GroupFloor || item.GetGroup() === GroupBox) 
+                    {
+                        Result = false;
+                        break;
+                    }
+                }
+            }
+        } 
+        else 
+        {
+            return false;
+        }
+        
+    } 
+    else {
+      return false;
+    }  
+    return Result;
+  }
+    
+  Move() 
+  {
+    let SomethingBelow = false;
+    let Teller = 0;
+
+    if (this.ParentList) {
+        // Check if there is something below the box
+        for (Teller = 0; Teller < this.ParentList.ItemCount; Teller++) 
+        {
+            const item = this.ParentList.Items[Teller];
+            if (item.GetPlayFieldX() === this.PlayFieldX && 
+                item.GetPlayFieldY() === this.PlayFieldY + 1 &&
+                (item.GetGroup() === GroupFloor ||
+                 item.GetGroup() === GroupBox ||
+                 item.GetGroup() === GroupPlayer)) 
+            {
+                SomethingBelow = true;
+                break;
+            }
+        }
+    }
+
+    // If nothing is below and no moves in queue, move the box down
+    if (!SomethingBelow && !this.MovesInQue()) 
+    {
+        if (this.IsAttachedToPlayer) 
+        {
+            if (!this.AttachedPlayer.IsMoving) 
+            {
+                this.IsAttachedToPlayer = false;
+                this.AttachedPlayer = null;
+            }
+        }
+        this.MoveTo(this.PlayFieldX, this.PlayFieldY + 1);
+    }
+
+    if (!this.firstArriveEventFired) 
+    {
+        this.Event_ArrivedOnNewSpot();
+        this.firstArriveEventFired = true;
+    }
+
+    if (this.IsMoving) 
+    {
+        if (this.MoveDelayCounter === this.MoveDelay) 
+        {
+            this.X += this.Xi;
+            this.Y += this.Yi;
+            this.Event_Moving(this.X, this.Y, this.Xi, this.Yi);
+            if (this.X === this.PlayFieldX * TileWidth && this.Y === this.PlayFieldY * TileHeight) 
+            {
+                this.IsMoving = false;
+                this.Xi = 0;
+                this.Yi = 0;
+                this.Event_ArrivedOnNewSpot();
+            }
+            this.MoveDelayCounter = -1;
+        }
+        this.MoveDelayCounter++;
+        
+    } 
+    else if (this.MoveQue.length > 0) 
+    {
+        let Tmp = this.MoveQue.pop();
+        if (this.CanMoveTo(Tmp.X, Tmp.Y)) 
+        {
+            this.MoveTo(Tmp.X,Tmp.Y);
+        }
+        else
+        {
+            this.MoveQue = [];
+        }
+    }
+  }
+}
+}
+
+import_CEmpty = function() 
+{
+    CEmpty = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGEmpty;
+            this.Type = IDEmpty;
+        }
+    };
+};
+
+import_CRoof1 = function() 
+{
+    CRoof1 = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGRoof1;
+            this.Type = IDRoof1;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CRoof2 = function() 
+{
+    CRoof2 = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGRoof2;
+            this.Type = IDRoof2;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CRoofCornerLeft = function() 
+{
+    CRoofCornerLeft = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGRoofCornerLeft;
+            this.Type = IDRoofCornerLeft;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CRoofCornerRight = function() 
+{
+    CRoofCornerRight = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGRoofCornerRight;
+            this.Type = IDRoofCornerRight;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CRoofDownLeft = function() 
+{
+    CRoofDownLeft = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGRoofDownLeft;
+            this.Type = IDRoofDownLeft;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CRoofDownRight = function() 
+{
+    CRoofDownRight = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGRoofDownRight;
+            this.Type = IDRoofDownRight;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CRoofCornerBoth = function() 
+{
+    CRoofCornerBoth = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGRoofCornerBoth;
+            this.Type = IDRoofCornerBoth;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CExit = function() 
+{
+    CExit = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGExit;
+            this.Type = IDExit;
+            this.Z = ZExit;
+            this.Group = GroupExit;
+        }
+    };
+};
+
+import_CFloor = function() 
+{
+    CFloor = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGFloor;
+            this.Type = IDFloor;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CFloorLeft = function() 
+{
+    CFloorLeft = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGFloorLeft;
+            this.Type = IDFloorLeft;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CFloorRight = function() 
+{
+    CFloorRight = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGFloorRight;
+            this.Type = IDFloorRight;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CEarthGrassLeft = function() 
+{
+    CEarthGrassLeft = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGEarthGrassLeft;
+            this.Type = IDEarthGrassLeft;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CEarthGrassRight = function() 
+{
+    CEarthGrassRight = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGEarthGrassRight;
+            this.Type = IDEarthGrassRight;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CEarthLeft = function() 
+{
+    CEarthLeft = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGEarthLeft;
+            this.Type = IDEarthLeft;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CEarthRight = function() 
+{
+    CEarthRight = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGEarthRight;
+            this.Type = IDEarthRight;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CEarthMiddle = function() 
+{
+    CEarthMiddle = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGEarthMiddle;
+            this.Type = IDEarthMiddle;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CFloatingFloor = function() 
+{
+    CFloatingFloor = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGFloatingFloor;
+            this.Type = IDFloatingFloor;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CFloatingFloorLeft = function() 
+{
+    CFloatingFloorLeft = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGFloatingFloorLeft;
+            this.Type = IDFloatingFloorLeft;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CFloatingFloorMiddle = function() 
+{
+    CFloatingFloorMiddle = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGFloatingFloorMiddle;
+            this.Type = IDFloatingFloorMiddle;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CFloatingFloorRight = function() 
+{
+    CFloatingFloorRight = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGFloatingFloorRight;
+            this.Type = IDFloatingFloorRight;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CStartTower = function() 
+{
+    CStartTower = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGStartTower;
+            this.Type = IDStartTower;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CTower = function() 
+{
+    CTower = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGTower;
+            this.Type = IDTower;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CTowerShaft = function() 
+{
+    CTowerShaft = class extends CWorldPart 
+    {
+        constructor(PlayFieldXin, PlayFieldYin) 
+        {
+            super(PlayFieldXin, PlayFieldYin);
+            this.Image = SelectedSkin.IMGTowerShaft;
+            this.Type = IDTowerShaft;
+            this.Z = ZFloor;
+            this.Group = GroupFloor;
+        }
+    };
+};
+
+import_CWorldParts = function() {
+
+CWorldParts = class {
+  constructor() {
+    //the values are harcoded for viewport 
+    this.ViewPort = new CViewPort(0,0,23,13,0,0, NrOfCols-1, NrOfRows-1);
+    this.Items = new Array(NrOfRows * NrOfCols).fill(null);
+    this.ItemCount = 0;
+    this.DisableSorting = false;
+    this.LevelLoadDone = false;
+    this.LevelLoader = null;
+    this.LevelBuffer = [];
+    this.LevelLoadPos = 0;
+    this.LastLevelLoaded = "";
+  }
+
+  CenterVPOnPlayer() {
+    let PlayerX = -1, PlayerY = -1;
+    for (let Teller = 0; Teller < this.ItemCount; Teller++) {
+      if (this.Items[Teller].GetType() === IDPlayer) {
+        PlayerX = this.Items[Teller].GetPlayFieldX();
+        PlayerY = this.Items[Teller].GetPlayFieldY();
+        break;
+      }
+    }
+    //value is hardcode based on some testing
+    this.ViewPort.SetViewPort(PlayerX-9, PlayerY-6,PlayerX+13,PlayerY+6);
+  }
+
+  LimitVPLevel() {
+    let MinX = NrOfCols, MinY = NrOfRows, MaxX = -1, MaxY = -1;
+    for (let Teller = 0; Teller < this.ItemCount; Teller++) {
+      let itemX = this.Items[Teller].GetPlayFieldX();
+      let itemY = this.Items[Teller].GetPlayFieldY();
+      if (itemX < MinX) MinX = itemX;
+      if (itemY < MinY) MinY = itemY;
+      if (itemX > MaxX) MaxX = itemX;
+      if (itemY > MaxY) MaxY = itemY;
+    }
+    this.ViewPort.SetVPLimit(MinX, MinY, MaxX, MaxY);
+    this.CenterVPOnPlayer();
+  }
+
+  RemoveAll() {
+    for (let Teller = 0; Teller < this.ItemCount; Teller++) {
+      this.Items[Teller] = null;
+    }
+    this.ItemCount = 0;
+  }
+
+  Remove(PlayFieldXin, PlayFieldYin, Type = null) {
+    for (let Teller1 = 0; Teller1 < this.ItemCount; Teller1++) {
+      if (
+        this.Items[Teller1].GetPlayFieldX() === PlayFieldXin &&
+        this.Items[Teller1].GetPlayFieldY() === PlayFieldYin &&
+        (Type === null || this.Items[Teller1].GetType() === Type)
+      ) {
+        this.Items[Teller1] = null;
+        for (let Teller2 = Teller1; Teller2 < this.ItemCount - 1; Teller2++) {
+          this.Items[Teller2] = this.Items[Teller2 + 1];
+        }
+        this.ItemCount--;
+        Teller1--;
+      }
+    }
+  }
+
+  Add(WorldPart) {
+    if (this.ItemCount < NrOfRows * NrOfCols * 3) {
+     
+      WorldPart.ParentList = this;
+      this.Items[this.ItemCount] = WorldPart;
+      this.ItemCount++;
+      this.Sort();
+    }
+  }
+
+  Sort() {
+    if (!this.DisableSorting) {
+      for (let Teller1 = 1; Teller1 < this.ItemCount; Teller1++) {
+        let Index = this.Items[Teller1].GetZ();
+        let Part = this.Items[Teller1];
+        let Teller2 = Teller1;
+        while (Teller2 > 0 && this.Items[Teller2 - 1].GetZ() > Index) {
+          this.Items[Teller2] = this.Items[Teller2 - 1];
+          Teller2--;
+        }
+        this.Items[Teller2] = Part;
+      }
+    }
+  }
+
+  Load(Filename) {
+    this.LevelLoadDone = false;
+    this.LevelLoadPos = 0;
+    this.LevelBuffer = [];
+    this.LevelLoader = asset_manager.loadText(Filename);
+    this.LastLevelLoaded = Filename;
+  }
+  
+  LoadDone()
+  {
+    if(!this.LevelLoadDone)
+    
+    {
+      if (this.LevelLoader && this.LevelLoader.ready) 
+      {
+        this.RemoveAll();
+        this.DisableSorting = true;
+        this.LevelBuffer = this.LevelLoader.text.split("\n");
+        this.LevelLoader = null;
+      }
+      
+      
+      if(this.LevelLoadPos != this.LevelBuffer.length)
+      {
+        let count = 0;
+        while ( count < LoadMaxWorldPartsPerTick) 
+        {
+          count++
+          if(this.LevelLoadPos >= this.LevelBuffer.length)
+          {
+            count = LoadMaxWorldPartsPerTick;
+            this.LevelLoadDone = true;
+            this.DisableSorting = false;
+            this.Sort();
+            PlayerIndex=FindPlayer();
+            this.LimitVPLevel();
+            this.CenterVPOnPlayer();
+            let PlayerHeightPos = WorldParts.ViewPort.VPMaxY - WorldParts.Items[PlayerIndex].PlayFieldY;
+            let LevelHeight = WorldParts.ViewPort.VPMaxY - WorldParts.ViewPort.VPMinY;
+            this.ViewPort.BackgroundX = 0;
+            //50 is taken from watching how much the viewport can move
+            //the aim is to get backgroundY near 0 when the player is on the lowest part of a level
+            //check also DrawLayer2 in helpers
+            this.ViewPort.BackgroundY = screen.height / 2 - (PlayerHeightPos*50/LevelHeight); 
+            continue;
+          }
+
+          let Type = parseInt(this.LevelBuffer[this.LevelLoadPos]);
+          
+          let X = parseInt(this.LevelBuffer[this.LevelLoadPos + 1]);
+          let Y = parseInt(this.LevelBuffer[this.LevelLoadPos + 2]);
+          this.LevelLoadPos += 3;
+          switch (Type) 
+          {
+            case IDEmpty:
+              this.Add(new CEmpty(X, Y));
+              break;
+            case IDBox:
+              this.Add(new CBox(X, Y));
+              break;
+            case IDPlayer:
+              this.Add(new CPlayer(X, Y));
+              break;
+            case IDFloor:
+              this.Add(new CFloor(X, Y));
+              break;
+            case IDExit:
+              this.Add(new CExit(X, Y));
+              break;
+            case IDEarthGrassLeft:
+              this.Add(new CEarthGrassLeft(X, Y));
+              break;
+            case IDEarthGrassRight:
+              this.Add(new CEarthGrassRight(X, Y));
+              break;
+            case IDEarthLeft:
+              this.Add(new CEarthLeft(X, Y));
+              break;
+            case IDEarthMiddle:
+              this.Add(new CEarthMiddle(X, Y));
+              break;
+            case IDEarthRight:
+              this.Add(new CEarthRight(X, Y));
+              break;
+            case IDFloatingFloor:
+              this.Add(new CFloatingFloor(X, Y));
+              break;
+            case IDFloatingFloorLeft:
+              this.Add(new CFloatingFloorLeft(X, Y));
+              break;
+            case IDFloatingFloorMiddle:
+              this.Add(new CFloatingFloorMiddle(X, Y));
+              break;
+            case IDFloatingFloorRight:
+              this.Add(new CFloatingFloorRight(X, Y));
+              break;
+            case IDFloorLeft:
+              this.Add(new CFloorLeft(X, Y));
+              break;
+            case IDFloorRight:
+              this.Add(new CFloorRight(X, Y));
+              break;
+            case IDTower:
+              this.Add(new CTower(X, Y));
+              break;
+            case IDStartTower:
+              this.Add(new CStartTower(X, Y));
+              break;
+            case IDTowerShaft:
+              this.Add(new CTowerShaft(X, Y));
+              break;
+            case IDRoof1:
+              this.Add(new CRoof1(X, Y));
+              break;
+            case IDRoof2:
+              this.Add(new CRoof2(X, Y));
+              break;
+            case IDRoofCornerLeft:
+              this.Add(new CRoofCornerLeft(X, Y));
+              break;
+            case IDRoofCornerRight:
+              this.Add(new CRoofCornerRight(X, Y));
+              break;
+            case IDRoofCornerBoth:
+              this.Add(new CRoofCornerBoth(X, Y));
+              break;
+            case IDRoofDownRight:
+              this.Add(new CRoofDownRight(X, Y));
+              break;
+            case IDRoofDownLeft:
+              this.Add(new CRoofDownLeft(X, Y));
+              break;
+          }
+        }
+      }
+    }
+    return this.LevelLoadDone;
+  }
+
+  Move() {
+    for (let Teller = 0; Teller < this.ItemCount; Teller++) {
+      this.Items[Teller].Move();
+    }
+  }
+
+  Draw() {
+    for (let Teller = 0; Teller < this.ItemCount; Teller++) {
+     if (this.Items[Teller].GetPlayFieldX() >= this.ViewPort.VPMinX-5 &&
+        this.Items[Teller].GetPlayFieldX() - 1 <= this.ViewPort.VPMaxX &&
+        this.Items[Teller].GetPlayFieldY() >= this.ViewPort.VPMinY-5 &&
+        this.Items[Teller].GetPlayFieldY() - 1 <= this.ViewPort.VPMaxY
+      ) {
+        
+        this.Items[Teller].Draw();
+      }
+    }
+  }
+
+  destroy() {
+    delete this.ViewPort;
+    for (let Teller = 0; Teller < this.ItemCount; Teller++) {
+      this.Items[Teller] = null;
+    }
+  }
+}
+}
+
+
+GameInit = function() {
+    keydelay = StandardKeyDelay;
+
+    PlayerIndex = FindPlayer();
+    WorldParts.LimitVPLevel();
+    GameLevelFinished = false;
+}
+
+GameLogic = function() {
+    let FloorFound = false;
+    let BoxMoving = false;
+    let CarryingBox = false;
+    let Que = false;
+    
+    if (GameState === GSGameInit) {
+        GameInit();
+        GameState -= GSInitDiff;
+    }
+
+    if(!WorldParts.LoadDone())
+      return;
+    
+    if (keyboard.press.R || gamepad.press.RB)
+    {
+       WorldParts.Load(SelectedLevelPack.LevelPrefix + Level);
+       PlaySound("select");
+    }
+    
+    if (keyboard.press.T || gamepad.press.LB)
+    {
+      NextSkin();
+      SaveSkin();
+      PlaySound("select");
+    }
+    
+    //logic for when level is not finished yet, io we are playing
+    if(!GameLevelFinished)
+    {
+      if (keyboard.press.ESCAPE || gamepad.press.B)
+      {
+        GameState = GSStageSelectInit;
+        PlaySound("back");
+      }
+      
+      //get some states like is a box moving, is player carrying a box and are there parts that have a queue
+      for (let teller = 0; teller < WorldParts.ItemCount; teller++) {
+          if (WorldParts.Items[teller].IsMoving && WorldParts.Items[teller].GetType() === IDBox) {
+              BoxMoving = true;
+          }
+          if (WorldParts.Items[teller].GetType() === IDBox) {
+              if (WorldParts.Items[teller].IsAttachedToPlayer) {
+                  CarryingBox = true;
+              }
+              if (WorldParts.Items[teller].MovesInQue()) {
+                  Que = true;
+              }
+          }
+      }
+      
+      //viewport moving (to look around level)    
+      if (keyboard.Y || gamepad.X) {
+        if(!ResetViewPort)
+          WorldParts.ViewPort.PushBackgroundXY();
+          
+          if (keyboard.LEFT || gamepad.LEFT) {
+              WorldParts.ViewPort.Move(-2, 0);
+          }
+          
+          if (keyboard.RIGHT || gamepad.RIGHT) {
+              WorldParts.ViewPort.Move(2, 0);
+          }
+          
+          if (keyboard.UP || gamepad.UP) {
+              WorldParts.ViewPort.Move(0, -2);
+          }
+          
+          if (keyboard.DOWN || gamepad.DOWN) {
+              WorldParts.ViewPort.Move(0, 2);
+          }
+          ResetViewPort = true;
+      } else {
+          if (ResetViewPort) {
+              WorldParts.CenterVPOnPlayer();
+              WorldParts.ViewPort.PopBackgroundXY();
+              ResetViewPort = false;
+          }
+      }
+      
+      //if things are not moving and there are no queued moves and boxes are not moving and we did not press viewport button
+      if (PlayerIndex > 0 && !WorldParts.Items[PlayerIndex].IsMoving && !BoxMoving && !Que && !keyboard.Y && !gamepad.X) {
+          // move up
+          if (keyboard.UP || gamepad.UP) {
+              WorldParts.Items[PlayerIndex].MoveTo(WorldParts.Items[PlayerIndex].GetPlayFieldX(), WorldParts.Items[PlayerIndex].GetPlayFieldY() - 1);
+          }
+          // pickup block
+          if (keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A) {
+              for (let teller = 0; teller < WorldParts.ItemCount; teller++) {
+                  // dropping a block
+                  if (CarryingBox) {
+                    //to the left of player
+                      if (WorldParts.Items[teller].GetPlayFieldX() === WorldParts.Items[PlayerIndex].GetPlayFieldX() &&
+                          WorldParts.Items[teller].GetPlayFieldY() === WorldParts.Items[PlayerIndex].GetPlayFieldY() - 1 &&
+                          WorldParts.Items[teller].GetType() === IDBox && WorldParts.Items[PlayerIndex].AnimBase === AnimBaseLeft) {
+                          if (WorldParts.Items[teller].CanMoveTo(WorldParts.Items[teller].GetPlayFieldX() - 1, WorldParts.Items[teller].GetPlayFieldY())) {
+                              WorldParts.Items[teller].AddToMoveQue(WorldParts.Items[teller].GetPlayFieldX() - 1, WorldParts.Items[teller].GetPlayFieldY());
+                              WorldParts.Items[teller].AddToMoveQue(WorldParts.Items[teller].GetPlayFieldX() - 1, WorldParts.Items[teller].GetPlayFieldY() + 1);
+                              WorldParts.Items[teller].DetachFromPlayer();
+                              keydelay = StandardKeyDelay;
+                          }
+                        
+                      } 
+                      //to the right of player
+                      else if (WorldParts.Items[teller].GetPlayFieldX() === WorldParts.Items[PlayerIndex].GetPlayFieldX() &&
+                          WorldParts.Items[teller].GetPlayFieldY() === WorldParts.Items[PlayerIndex].GetPlayFieldY() - 1 &&
+                          WorldParts.Items[teller].GetType() === IDBox && WorldParts.Items[PlayerIndex].AnimBase === AnimBaseRight) {
+                          if (WorldParts.Items[teller].CanMoveTo(WorldParts.Items[teller].GetPlayFieldX() + 1, WorldParts.Items[teller].GetPlayFieldY())) {
+                              WorldParts.Items[teller].AddToMoveQue(WorldParts.Items[teller].GetPlayFieldX() + 1, WorldParts.Items[teller].GetPlayFieldY());
+                              WorldParts.Items[teller].AddToMoveQue(WorldParts.Items[teller].GetPlayFieldX() + 1, WorldParts.Items[teller].GetPlayFieldY() + 1);
+                              WorldParts.Items[teller].DetachFromPlayer();
+                              keydelay = StandardKeyDelay;
+                          }
+                      }
+                  } else if (!CarryingBox) {
+                      FloorFound = false;
+                      // picking up a block
+                      // if there is a block left to the player and were facing left
+                      if (WorldParts.Items[teller].GetPlayFieldX() === WorldParts.Items[PlayerIndex].GetPlayFieldX() - 1 &&
+                          WorldParts.Items[teller].GetPlayFieldY() === WorldParts.Items[PlayerIndex].GetPlayFieldY() &&
+                          WorldParts.Items[teller].GetType() === IDBox && WorldParts.Items[PlayerIndex].AnimBase === AnimBaseLeft) {
+                          // see if there is a floor or block beneath the block
+                          for (let teller2 = 0; teller2 < WorldParts.ItemCount; teller2++) {
+                              if (WorldParts.Items[teller2].GetPlayFieldX() === WorldParts.Items[PlayerIndex].GetPlayFieldX() - 1 &&
+                                  WorldParts.Items[teller2].GetPlayFieldY() === WorldParts.Items[PlayerIndex].GetPlayFieldY() + 1 &&
+                                  (WorldParts.Items[teller2].GetGroup() === GroupFloor || WorldParts.Items[teller2].GetGroup() === GroupBox)) {
+                                  FloorFound = true;
+                                  break;
+                              }
+                          }
+                          // if there is a floor see if there is space above the block and above the player
+                          if (FloorFound &&
+                              WorldParts.Items[teller].CanMoveTo(WorldParts.Items[teller].GetPlayFieldX(), WorldParts.Items[teller].GetPlayFieldY() - 1) &&
+                              WorldParts.Items[teller].CanMoveTo(WorldParts.Items[teller].GetPlayFieldX() + 1, WorldParts.Items[teller].GetPlayFieldY() - 1)) {
+                              // Attach the block to the player & move the block
+                              WorldParts.Items[teller].AttachToPlayer(WorldParts.Items[PlayerIndex]);
+                              WorldParts.Items[teller].AddToMoveQue(WorldParts.Items[teller].GetPlayFieldX(), WorldParts.Items[teller].GetPlayFieldY() - 1);
+                              WorldParts.Items[teller].AddToMoveQue(WorldParts.Items[teller].GetPlayFieldX() + 1, WorldParts.Items[teller].GetPlayFieldY() - 1);
+                              keydelay = StandardKeyDelay;
+                          }
+                      }
+                      // if there is a block right to the player and were facing right
+                      else if (WorldParts.Items[teller].GetPlayFieldX() === WorldParts.Items[PlayerIndex].GetPlayFieldX() + 1 &&
+                          WorldParts.Items[teller].GetPlayFieldY() === WorldParts.Items[PlayerIndex].GetPlayFieldY() &&
+                          WorldParts.Items[teller].GetType() === IDBox && WorldParts.Items[PlayerIndex].AnimBase === AnimBaseRight) {
+                          // see if there is a floor or block beneath the block
+                          for (let teller2 = 0; teller2 < WorldParts.ItemCount; teller2++) {
+                              if (WorldParts.Items[teller2].GetPlayFieldX() === WorldParts.Items[PlayerIndex].GetPlayFieldX() + 1 &&
+                                  WorldParts.Items[teller2].GetPlayFieldY() === WorldParts.Items[PlayerIndex].GetPlayFieldY() + 1 &&
+                                  (WorldParts.Items[teller2].GetGroup() === GroupFloor || WorldParts.Items[teller2].GetGroup() === GroupBox)) {
+                                  FloorFound = true;
+                                  break;
+                              }
+                          }
+                          //if there is a floor see if there is space above the block and above the player
+                         if (FloorFound &&
+                              WorldParts.Items[teller].CanMoveTo(WorldParts.Items[teller].GetPlayFieldX(), WorldParts.Items[teller].GetPlayFieldY() - 1) &&
+                              WorldParts.Items[teller].CanMoveTo(WorldParts.Items[teller].GetPlayFieldX() - 1, WorldParts.Items[teller].GetPlayFieldY() - 1)) {
+                              // Attach the block to the player & move the block
+                              WorldParts.Items[teller].AttachToPlayer(WorldParts.Items[PlayerIndex]);
+                              WorldParts.Items[teller].AddToMoveQue(WorldParts.Items[teller].GetPlayFieldX(), WorldParts.Items[teller].GetPlayFieldY() - 1);
+                              WorldParts.Items[teller].AddToMoveQue(WorldParts.Items[teller].GetPlayFieldX() - 1, WorldParts.Items[teller].GetPlayFieldY() - 1);
+                              keydelay = StandardKeyDelay;
+                          }
+                      }
+    
+                  }
+                  
+              }
+          }
+  
+          if (keyboard.LEFT || gamepad.LEFT) {
+              WorldParts.Items[PlayerIndex].MoveTo(WorldParts.Items[PlayerIndex].GetPlayFieldX() - 1, WorldParts.Items[PlayerIndex].GetPlayFieldY());
+              keydelay = StandardKeyDelay;
+          }
+  
+          if (keyboard.RIGHT || gamepad.RIGHT) {
+              WorldParts.Items[PlayerIndex].MoveTo(WorldParts.Items[PlayerIndex].GetPlayFieldX() + 1, WorldParts.Items[PlayerIndex].GetPlayFieldY());
+              keydelay = StandardKeyDelay;
+          }
+          
+      }
+      //moves all worldparts
+      WorldParts.Move();
+      
+      //do level done check only when nothing moves
+      if (!WorldParts.Items[PlayerIndex].IsMoving)
+      {
+        GameLevelFinished = StageDone(WorldParts.Items[PlayerIndex]);
+        if(GameLevelFinished)
+          PlaySound("stageend");
+      }
+    }
+    
+    //logic for when the level is finished
+    if(GameLevelFinished)
+    {
+      if(keyboard.press.SPACE || keyboard.press.ENTER || keyboard.ESCAPE || gamepad.A || gamepad.B)
+      {
+        if(Level < SelectedLevelPack.MaxLevels)
+        {
+          if(Level === UnlockedLevels )
+            if(UnlockedLevels < SelectedLevelPack.MaxLevels)
+            {
+              UnlockedLevels++;
+              SaveUnlockedLevels();
+            }
+          Level++;
+          GameLevelFinished = false;
+          WorldParts.Load(SelectedLevelPack.LevelPrefix + Level);
+          PlaySound("select");
+        }
+        else
+        {
+          GameState = GSTitleScreenInit;
+          PlaySound("back");
+        }
+      }
+    }
+}
+
+GameDraw = function() {
+  screen.clear("#000000");
+  screen.drawSprite(SelectedSkin.IMGBackground, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+  DrawLayer2();
+  WorldParts.Draw();
+  let Text = "";
+  //when level is finished also draw a message indicating level is finished
+  if(GameLevelFinished)
+  {
+    let transparantColor = "RGBA(0,0,0,0)";
+    if(Level < SelectedLevelPack.MaxLevels)
+    {
+      DrawTextRect("Congrats you solved the level!\nThe next level is unlocked!",
+        0, 0, 14, 2, 10, SelectedSkin.BackGroundColor, SelectedSkin.ForeGroundColor, transparantColor, SelectedSkin.SurroundColor, SelectedSkin.SurroundColor, -1);
+      if(LastPressedWasGamePad)
+        Text = SelectedLevelPack.Name + " Level: " + Level + " | A or B: Next Level";
+      else
+        Text = SelectedLevelPack.Name + " Level: " + Level + " | Space or ESC: Next Level";
+    }
+    else
+    {
+      DrawTextRect("Congrats you solved the level!\nYou completed the " + SelectedLevelPack.Name + 
+      " levelpack",0, 0, 14, 2, 10, SelectedSkin.BackGroundColor, SelectedSkin.ForeGroundColor, transparantColor, SelectedSkin.SurroundColor, SelectedSkin.SurroundColor, -1);
+      if(LastPressedWasGamePad)
+        Text = SelectedLevelPack.Name + " Level: " + Level + " | A or B: Title Screen";
+      else
+        Text = SelectedLevelPack.Name + " Level: " + Level + " | Space or ESC: Title Screen";
+    }
+  }
+  else
+  {
+    if(LastPressedWasGamePad)
+      Text = SelectedLevelPack.Name + " Level: " + Level + " | DPad: Move | A: Pickup/Drop | RB: Restart | X+Dpad: Pan | LB: Skin | B: Title Screen";
+    else
+      Text = SelectedLevelPack.Name + " Level: " + Level + " | Arrows: Move | Space: Pickup/Drop | R: Restart | Y+Arrows: Pan | T: Skin | Esc: Title Screen";
+  }
+  
+  if (Text.length > 0)
+  {
+    screen.fillRect(0,screen.height/2 - 4,screen.width, 8, SelectedSkin.BackGroundColor);
+    screen.drawLine(-screen.width/2,screen.height/2 - 8, screen.width/2, screen.height/2 - 8, SelectedSkin.SurroundColor);
+    let TW = screen.textWidth(Text, 8);
+    screen.drawText(Text, -screen.width/2 + TW/2 , screen.height/2 - 3, 8, SelectedSkin.ForeGroundColor);
+  }
+
+}
+
+// Define all constants
+var StandardKeyDelay = 7;
+var LoadMaxWorldPartsPerTick = 1000;
+var WINDOW_WIDTH = 368;  //slightly bigger to match tilesizes
+var WINDOW_HEIGHT = 208; //slightly bigger to match tilesizes
+var TileWidth = 16;
+var TileHeight = 16;
+var NrOfRows = 50;
+var NrOfCols = 50;
+var NrOfRowsVisible = Math.floor(WINDOW_HEIGHT / TileHeight);
+var NrOfColsVisible = Math.floor(WINDOW_WIDTH / TileWidth);
+var IDEmpty = 1;
+var IDPlayer = 2;
+var IDBox = 3;
+var IDFloor = 4;
+var IDExit = 5;
+var IDEarthGrassLeft = 6;
+var IDEarthGrassRight = 7;
+var IDEarthLeft = 8;
+var IDEarthMiddle = 9;
+var IDEarthRight = 10;
+var IDFloatingFloor = 11;
+var IDFloatingFloorLeft = 12;
+var IDFloatingFloorMiddle = 13;
+var IDFloatingFloorRight = 14;
+var IDFloorLeft = 15;
+var IDFloorRight = 16;
+var IDTower = 17;
+var IDStartTower = 18;
+var IDTowerShaft = 19;
+var IDRoof1 = 20;
+var IDRoof2 = 21;
+var IDRoofCornerLeft = 22;
+var IDRoofCornerRight = 23;
+var IDRoofCornerBoth = 24;
+var IDRoofDownRight = 25;
+var IDRoofDownLeft = 26;
+var GroupFloor = 1;
+var GroupPlayer = 2;
+var GroupBox = 3;
+var GroupExit = 4;
+var ZPlayer = 10;
+var ZWall = 5;
+var ZBox = 5;
+var ZFloor = 5;
+var ZExit = 1;
+var AnimBaseLeft = 0;
+var AnimBaseRight = 4;
+var AnimBaseLeftJump = 8;
+var AnimBaseRightJump = 12;
+var GSTitleScreen = 1;
+var GSCredits = 2;
+var GSQuit = 3;
+var GSGame = 4;
+var GSStageSelect = 5;
+var GSIntro = 6;
+var GSInitDiff = 50;
+var GSGameInit = GSGame + GSInitDiff;
+var GSTitleScreenInit = GSTitleScreen + GSInitDiff ;
+var GSCreditsInit = GSCredits + GSInitDiff;
+var GSStageSelectInit = GSStageSelect + GSInitDiff ;
+var SkinCount = 5;
+var LevelPackCount = 2;
+
+//variable images
+var IMGBackground = null;
+var IMGFloor = null;
+var IMGPlayer = null;
+var IMGBox = null;
+var IMGEmpty = null;
+var IMGTitleScreen = null;
+var IMGExit = null;
+var IMGFloorLeft = null;
+var IMGFloorRight = null;
+var IMGEarthGrassRight = null;
+var IMGEarthGrassLeft = null;
+var IMGEarthLeft = null;
+var IMGEarthRight = null;
+var IMGEarthMiddle = null;
+var IMGFloatingFloor = null;
+var IMGFloatingFloorLeft = null;
+var IMGFloatingFloorRight = null;
+var IMGFloatingFloorMiddle = null;
+var IMGTower = null;
+var IMGStartTower = null;
+var IMGTowerShaft = null;
+var IMGRoof1 = null;
+var IMGRoof2 = null;
+var IMGRoofCornerLeft = null;
+var IMGRoofCornerRight = null;
+var IMGRoofDownRight = null;
+var IMGRoofDownLeft = null;
+var IMGRoofCornerBoth = null;
+var IMGLayer2 = null;
+
+//variables
+var PlayerIndex;
+var GameStatet;
+var keydelay;
+var ResetViewPort;
+var GameLevelFinished;
+var Level;
+var Skin;
+var LevelPack;
+var SelectedLevelPack;
+var SelectedSkin;
+var UnlockedLevels;
+var SoundOn;
+var MusicOn;
+var Music;
+var IntroPos;
+var IntroFrameCount;
+var WorldParts;
+var keydelay;
+var LastPressedWasGamePad;
+
+InitGlobals = function()
+{
+  WorldParts = new CWorldParts();
+  keydelay = 0;
+  PlayerIndex = -1;
+  GameState = GSTitleScreenInit;
+  keydelay = 0;
+  ResetViewPort = false;
+  GameLevelFinished = false;
+  Level = 1;
+  Skin = 1;
+  LevelPack = 1;
+  SelectedLevelPack = {};
+  SelectedSkin = {};
+  UnlockedLevels = 20;
+  SoundOn = true;
+  MusicOn = true;
+  Music = null;
+  IntroPos = 0;
+  IntroFrameCount = 0;
+}
+
+
+FindPlayer = function()
+{
+  Player = -1;
+	for (let teller=0;teller<WorldParts.ItemCount;teller++)
+	{
+		if (WorldParts.Items[teller].GetType() == IDPlayer)
+		{
+			Player = teller;
+			break;
+		}
+	}
+	//should never happen
+	if(Player == -1)
+	{
+    Player = new CPlayer(0,0);
+    WorldParts.Add(Player);
+    for (let teller=0;teller<WorldParts.ItemCount;teller++)
+	  {
+		  if (WorldParts.Items[teller].GetType() == IDPlayer)
+		  {
+			  Player = teller;
+			  break;
+		  }
+	  }
+  }
+  return Player;
+}
+
+StageDone = function(Player)
+{
+	let Temp = false;
+	for (let Teller=0;Teller<WorldParts.ItemCount;Teller++)
+		if (WorldParts.Items[Teller].GetType() == IDExit)
+		{
+			if((WorldParts.Items[Teller].GetPlayFieldX() == Player.GetPlayFieldX()) && (WorldParts.Items[Teller].GetPlayFieldY() == Player.GetPlayFieldY()))
+        Temp = true;
+      break;
+		}
+  return Temp;
+}
+
+DrawTextRect = function(Text, x, y, TextSize, TextSpacing, RectPadding, BackColor, ForeColor, ForeOutlineColor, SurColor, SelColor, SelLine)
+{
+  let Texts = Text.split("\n");
+  let MaxTextWidth = 0;
+  for (let i = 0; i < Texts.length; i++)
+  {
+    tw = screen.textWidth(Texts[i], TextSize);
+    if(tw > MaxTextWidth)
+      MaxTextWidth = tw;
+  }
+  let MaxTextHeight = Texts.length * (TextSize) + (Texts.length-1) * TextSpacing;
+  let xp = x;
+  let yp = y;
+  let w = MaxTextWidth + RectPadding;
+  let h = MaxTextHeight + RectPadding;
+  screen.fillRect(xp, yp, w, h, BackColor);
+  screen.drawRect(xp, yp, w, h, SurColor);
+  for (let i = 0; i < Texts.length; i++)
+  {
+    if(i + 1 == SelLine)
+    {
+      screen.drawText(Texts[i], xp - MaxTextWidth/2 + screen.textWidth(Texts[i], TextSize)/2, yp + (MaxTextHeight/2)- TextSize/2 - ((i * TextSize) + (i * TextSpacing)), TextSize, SelColor);
+      screen.drawTextOutline(Texts[i], xp - MaxTextWidth/2 + screen.textWidth(Texts[i], TextSize)/2, yp + (MaxTextHeight/2)- TextSize/2 - ((i * TextSize) + (i * TextSpacing)), TextSize, ForeOutlineColor); 
+    }
+    else
+    {
+      screen.drawText(Texts[i], xp - MaxTextWidth/2 + screen.textWidth(Texts[i], TextSize)/2, yp + (MaxTextHeight/2)- TextSize/2 - ((i * TextSize) + (i * TextSpacing)), TextSize, ForeColor);
+      screen.drawTextOutline(Texts[i], xp - MaxTextWidth/2 + screen.textWidth(Texts[i], TextSize)/2, yp + (MaxTextHeight/2)- TextSize/2 - ((i * TextSize) + (i * TextSpacing)), TextSize, ForeOutlineColor); 
+    }
+  }
+}
+
+PlayMusic = function(music, volume, loop)
+{
+  Music = null;
+  if(MusicOn)
+    Music = audio.playMusic(music, volume, loop);
+}
+
+MusicPlaying = function()
+{
+  return Music != null;
+}
+
+StopMusic = function()
+{
+  if(Music)
+  {
+    Music.stop();
+    Music = null;
+  }
+}
+
+PlaySound = function(sound)
+{
+  if(SoundOn)
+    audio.playSound(sound);
+}
+
+DrawLayer2 = function()
+{
+  let Layer2RectSrc = {};
+  let Layer2RectDst = {};
+  let IMGLayer2 = sprites[SelectedSkin.IMGLayer2];
+  WorldParts.ViewPort.BackgroundX = WorldParts.ViewPort.BackgroundX % IMGLayer2.width
+
+  //draw it 3 times in middle, left of middle and right of middle, that should be enough
+  //to always show it for the current levels when the player moves on X Axis
+  Layer2RectSrc.x = 0;
+  Layer2RectSrc.y = 0;
+  Layer2RectSrc.w = IMGLayer2.width;
+  Layer2RectSrc.h = IMGLayer2.height;
+  Layer2RectDst.w = IMGLayer2.width;
+  Layer2RectDst.h = IMGLayer2.height;
+  Layer2RectDst.x = -Layer2RectDst.w - WorldParts.ViewPort.BackgroundX;
+  Layer2RectDst.y = -screen.height/2 +  WorldParts.ViewPort.BackgroundY;
+  screen.drawSpritePart(SelectedSkin.IMGLayer2,Layer2RectSrc.x, Layer2RectSrc.y, Layer2RectSrc.w, Layer2RectSrc.h,Layer2RectDst.x,Layer2RectDst.y,Layer2RectDst.w,Layer2RectDst.h);
+  
+  Layer2RectSrc.x = 0;
+  Layer2RectSrc.y = 0;
+  Layer2RectSrc.w = IMGLayer2.width;
+  Layer2RectSrc.h = IMGLayer2.height;
+  Layer2RectDst.w = IMGLayer2.width;
+  Layer2RectDst.h = IMGLayer2.height;
+  Layer2RectDst.x = -WorldParts.ViewPort.BackgroundX;
+  Layer2RectDst.y = -screen.height/2 + WorldParts.ViewPort.BackgroundY;
+  //print(WorldParts.ViewPort.BackgroundY + " " + Layer2RectDst.y)
+  screen.drawSpritePart(SelectedSkin.IMGLayer2,Layer2RectSrc.x, Layer2RectSrc.y, Layer2RectSrc.w, Layer2RectSrc.h,Layer2RectDst.x,Layer2RectDst.y,Layer2RectDst.w,Layer2RectDst.h);
+
+  Layer2RectSrc.x = 0;
+  Layer2RectSrc.y = 0;
+  Layer2RectSrc.w = IMGLayer2.width;
+  Layer2RectSrc.h = IMGLayer2.height;
+  Layer2RectDst.w = IMGLayer2.width;
+  Layer2RectDst.h = IMGLayer2.height;
+  Layer2RectDst.x = Layer2RectDst.w - WorldParts.ViewPort.BackgroundX;
+  Layer2RectDst.y = -screen.height/2 +  WorldParts.ViewPort.BackgroundY;
+  screen.drawSpritePart(SelectedSkin.IMGLayer2,Layer2RectSrc.x, Layer2RectSrc.y, Layer2RectSrc.w, Layer2RectSrc.h,Layer2RectDst.x,Layer2RectDst.y,Layer2RectDst.w,Layer2RectDst.h);
+}
+
+UpdateLastPressed = function() 
+{
+  //detects if any value in key / value pairs of gamepad
+  //equals 1 we also only check values of type number
+  for (const [key, value] of Object.entries(gamepad))
+  {
+    if (typeof value === "number")
+      if(value === 1)
+      {
+        LastPressedWasGamePad = 1;
+        break;
+      }
+  }
+  
+  //detects if any value in key / value pairs of keyboard
+  //equals 1 we also only check values of type number
+  for (const [key, value] of Object.entries(keyboard))
+  {
+    if (typeof value === "number")
+      if(value === 1)
+      {
+        LastPressedWasGamePad = 0;
+        break;
+      }
+  }
+}
+
+IntroLogic = function() 
+{
+  IntroFrameCount++;
+  if(IntroFrameCount == 150)
+  {
+    IntroPos++;
+    IntroFrameCount = 0;
+    if(IntroPos == 4)
+      GameState = GSTitleScreenInit;
+  }
+  if(keyboard.press.ESCAPE || keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A || gamepad.press.B)
+  {
+    GameState  = GSTitleScreenInit;
+  }
+}
+
+IntroDraw = function()
+{
+  let transparantColor = "RGBA(0,0,0,0)";
+  if(IntroPos == 3)
+    screen.drawSprite("intro/intro", 0, 0, screen.width, screen.height);
+  else
+    screen.drawSprite("intro/background", 0, 0, screen.width, screen.height);
+  
+  switch (IntroPos)
+  {
+    case 0:
+      DrawTextRect("Willems Davy\nPresents",0 , 0, 40, 20, 0, transparantColor, "#92baa8", "#85a5a8", transparantColor, transparantColor, -1);
+      break;
+    case 1:
+      DrawTextRect("Thanks to\nKlas Kroon & Kris Katiesen\nfor their graphics\nDonskeeto for the music",0 , 0, 30, 20, 0, transparantColor, "#92baa8", "#85a5a8", transparantColor, transparantColor, -1);
+      break;
+    case 2:
+      DrawTextRect("And for the\nBlock man Levels...",0 , 0, 40, 20, 0, transparantColor, "#92baa8", "#85a5a8", transparantColor, transparantColor, -1);
+      break;
+  }
+}
+
+SelectLevelPack = function(val)
+{
+  LevelPack = val;
+  if (LevelPack < 1)
+    LevelPack = LevelPackCount;
+  if (LevelPack > LevelPackCount)
+    LevelPack = 1;
+  
+  switch (LevelPack)
+  {
+    case 1: //blockman
+      SelectedLevelPack = {
+        "Name" : "Blockman",
+        "MaxLevels": 21,
+        "LevelPrefix" : "levelpacks/blockman/level",
+        "Credits" : "Soleau Software"
+      };
+      break;
+    case 2: //joyrider
+      SelectedLevelPack = {
+        "Name" : "Joyrider",
+        "MaxLevels": 4,
+        "LevelPrefix" : "levelpacks/joyrider/level",
+        "Credits" : "Willems Davy"
+      };
+      break;
+    default:
+      break;
+  }
+}
+  
+
+
+LevelSelectInit = function() {
+  keydelay = StandardKeyDelay;
+  WorldParts.Load(SelectedLevelPack.LevelPrefix + Level)
+}
+
+LevelSelectLogic = function() {
+  if (GameState == GSStageSelectInit)
+	{
+		LevelSelectInit();
+		GameState -= GSInitDiff;
+	}
+	
+	if (keyboard.press.ESCAPE || gamepad.press.B)
+	{
+	  WorldParts.RemoveAll();
+	  GameState = GSTitleScreenInit;
+	  PlaySound("back");
+	}
+	
+	if(keyboard.press.PAGEUP || gamepad.press.RT)
+  {
+    if(Level != SelectedLevelPack.MaxLevels)
+    {
+      PlaySound("select");
+      Level = Level + 5;
+      if(Level > SelectedLevelPack.MaxLevels)
+        Level = SelectedLevelPack.MaxLevels
+      WorldParts.Load(SelectedLevelPack.LevelPrefix + Level);
+    }
+  }
+  
+  if(keyboard.press.PAGEDOWN || gamepad.press.LT)
+  {
+    if(Level != 1)
+    {
+      PlaySound("select");
+      Level = Level - 5;
+      if(Level < 1)
+        Level = 1;
+      WorldParts.Load(SelectedLevelPack.LevelPrefix + Level);
+    }
+  }
+  
+  if(keyboard.press.RIGHT || gamepad.press.RIGHT)
+  {
+    if(Level != SelectedLevelPack.MaxLevels)
+    {
+      PlaySound("select");
+      Level = Level + 1;
+      WorldParts.Load(SelectedLevelPack.LevelPrefix + Level);
+    }
+  }
+  
+  if(keyboard.press.LEFT || gamepad.press.LEFT)
+  {
+    if(Level != 1)
+    {
+      PlaySound("select");
+      Level = Level - 1;
+      WorldParts.Load(SelectedLevelPack.LevelPrefix + Level);
+    }
+  }
+  
+  if (keyboard.press.T || gamepad.press.LB)
+  {
+    NextSkin();
+    SaveSkin();
+    PlaySound("select");
+  }
+  
+  //only allow to play when level is loaded
+  if(WorldParts.LoadDone())
+	{
+  	if(keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A)
+    {
+      //add || true to cheat and have all levels playable even when locked
+      if (Level <= UnlockedLevels)
+      {
+        PlaySound("select");
+        GameState = GSGameInit
+      }
+      else
+        PlaySound("error");
+    }
+	}
+}
+
+LevelSelectDraw = function() {
+  screen.clear(SelectedSkin.TitleColor);
+  screen.drawSprite(SelectedSkin.IMGBackground, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+  //only draw the worldparts if level is fully loaded
+  if(WorldParts.LevelLoadDone)
+  {
+    DrawLayer2();
+    WorldParts.Draw();
+  }
+  //else
+  //  screen.drawText("Loading...",0,0,35, SelectedSkin.ForeGroundColor);
+  screen.fillRect(0,screen.height/2 - 4,screen.width, 8, SelectedSkin.BackGroundColor);
+  screen.drawLine(-screen.width/2,screen.height/2 - 8, screen.width/2, screen.height/2 - 8, SelectedSkin.SurroundColor);
+  let Text = "";
+  if (LastPressedWasGamePad)
+    Text = SelectedLevelPack.Name + " Level: " + Level + " " + (Level <= UnlockedLevels ? "(Unlocked)":"(Locked)") + " | Left or Right: Select | A: Play | LB: Skin | B: Title Screen";
+  else
+    Text = SelectedLevelPack.Name + " Level: " + Level + " " + (Level <= UnlockedLevels ? "(Unlocked)":"(Locked)") + " | Left or Right: Select | Space: Play | T: Skin | Esc: Title Screen";
+  let TW = screen.textWidth(Text, 8);
+  screen.drawText(Text, -screen.width/2 + TW/2 , screen.height/2 - 3, 8, SelectedSkin.ForeGroundColor);
+}
+
+var debug = false;
+
+//import classes
+import_CViewPort();
+import_CWorldPart();
+import_CWorldParts();
+import_CEmpty();
+import_CBox();
+import_CPlayer();
+import_CRoof1();
+import_CRoof2();
+import_CRoofCornerLeft();
+import_CRoofCornerRight();
+import_CRoofDownLeft();
+import_CRoofDownRight();
+import_CRoofCornerBoth();
+import_CExit();
+import_CFloor();
+import_CFloorLeft();
+import_CFloorRight();
+import_CEarthGrassLeft();
+import_CEarthGrassRight();
+import_CEarthLeft();
+import_CEarthRight();
+import_CEarthMiddle();
+import_CFloatingFloor();
+import_CFloatingFloorLeft();
+import_CFloatingFloorMiddle();
+import_CFloatingFloorRight();
+import_CStartTower();
+import_CTower();
+import_CTowerShaft();
+
+//initalize the game
+init = function() {
+  //intialize global vars see globals file
+  InitGlobals();
+  
+  //load data
+  LoadMusicOn();
+  LoadSoundOn();
+  
+  LoadSkin();
+  SelectSkin(Skin);
+  
+  LoadLevelPack();
+  SelectLevelPack(LevelPack);
+  
+  //needs to be last as it uses value from selected levelpack
+  LoadUnlockedLevels();
+  Level = UnlockedLevels;
+  
+  GameState = GSIntro;
+}
+
+//the update function running at 60 frames per second
+//it will update the logic of the game based on the gamestate
+update = function() {
+  if(keydelay > 0)
+    keydelay--;
+  
+  //music seems to stop when resizing the window ???
+  //tried to fix it like this
+  if(MusicOn && Music)
+    Music.play();
+      
+    
+  switch(GameState)
+  {
+    case GSGame:
+    case GSGameInit:
+      GameLogic();
+      break;
+    case GSStageSelectInit:
+    case GSStageSelect:
+      LevelSelectLogic();
+      break;
+    case GSTitleScreenInit:
+    case GSTitleScreen:
+      TitleScreenLogic();
+      break;
+    case GSIntro:
+      IntroLogic();
+      break;
+    default:
+      break;
+  }
+  //will detect what was last used keyboard or gamepad
+  //in levelselect and game the messages are adapted
+  //based on what you "play" with
+  UpdateLastPressed();
+}
+
+//the draw function it will draw the game when needed
+//it will draw the game based on the gamestate
+draw = function () {
+  switch(GameState)
+  {
+    case GSGame:
+    case GSGameInit:
+      GameDraw();
+      break;
+    case GSStageSelectInit:
+    case GSStageSelect:
+      LevelSelectDraw();
+      break;
+    case GSTitleScreenInit:
+    case GSTitleScreen:
+      TitleScreenDraw();
+      break;
+    case GSIntro:
+      IntroDraw();
+      break;
+    default:
+      break;
+  }
+  
+  if(debug)
+  {
+    screen.setAlpha(0.65);
+    text = "FPS:" + system.fps +"\nGameState:" + GameState + "\nWorldParts.ItemCount:" + WorldParts.ItemCount + "\n" +
+     "Level:" + Level + "/" + SelectedLevelPack.MaxLevels + " (Unlocked:" + UnlockedLevels +")\n"+
+     "Skin:" + (Skin+1) + "/" + SkinCount;
+    DrawTextRect(text, -screen.width/2 + 40, screen.height/2 - 30, 6, 1, 1, "#000000", "#ffffff", "#00000000", "#00000000", "#00000000", -1);
+    screen.setAlpha(1);
+  }
+}
+
+
+LoadSoundOn = function() {
+  SoundOn = storage.get("SoundOn");
+  //i added +1 when saving because false === 0
+  //this way i can detect if the data was never saved before 
+  //and enable sound on first run
+  if(SoundOn == 0)
+    SoundOn = 1;
+  else
+    SoundOn--;
+}
+
+LoadMusicOn = function() {
+  MusicOn = storage.get("MusicOn");
+  if(MusicOn == 0 )
+    MusicOn = 1;
+  else
+    MusicOn--;
+}
+
+LoadSkin = function() {
+  Skin = storage.get("Skin");
+  if(Skin < 0 || Skin >= SkinCount)
+    Skin = 0;
+}
+
+LoadLevelPack = function()
+{
+  LevelPack = storage.get("LevelPack");
+  if(LevelPack < 1 || LevelPack > LevelPackCount)
+    LevelPack = 1;
+}    
+ 
+LoadUnlockedLevels = function()
+{
+  UnlockedLevels = storage.get("UnlockedLevels" + SelectedLevelPack.Name);
+  if(UnlockedLevels < 1 || UnlockedLevels > SelectedLevelPack.MaxLevels)
+    UnlockedLevels = 1;
+}
+
+SaveMusicOn = function()
+{
+  storage.set("MusicOn", MusicOn + 1);
+}
+
+SaveSoundOn = function()
+{
+  storage.set("SoundOn", SoundOn + 1);
+}
+
+SaveUnlockedLevels = function()
+{
+  storage.set("UnlockedLevels" + SelectedLevelPack.Name, UnlockedLevels);
+}
+
+SaveSkin = function()
+{
+  storage.set("Skin", Skin);
+}
+
+SaveLevelPack = function() 
+{
+  storage.set("LevelPack", LevelPack);
+}  
+
+SetDefaultGraphics = function() {
+  SelectedSkin = {
+    "SkinAuthor" : "Klas Kroon & Chris Katiesen",
+    "SkinName" : "Default",
+    "ForeGroundColor" : "#FFFFFF",
+    "SurroundColor" : "#402000",
+    "BackGroundColor" : "#804000",
+    "TitleNoSelectionColor" :"rgb(114,147,147)",
+    "TitleSelectionColor" :"rgb(93,105,105)",
+    "TitleColor" : "#bdd3d5",
+    "IMGBackground" : "default/background",
+    "IMGFloor" : "default/floor",
+    "IMGPlayer" : "default/player",
+    "IMGBox" : "default/box",
+    "IMGEmpty" : "default/empty",
+    "IMGTitleScreen" : "default/titlescreen",
+    "IMGExit" : "default/door",
+    "IMGFloorLeft" : "default/floorleft",
+    "IMGFloorRight" : "default/floorright",
+    "IMGEarthGrassRight" : "default/earthgrassright",
+    "IMGEarthGrassLeft" : "default/earthgrassleft",
+    "IMGEarthLeft" : "default/earthleft",
+    "IMGEarthRight" : "default/earthright",
+    "IMGEarthMiddle" : "default/earthmiddle",
+    "IMGFloatingFloor" : "default/floatingfloor",
+    "IMGFloatingFloorLeft" : "default/floatingfloorleft",
+    "IMGFloatingFloorRight" : "default/floatingfloorright",
+    "IMGFloatingFloorMiddle" : "default/floatingfloormiddle",
+    "IMGTower" : "default/tower",
+    "IMGStartTower" : "default/starttower",
+    "IMGTowerShaft" : "default/towershaft",
+    "IMGRoof1" : "default/roof1",
+    "IMGRoof2" : "default/roof2",
+    "IMGRoofCornerLeft" : "default/roofcornerleft",
+    "IMGRoofCornerRight" : "default/roofcornerright",
+    "IMGRoofDownRight" : "default/roofdownright",
+    "IMGRoofDownLeft" : "default/roofdownleft",
+    "IMGRoofCornerBoth" : "default/roofcornerboth",
+    "IMGLayer2" : "default/layer2"
+  }
+}
+
+SetKenneyGraphics = function() {
+  SelectedSkin = {
+    "SkinAuthor" : "Kenney - https://kenney.nl/",
+    "SkinName" : "1Bit Kenney ",
+    "ForeGroundColor" : "#FFFFFF",
+    "SurroundColor" : "#FFFFFF",
+    "BackGroundColor" : "#000000",
+    "TitleNoSelectionColor" :"#000000",
+    "TitleSelectionColor" :"#808080",
+    "TitleColor" : "#000000",
+    "IMGBackground" : "kenney/background",
+    "IMGFloor" : "kenney/floor",
+    "IMGPlayer" : "kenney/player",
+    "IMGBox" : "kenney/box",
+    "IMGEmpty" : "kenney/empty",
+    "IMGTitleScreen" : "kenney/titlescreen",
+    "IMGExit" : "kenney/door",
+    "IMGFloorLeft" : "kenney/floorleft",
+    "IMGFloorRight" : "kenney/floorright",
+    "IMGEarthGrassRight" : "kenney/earthgrassright",
+    "IMGEarthGrassLeft" : "kenney/earthgrassleft",
+    "IMGEarthLeft" : "kenney/earthleft",
+    "IMGEarthRight" : "kenney/earthright",
+    "IMGEarthMiddle" : "kenney/earthmiddle",
+    "IMGFloatingFloor" : "kenney/floatingfloor",
+    "IMGFloatingFloorLeft" : "kenney/floatingfloorleft",
+    "IMGFloatingFloorRight" : "kenney/floatingfloorright",
+    "IMGFloatingFloorMiddle" : "kenney/floatingfloormiddle",
+    "IMGTower" : "kenney/tower",
+    "IMGStartTower" : "kenney/starttower",
+    "IMGTowerShaft" : "kenney/towershaft",
+    "IMGRoof1" : "kenney/roof1",
+    "IMGRoof2" : "kenney/roof2",
+    "IMGRoofCornerLeft" : "kenney/roofcornerleft",
+    "IMGRoofCornerRight" : "kenney/roofcornerright",
+    "IMGRoofDownRight" : "kenney/roofdownright",
+    "IMGRoofDownLeft" : "kenney/roofdownleft",
+    "IMGRoofCornerBoth" : "kenney/roofcornerboth",
+    "IMGLayer2" : "kenney/layer2"
+  }
+}
+
+SetFPDefaultGraphics = function() {
+  SelectedSkin = {
+    "SkinAuthor" : "Fusion Power",
+    "SkinName" : "FPDefault",
+    "ForeGroundColor" : "#FFFFFF",
+    "SurroundColor" : "#402000",
+    "BackGroundColor" : "#561b00",
+    "TitleColor" : "#bdd3d5",
+    "TitleNoSelectionColor" :"rgb(114,147,147)",
+    "TitleSelectionColor" :"rgb(93,105,105)",
+    "IMGBackground" : "fpdefault/background",
+    "IMGFloor" : "fpdefault/floor",
+    "IMGPlayer" : "fpdefault/player",
+    "IMGBox" : "fpdefault/box",
+    "IMGEmpty" : "fpdefault/empty",
+    "IMGTitleScreen" : "fpdefault/titlescreen",
+    "IMGExit" : "fpdefault/door",
+    "IMGFloorLeft" : "fpdefault/floorleft",
+    "IMGFloorRight" : "fpdefault/floorright",
+    "IMGEarthGrassRight" : "fpdefault/earthgrassright",
+    "IMGEarthGrassLeft" : "fpdefault/earthgrassleft",
+    "IMGEarthLeft" : "fpdefault/earthleft",
+    "IMGEarthRight" : "fpdefault/earthright",
+    "IMGEarthMiddle" : "fpdefault/earthmiddle",
+    "IMGFloatingFloor" : "fpdefault/floatingfloor",
+    "IMGFloatingFloorLeft" : "fpdefault/floatingfloorleft",
+    "IMGFloatingFloorRight" : "fpdefault/floatingfloorright",
+    "IMGFloatingFloorMiddle" : "fpdefault/floatingfloormiddle",
+    "IMGTower" : "fpdefault/tower",
+    "IMGStartTower" : "fpdefault/starttower",
+    "IMGTowerShaft" : "fpdefault/towershaft",
+    "IMGRoof1" : "fpdefault/roof1",
+    "IMGRoof2" : "fpdefault/roof2",
+    "IMGRoofCornerLeft" : "fpdefault/roofcornerleft",
+    "IMGRoofCornerRight" : "fpdefault/roofcornerright",
+    "IMGRoofDownRight" : "fpdefault/roofdownright",
+    "IMGRoofDownLeft" : "fpdefault/roofdownleft",
+    "IMGRoofCornerBoth" : "fpdefault/roofcornerboth",
+    "IMGLayer2" : "fpdefault/layer2"
+  }
+}
+
+
+SetFPTechGraphics = function() {
+  SelectedSkin = {
+    "SkinAuthor" : "Fusion Power",
+    "SkinName" : "FPTech",
+    "ForeGroundColor" : "#FFFFFF",
+    "SurroundColor" : "#000000",
+    "BackGroundColor" : "#060648",
+    "TitleColor" : "#000000",
+    "TitleSelectionColor" : "rgb(113,113,255)",
+    "TitleNoSelectionColor" : "rgb(66,66,197)",
+    "IMGBackground" : "fptech/background",
+    "IMGFloor" : "fptech/floor",
+    "IMGPlayer" : "fptech/player",
+    "IMGBox" : "fptech/box",
+    "IMGEmpty" : "fptech/empty",
+    "IMGTitleScreen" : "fptech/titlescreen",
+    "IMGExit" : "fptech/door",
+    "IMGFloorLeft" : "fptech/floorleft",
+    "IMGFloorRight" : "fptech/floorright",
+    "IMGEarthGrassRight" : "fptech/earthgrassright",
+    "IMGEarthGrassLeft" : "fptech/earthgrassleft",
+    "IMGEarthLeft" : "fptech/earthleft",
+    "IMGEarthRight" : "fptech/earthright",
+    "IMGEarthMiddle" : "fptech/earthmiddle",
+    "IMGFloatingFloor" : "fptech/floatingfloor",
+    "IMGFloatingFloorLeft" : "fptech/floatingfloorleft",
+    "IMGFloatingFloorRight" : "fptech/floatingfloorright",
+    "IMGFloatingFloorMiddle" : "fptech/floatingfloormiddle",
+    "IMGTower" : "fptech/tower",
+    "IMGStartTower" : "fptech/starttower",
+    "IMGTowerShaft" : "fptech/towershaft",
+    "IMGRoof1" : "fptech/roof1",
+    "IMGRoof2" : "fptech/roof2",
+    "IMGRoofCornerLeft" : "fptech/roofcornerleft",
+    "IMGRoofCornerRight" : "fptech/roofcornerright",
+    "IMGRoofDownRight" : "fptech/roofdownright",
+    "IMGRoofDownLeft" : "fptech/roofdownleft",
+    "IMGRoofCornerBoth" : "fptech/roofcornerboth",
+    "IMGLayer2" : "fptech/layer2"
+  }
+}
+
+
+SetTI83Graphics = function() {
+  SelectedSkin = {
+    "SkinAuthor" : "Brandon Sterner",
+    "SkinName" : "TI-83",
+    "ForeGroundColor" : "#4f5043",
+    "SurroundColor" : "#4f5043",
+    "BackGroundColor" : "#cce0cf",
+    "TitleColor" : "#cce0cf",
+    "TitleNoSelectionColor" : "rgb(147,147,130)",
+    "TitleSelectionColor" : "#4f5043",
+    "IMGBackground" : "ti83/background",
+    "IMGFloor" : "ti83/floor",
+    "IMGPlayer" : "ti83/player",
+    "IMGBox" : "ti83/box",
+    "IMGEmpty" : "ti83/empty",
+    "IMGTitleScreen" : "ti83/titlescreen",
+    "IMGExit" : "ti83/door",
+    "IMGFloorLeft" : "ti83/floorleft",
+    "IMGFloorRight" : "ti83/floorright",
+    "IMGEarthGrassRight" : "ti83/earthgrassright",
+    "IMGEarthGrassLeft" : "ti83/earthgrassleft",
+    "IMGEarthLeft" : "ti83/earthleft",
+    "IMGEarthRight" : "ti83/earthright",
+    "IMGEarthMiddle" : "ti83/earthmiddle",
+    "IMGFloatingFloor" : "ti83/floatingfloor",
+    "IMGFloatingFloorLeft" : "ti83/floatingfloorleft",
+    "IMGFloatingFloorRight" : "ti83/floatingfloorright",
+    "IMGFloatingFloorMiddle" : "ti83/floatingfloormiddle",
+    "IMGTower" : "ti83/tower",
+    "IMGStartTower" : "ti83/starttower",
+    "IMGTowerShaft" : "ti83/towershaft",
+    "IMGRoof1" : "ti83/roof1",
+    "IMGRoof2" : "ti83/roof2",
+    "IMGRoofCornerLeft" : "ti83/roofcornerleft",
+    "IMGRoofCornerRight" : "ti83/roofcornerright",
+    "IMGRoofDownRight" : "ti83/roofdownright",
+    "IMGRoofDownLeft" : "ti83/roofdownleft",
+    "IMGRoofCornerBoth" : "ti83/roofcornerboth",
+    "IMGLayer2" : "ti83/layer2",
+  }
+}
+
+SelectSkin = function(val)
+{
+  Skin = val;
+  if (Skin < 0 || Skin > SkinCount)
+    Skin = 0;
+  UpdateWorldPartsSkin();
+}
+
+NextSkin = function() {
+  Skin++;
+  if(Skin == SkinCount)
+    Skin = 0;
+  UpdateWorldPartsSkin();
+}
+
+UpdateWorldPartsSkin = function() {
+  switch(Skin)
+  {
+    case 1: SetFPDefaultGraphics();break;
+    case 2: SetFPTechGraphics();break;
+    case 3: SetTI83Graphics();break;
+    case 4: SetKenneyGraphics();break;
+    default: SetDefaultGraphics();break;
+  }
+  for (let i= 0; i < WorldParts.ItemCount; i++)
+  {
+    switch(WorldParts.Items[i].GetType())
+    {
+      case IDEmpty:
+         WorldParts.Items[i].Image = SelectedSkin.IMGEmpty;
+        break;
+      case IDBox:
+         WorldParts.Items[i].Image = SelectedSkin.IMGBox;
+        break;
+      case IDPlayer:
+         WorldParts.Items[i].Image = SelectedSkin.IMGPlayer;
+        break;
+      case IDFloor:
+         WorldParts.Items[i].Image = SelectedSkin.IMGFloor;
+        break;
+      case IDExit:
+         WorldParts.Items[i].Image = SelectedSkin.IMGExit;
+        break;
+      case IDEarthGrassLeft:
+         WorldParts.Items[i].Image = SelectedSkin.IMGEarthGrassLeft;
+        break;
+      case IDEarthGrassRight:
+         WorldParts.Items[i].Image = SelectedSkin.IMGEarthGrassRight;
+        break;
+      case IDEarthLeft:
+         WorldParts.Items[i].Image = SelectedSkin.IMGEarthLeft;
+        break;
+      case IDEarthMiddle:
+         WorldParts.Items[i].Image = SelectedSkin.IMGEarthMiddle;
+        break;
+      case IDEarthRight:
+         WorldParts.Items[i].Image = SelectedSkin.IMGEarthRight;
+        break;
+      case IDFloatingFloor:
+         WorldParts.Items[i].Image = SelectedSkin.IMGFloatingFloor;
+        break;
+      case IDFloatingFloorLeft:
+         WorldParts.Items[i].Image = SelectedSkin.IMGFloatingFloorLeft;
+        break;
+      case IDFloatingFloorMiddle:
+         WorldParts.Items[i].Image = SelectedSkin.IMGFloatingFloorMiddle;
+        break;
+      case IDFloatingFloorRight:
+         WorldParts.Items[i].Image = SelectedSkin.IMGFloatingFloorRight;
+        break;
+      case IDFloorLeft:
+         WorldParts.Items[i].Image = SelectedSkin.IMGFloorLeft;
+        break;
+      case IDFloorRight:
+         WorldParts.Items[i].Image = SelectedSkin.IMGFloorRight;
+        break;
+      case IDTower:
+         WorldParts.Items[i].Image = SelectedSkin.IMGTower;
+        break;
+      case IDStartTower:
+         WorldParts.Items[i].Image = SelectedSkin.IMGStartTower;
+        break;
+      case IDTowerShaft:
+         WorldParts.Items[i].Image = SelectedSkin.IMGTowerShaft;
+        break;
+      case IDRoof1:
+         WorldParts.Items[i].Image = SelectedSkin.IMGRoof1;
+        break;
+      case IDRoof2:
+         WorldParts.Items[i].Image = SelectedSkin.IMGRoof2;
+        break;
+      case IDRoofCornerLeft:
+         WorldParts.Items[i].Image = SelectedSkin.IMGRoofCornerLeft;
+        break;
+      case IDRoofCornerRight:
+         WorldParts.Items[i].Image = SelectedSkin.IMGRoofCornerRight;
+        break;
+      case IDRoofCornerBoth:
+         WorldParts.Items[i].Image = SelectedSkin.IMGRoofCornerBoth;
+        break;
+      case IDRoofDownRight:
+         WorldParts.Items[i].Image = SelectedSkin.IMGRoofDownRight;
+        break;
+      case IDRoofDownLeft:
+         WorldParts.Items[i].Image = SelectedSkin.IMGRoofDownLeft;
+        break;
+    }
+  }
+}
+
+
+var TitleIndex1Selection = 1;
+var TitleIndex2Selection = 1;
+var TitleIndex = 1;
+
+TitleScreenInit = function()
+{
+  keydelay = StandardKeyDelay;
+  if(!MusicPlaying())
+    PlayMusic("title", 1, true);
+}
+
+TitleScreenLogic = function()
+{
+  if (GameState === GSTitleScreenInit)
+  {
+    TitleScreenInit();
+    GameState -= GSInitDiff;
+  }
+  
+  if (keyboard.press.T || gamepad.press.LB)
+  {
+      NextSkin();
+      SaveSkin();
+      PlaySound("select");
+  }
+  
+  if(keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A)
+  {
+    switch(TitleIndex)
+    {
+      case 1: //main menu
+        switch(TitleIndex1Selection)
+        {
+          case 1: //play
+            GameState = GSStageSelectInit;
+            Level = UnlockedLevels;
+            PlaySound("select");
+            break;
+          case 2:// level pack
+            LevelPack++;
+            SelectLevelPack(LevelPack);
+            SaveLevelPack();
+            LoadUnlockedLevels();
+            Level = UnlockedLevels;
+            PlaySound("select");
+            break;
+          case 3: //options
+            TitleIndex++;
+            PlaySound("select");
+            break;
+          case 4: //credits
+            TitleIndex++;
+            PlaySound("select");
+            break;
+        }
+        break;
+      case 2: 
+        switch(TitleIndex1Selection)
+        {
+          case 3:
+            //options
+            switch(TitleIndex2Selection)
+            {
+              case 1 : //skin
+                NextSkin();
+                SaveSkin();
+                PlaySound("select");
+                break;
+              case 2: //Sound
+                SoundOn = !SoundOn;
+                SaveSoundOn();
+                break;
+              case 3: //Music
+                MusicOn = !MusicOn;
+                if(!MusicOn)
+                  StopMusic();
+                else
+                  PlayMusic("title", 1, true);
+                SaveMusicOn();
+                break;
+              case 4: //back
+                TitleIndex--;
+                PlaySound("select");
+                break;
+            }
+            break;
+         case 4: //credits
+            TitleIndex--;
+            PlaySound("select");
+            break;
+          default:
+            break;
+        }
+    }
+    
+    
+  }
+  
+  if(keyboard.press.ESCAPE || gamepad.press.B)
+  {
+    TitleIndex--;
+    if (TitleIndex < 1)
+      TitleIndex = 1;
+    PlaySound("back");
+  }
+  
+  if (keyboard.press.UP || gamepad.press.UP)
+  {
+     //main menu
+    if(TitleIndex == 1)
+    {
+      TitleIndex1Selection--;
+      if(TitleIndex1Selection < 1)
+        TitleIndex1Selection = 1;
+      else
+        PlaySound("menu");
+    }
+    else 
+    {
+      //options 
+      if(TitleIndex == 2 && TitleIndex1Selection == 3)
+      {
+        TitleIndex2Selection--;
+        if(TitleIndex2Selection < 1)
+          TitleIndex2Selection = 1;
+        else
+          PlaySound("menu");
+      }
+    }
+  }
+  
+  if (keyboard.press.DOWN || gamepad.press.DOWN)
+  {
+    //main menu
+    if(TitleIndex == 1)
+    {
+      TitleIndex1Selection++;
+      if(TitleIndex1Selection > 4)
+        TitleIndex1Selection = 4;
+      else
+        PlaySound("menu");
+    }
+    else 
+    {
+      //options 
+      if(TitleIndex == 2 && TitleIndex1Selection == 3)
+      {
+        TitleIndex2Selection++;
+        if(TitleIndex2Selection > 4)
+          TitleIndex2Selection = 4;
+        else
+          PlaySound("menu");
+      }
+    }
+  }
+}
+
+TitleScreenDraw = function()
+{
+  screen.clear(SelectedSkin.TitleColor);
+  screen.drawSprite(SelectedSkin.IMGTitleScreen, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+  let transparantColor = "RGBA(0,0,0,0)";
+  switch (TitleIndex)
+  {
+    case 1: //Main Menu
+      Text = "Play\n<" + SelectedLevelPack.Name + ">\nOptions\nCredits";
+      DrawTextRect(Text,7,15, 20, 3, 10, transparantColor, SelectedSkin.TitleNoSelectionColor, transparantColor, transparantColor, SelectedSkin.TitleSelectionColor, TitleIndex1Selection)
+      break;
+    case 2: //options & credits
+      if(TitleIndex1Selection == 3) // options
+      {
+        Text = "Skin: " + SelectedSkin.SkinName + "\nSound: " + (SoundOn ? "On ": "Off") + "\nMusic: " + (MusicOn ? "On ": "Off") +"\nBack";
+        DrawTextRect(Text,7,15, 20, 3, 10, transparantColor, SelectedSkin.TitleNoSelectionColor, transparantColor, transparantColor, SelectedSkin.TitleSelectionColor, TitleIndex2Selection)
+      }
+      if(TitleIndex1Selection == 4) // credits
+      {
+        Text = "Blockdude Created By Willems Davy\nBased on my GP2X C++ Game\n\n" + 
+          SelectedLevelPack.Name + " levels by:\n" + SelectedLevelPack.Credits + "\n" + 
+          SelectedSkin.SkinName + " skin by:\n" + SelectedSkin.SkinAuthor;
+        DrawTextRect(Text,0,15, 12, 0, 0, transparantColor, SelectedSkin.TitleSelectionColor, transparantColor,transparantColor, SelectedSkin.TitleSelectionColor, -1)
+      }
+      break;
+    default:
+      break;
+  }
+  if(TitleIndex == 1) //main menu
+    Text = "Up/Down: Select";
+  
+  if(TitleIndex == 2)
+  {
+    Text = "";
+    if(TitleIndex1Selection==3)
+      Text = "Up/Down: Select";
+  }
+  
+  if (Text.length > 0)
+    Text += ", "
+    
+  if(LastPressedWasGamePad)
+  {
+    Text += "A: Accept" ;
+    if(TitleIndex == 2)
+      Text += "B: Back";
+  }
+  else
+  {
+    Text += "Space/Enter: Accept";
+    if(TitleIndex == 2)
+      Text += ", Escape: Back";
+    
+  }
+    
+  DrawTextRect(Text,-6,-37, 8, 0, 8, transparantColor, SelectedSkin.TitleNoSelectionColor, transparantColor, transparantColor, SelectedSkin.TitleSelectionColor, -1)
+}
+
+</script></html>
