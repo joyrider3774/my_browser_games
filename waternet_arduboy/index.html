@@ -36,7 +36,7 @@
 	<script>
 		function setIframeSrc()
 		{
-      window.open = function(url, name, specs, replace) { // Do nothing, or do something smart... }
+      window.open = function(url, name, specs, replace) {}; // try to block iframe opening popup
 			const iframe = document.querySelector('#iframe');
 			urlnotouch = "https://felipemanga.github.io/ProjectABE/?url=https://github.com/joyrider3774/waternet_arduboy/raw/main/distribution/waternet.hex&skin=BareFit&Color=FFFFFF";
 			urltouch = "https://felipemanga.github.io/ProjectABE/?url=https://github.com/joyrider3774/waternet_arduboy/raw/main/distribution/waternet.hex&skin=Arduboy&Color=FFFFFFF";
