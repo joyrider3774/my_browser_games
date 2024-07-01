@@ -248,15 +248,18 @@ this.embed = function(url,close_button, isMicroStudioGame) {
   }
   
   setTimeout(()=> {
+    global.processactionsagain = false;    
     canvas.style.opacity = 0 ;
     setTimeout(()=>{
       canvas.style.display = "none" ;
+      global.processactionsagain = true;
     },1000)
   },0)
   
   setTimeout(()=>{
     
   },500)
+  
 
   global.canvas = canvas
   global.iframe = iframe
@@ -271,9 +274,17 @@ this.restore = function() {
   var canvas = document.querySelector("canvas") ;
   canvas.style.display = "block" ;
   setTimeout(()=>{
+    global.processactionsagain = false;
     canvas.style.opacity = 1 ;
+    setTimeout(()=>{ 
+      global.processactionsagain = true;
+    },500)
   },1)
   
+  setTimeout(()=>{
+    
+  },500)
+
   setTimeout(()=> { window.focus() },100)
   var exit = document.getElementById("exit-button") ;
   if (exit) {
@@ -347,7 +358,7 @@ init = function()
   started = false
   back_to_menu = false
   dragging = false
-  
+  processactionsagain = true
   control_modes = ["keyboard","gamepad","touch"]
   
   control = object end
@@ -366,21 +377,24 @@ update = function()
     return
   end
   
-  if gamepad.press.RIGHT or gamepad.press.LEFT or gamepad.A or gamepad.Y then
+  if processactionsagain and gamepad.press.RIGHT or gamepad.press.LEFT or gamepad.A or gamepad.Y then
     control_modes = ["gamepad"]
   end
   
-  if keyboard.press.Y or keyboard.press.RIGHT or keyboard.press.LEFT or keyboard.press.ENTER or keyboard.press.SPACE then
+  if processactionsagain and keyboard.press.Y or keyboard.press.RIGHT or keyboard.press.LEFT or keyboard.press.ENTER or keyboard.press.SPACE then
     control_modes = ["keyboard"]
   end
 
-  control.LEFT = gamepad.press.LEFT or keyboard.press.LEFT
-  control.RIGHT = gamepad.press.RIGHT or keyboard.press.RIGHT
-  control.ACTION = gamepad.press.A or keyboard.press.ENTER or keyboard.press.SPACE
-  control.BACK = back_to_menu or gamepad.press.MENU or (gamepad.X and gamepad.B)
-  control.SORT = gamepad.press.Y or keyboard.press.Y
+  //added processaction again
+  //i could get the system stuck by fastly pressing escape and enter and mouse clicks
+  //now when fading starts things will be disabled and renabled when fading ended
+  control.LEFT = processactionsagain and gamepad.press.LEFT or keyboard.press.LEFT
+  control.RIGHT = processactionsagain and gamepad.press.RIGHT or keyboard.press.RIGHT
+  control.ACTION = processactionsagain and (gamepad.press.A or keyboard.press.ENTER or keyboard.press.SPACE)
+  control.BACK = processactionsagain and (back_to_menu or gamepad.press.MENU or (gamepad.X and gamepad.B))
+  control.SORT = processactionsagain and gamepad.press.Y or keyboard.press.Y
   
-  if touch.press then
+  if touch.press and processactionsagain then
     control_modes = ["touch"]
     dragging = false
     if abs(touch.x+150)<10 and abs(touch.y)<25 then
@@ -407,7 +421,7 @@ update = function()
     end
   end
   
-  if touch.touching then
+  if touch.touching and processactionsagain then
     if dragging then
       if abs(touch.x - drag_start_x) > 10 then
         drag_moved = true
@@ -420,7 +434,7 @@ update = function()
     end
   end
   
-  if touch.release then
+  if touch.release and processactionsagain then
     if dragging then
       dragging = false
       if drag_moved then
@@ -479,8 +493,8 @@ update = function()
     if control.ACTION then
       //remember it somehow selected wrong position
       //after quiting games
-      global.browse_selected_pushed = browse_selected
-      global.tartget_position_pushed = target_position
+      browse_selected_pushed = browse_selected
+      tartget_position_pushed = target_position
       mode = "play"
       audio.playSound("microfxr/enter",.125)
       local game = games[browse_selected]
@@ -492,8 +506,8 @@ update = function()
       mode = "browse"
       audio.playSound("microfxr/back",.125)
       //restore so we keep same selection and view
-      browse_selected = global.browse_selected_pushed
-      target_position = global.tartget_position_pushed
+      browse_selected = browse_selected_pushed
+      target_position = tartget_position_pushed
       back_to_menu = false
     end
   end
