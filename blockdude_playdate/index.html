@@ -73,14 +73,14 @@
          window.parent.postMessage({name:"quit"}, "*");
       });
       
-      window.document.addEventListener('load', (event) => {
+      window.addEventListener('load', (event) => {
         console.log('sended load');
         window.parent.postMessage({name: "load"}, "*");
       });
     }
     </script>
 </head>
-<body >
+<body>
     <!-- Create the canvas that the C++ code will draw into -->
     <canvas	id="canvas" tabindex="0" onmousedown="document.getElementById('canvas').focus()" oncontextmenu="event.preventDefault()"></canvas>
 
