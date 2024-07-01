@@ -53,11 +53,15 @@
       canvas.width = document.body.scrollWidth;
       canvas.height = 240 * canvas.width / 400;
       canvas.style.left = 0 +"px";
+      canvas.style.height = canvas.height + "px";
+      canvas.style.width = canvas.width + "px";
       if(canvas.height > originalheight)
       {
         canvas.height = originalheight;
         canvas.width = originalheight * 400/240 ;
         canvas.style.left = document.body.scrollWidth / 2 - canvas.width / 2 +"px";
+        canvas.style.height = canvas.height + "px";
+        canvas.style.width = canvas.width + "px";
       }
       
       const ctx = canvas.getContext("2d");
