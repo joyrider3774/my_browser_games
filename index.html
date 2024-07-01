@@ -211,8 +211,16 @@ this.embed = function(url,close_button, isMicroStudioGame) {
   canvas.style["transition-duration"] = "1s" ;
   parent.insertBefore(iframe,canvas)
   iframe.contentWindow.addEventListener("load",()=>{
-    iframe.contentWindow.focus() ;
-    iframe.style.opacity = 1 ;
+     //somehow using iframe.XXX caused errors in console
+    //so just search for the frame
+    let tmpframe = document.querySelector("iframe")
+    if(tmpframe)
+    {
+      tmpframe.contentWindow.focus() ;
+      tmpframe.style.opacity = 1 ;
+    }
+    else
+      console.log("warning iframe2 not found");
   })
   
   window.addEventListener('message', (event) => {
@@ -223,8 +231,16 @@ this.embed = function(url,close_button, isMicroStudioGame) {
     }
     if(data.name == "start")
     {
-      iframe.contentWindow.focus();
-      iframe.style.opacity = 1 ;
+      //somehow using iframe.XXX caused errors in console
+      //so just search for the frame
+      let tmpframe = document.querySelector("iframe")
+      if(tmpframe)
+      {
+        tmpframe.contentWindow.focus();
+        tmpframe.style.opacity = 1 ;
+      }
+      else
+        console.log("warning frame not found");
     }
     
   });
