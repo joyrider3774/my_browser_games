@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><title>Mazethingie</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui=1"><meta charset="UTF-8"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="description" content=""><link rel="manifest" href="manifest.json"><link rel="icon" type="image/png" href="icon64.png"><link rel="apple-touch-icon" sizes="180x180" href="icon180.png"><link rel="icon" type="image/png" sizes="32x32" href="icon32.png"><link rel="icon" type="image/png" sizes="16x16" href="icon16.png"><style>html,body {
+<!DOCTYPE html><html><head><title>Mazethingie microStudio</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui=1"><meta charset="UTF-8"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="description" content=""><link rel="manifest" href="manifest.json"><link rel="icon" type="image/png" href="icon64.png"><link rel="apple-touch-icon" sizes="180x180" href="icon180.png"><link rel="icon" type="image/png" sizes="32x32" href="icon32.png"><link rel="icon" type="image/png" sizes="16x16" href="icon16.png"><style>html,body {
   margin: 0;
   padding: 0;
   background-color: #000;
@@ -25,7 +25,33 @@ var ms_libs = [] ;
 window.skip_service_worker = true;
 window.exported_project = true;
 window.ms_use_server = false ;
-</script><script src="runner.js"></script><script src="microengine.js"></script></body><script type="text/javascript">//
+</script><script type="text/javascript">
+    if(window.parent)
+    {
+      window.document.addEventListener('keydown', (event) => {
+        if(event.key == "Escape")
+        {
+          console.log('sended quit');
+          window.parent.postMessage(JSON.stringify({name:"quit"}), "*");
+        }
+      });
+      
+      window.addEventListener('load', (event) => {
+        console.log('sended start');
+        document.body.focus() ;
+        window.parent.postMessage(JSON.stringify({name: "start"}), "*");
+      });
+    }
+    </script>
+    <script src="./gamecontroller.min.js" >
+      gameControl.on('connect', function(gamepad) {
+        gamepad.before('start', functions() {
+          console.log('sended gamepad quit');
+          window.parent.postMessage(JSON.stringify({name:"quit"}), "*");
+        });
+      });
+    </script>
+    <script src="runner.js"></script><script src="microengine.js"></script></body><script type="text/javascript">//
 //
 // The game is started with the code below.
 // Once you have received the "started" signal (see below),
