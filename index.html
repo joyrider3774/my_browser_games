@@ -255,11 +255,15 @@ this.embed = function(url,close_button, isMicroStudioGame) {
   
   if (close_button) {
     console.info("CLOSE BUTTON")
-    var img = new Image() ;
+    var div = document.createElement("div");
+    div.id = "exit-button";
+    div.style = "width: 100%; text-align:right";
+    var img = document.createElement("img");
     img.src = "sprites/exit.png" ;
-    img.id = "exit-button" ;
-    img.style = "width: 5vw ; position: absolute ; top: 1.5vw ; right: 1.5vw ; opacity: .5 ; image-rendering: moz-crisp-edges; image-rendering: pixelated ; z-index: 9999999" ;
-    document.body.appendChild(img) ;
+    img.id = "exit-button-img" ;
+    img.style = "width: 5vw ; height:5vw; margin-top: 10px; margin-right: 10px; opacity: .5 ; image-rendering: moz-crisp-edges; image-rendering: pixelated ; z-index: 9999999" ;
+    div.appendChild(img);
+    document.body.appendChild(div) ;
     img.addEventListener("click",()=>{global.back_to_menu = true})
   }
   
