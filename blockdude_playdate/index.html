@@ -77,8 +77,9 @@
       });
       
       window.addEventListener('load', (event) => {
-        console.log('sended load');
-        window.parent.postMessage(JSON.stringify({name: "load"}), "*");
+        console.log('sended start');
+        document.body.focus() ;
+        window.parent.postMessage(JSON.stringify({name: "start"}), "*");
       });
     }
     </script>
