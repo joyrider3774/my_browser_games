@@ -70,7 +70,7 @@
     {
       window.document.addEventListener('keydown', (event) => {
          console.log('sended quit');
-         window.parent.postMessage(JSON.stringify{({name:"quit"}), "*");
+         window.parent.postMessage(JSON.stringify({name:"quit"}), "*");
       });
       
       window.addEventListener('load', (event) => {
