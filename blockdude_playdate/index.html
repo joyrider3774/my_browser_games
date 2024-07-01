@@ -70,11 +70,14 @@
     {
       window.document.addEventListener('keydown', (event) => {
         console.log('sended');
-        window.parent.postMessage(JSON.stringify(event), "*");
+        window.parent.postMessage({
+            name:"keydown",
+            keydown: JSON.stringify(event)
+          }, "*");
       });
       
       window.document.addEventListener('load', (event) => {
-        window.parent.postMessage("load", "*");
+        window.parent.postMessage({name: "load"}, "*");
       });
     }
     </script>
