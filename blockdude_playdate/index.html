@@ -83,6 +83,14 @@
       });
     }
     </script>
+    <script src="./gamecontroller.min.js" >
+      gameControl.on('connect', function(gamepad) {
+        gamepad.before('start', functions() {
+          console.log('sended gamepad quit');
+          window.parent.postMessage(JSON.stringify({name:"quit"}), "*");
+        });
+      });
+    </script>
 </head>
 <body>
     <!-- Create the canvas that the C++ code will draw into -->
