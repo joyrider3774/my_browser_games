@@ -69,8 +69,11 @@
     if(window.parent)
     {
       window.document.addEventListener('keydown', (event) => {
-         console.log('sended quit');
-         window.parent.postMessage(JSON.stringify({name:"quit"}), "*");
+        if(event.key == "Escape")
+        {
+          console.log('sended quit');
+          window.parent.postMessage(JSON.stringify({name:"quit"}), "*");
+        }
       });
       
       window.addEventListener('load', (event) => {
