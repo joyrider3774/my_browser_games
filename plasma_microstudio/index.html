@@ -1,0 +1,230 @@
+<!DOCTYPE html><html><head><title>Plasma MicroStudio</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui=1"><meta charset="UTF-8"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="description" content=""><link rel="manifest" href="manifest.json"><link rel="icon" type="image/png" href="icon64.png"><link rel="apple-touch-icon" sizes="180x180" href="icon180.png"><link rel="icon" type="image/png" sizes="32x32" href="icon32.png"><link rel="icon" type="image/png" sizes="16x16" href="icon16.png"><style>html,body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  overflow:hidden;
+  font-family: Verdana;
+}
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#canvaswrapper {
+  text-align: center ;
+}
+</style><style>@font-face { font-family: "BitCell" ; src: url("fonts/BitCell.ttf") format("truetype"); }</style><script>window.fonts = ["BitCell"]</script></head><body class="noselect custom-cursor" oncontextmenu="return false;"><div id="canvaswrapper"></div><script type="text/javascript">var resources = {"images":[{"file":"icon.png","version":29,"size":490,"properties":{"frames":1,"fps":5}},{"file":"poster.png","version":3,"size":204234,"properties":{"frames":1,"fps":5}}],"assets":[],"maps":{},"sounds":[],"music":[]};
+var graphics = "M1";
+
+</script><script type="text/javascript">var orientation = 'any' ;
+var aspect = '16x9' ;
+var ms_libs = [] ;
+window.skip_service_worker = true;
+window.exported_project = true;
+window.ms_use_server = false ;
+</script>
+<script>
+    if(window.parent)
+    {
+      window.document.addEventListener('keydown', (event) => {
+        if(event.key == "Escape")
+        {
+          console.log('sended quit');
+          window.parent.postMessage(JSON.stringify({name:"quit"}), "*");
+        }
+      });
+      
+      window.addEventListener('load', (event) => {
+        console.log('sended start');
+        window.parent.postMessage(JSON.stringify({name: "start"}), "*");
+      });
+    }
+    </script>
+    <script src="./gamecontroller.min.js" >
+      gameControl.on('connect', function(gamepad) {
+        gamepad.before('start', functions() {
+          console.log('sended gamepad quit');
+          window.parent.postMessage(JSON.stringify({name:"quit"}), "*");
+        });
+      });
+    </script>
+<script src="runner.js"></script><script src="microengine.js"></script></body><script type="text/javascript">//
+//
+// The game is started with the code below.
+// Once you have received the "started" signal (see below),
+// you can do the following:
+// 1) Inject functions or objects into the global context of the microStudio engine, example:
+//
+//   window.player.setGlobal("special_callback",function(x) { console.info(x) }) ;
+//   // Your microScript code can now call the "special_callback" function
+//
+// 2) Call microScript global functions from your JavaScript code, example:
+//
+//   window.player.call("call_me_from_javascript",[10,1000]) ;
+//   // arguments to the function call are provided as an array
+//
+// 3) Run a microScript code snippet from your JavaScript code, example:
+//
+//   window.player.exec("player.position_x = 50",function(result) { console.log(result) ; }) ;
+//
+
+window.addEventListener("load",function() {
+  window.player = new Player(function(event) {
+    if (event.name == "started") {
+      // signal that the game is started
+    }
+    else if (event.name == "log") {
+      // console.info(event.data) ;
+    }
+  }) ;
+  document.body.focus() ;
+}) ;
+
+</script><script id="code" type="text/x-microscript">
+
+//fastrgb2 from Loginus
+//https://microstudio.io/Loginus/fps_test/
+//https://microstudio.io/Loginus/fastrgb/
+
+FastRGB = class extends msImage {
+   beginUpdate(){
+      this.initContext();
+      this.img = this.context.getImageData(0, 0, this.width , this.height );
+      this.width4 = this.width * 4
+      this.data = this.img.data;
+    }
+    
+    endUpdate() {
+      return this.context.putImageData(this.img, 0, 0);
+    }
+    
+    fromArray( array ) {
+      let pos = 0;
+      for (let i = 0; i < array.length; i++ ){
+        let a = array[i];
+        for (let j = 0; j < a.length; j++ ){
+          this.data[pos] = a[j] * 32
+          this.data[pos+1] = 0;
+          this.data[pos+2] = 0;
+          this.data[pos+3] = 255;
+          pos += 4;
+        }
+      }
+    }
+    
+    setRGB(x, y, r, g, b) {
+      let offset = ((y * this.width4) + (x * 4));
+      this.data[offset + 0] = r;
+      this.data[offset + 1] = g;
+      this.data[offset + 2] = b;
+      this.data[offset + 3] = 255;
+    }
+};
+
+
+//created by joyrider3774
+//based on https://www.flipcode.com/archives/The_Art_of_Demomaking-Issue_04_Per_Pixel_Control.shtml
+//more specifically it's c code from here https://www.flipcode.com/archives/ta-demo04.zip
+
+//cleaner version making use of FastRGB class by loginus - https://microstudio.dev/i/Loginus/fastrgb/
+
+var width = 356;
+var height = 200;
+var dw = width << 1;
+var dh = height << 1;
+var hw = width >> 1;
+var hh = height >> 1;
+var hhmin1 = hh - 1;
+var hwmin1 = hw - 1;
+var plasma1;
+var plasma2;
+var palette;
+var initticks;
+var ticks;
+var image;
+
+calculatePlasma = function() {
+    let dest = 0;
+    for (let y = 0; y < dh; y++) {
+        for (let x = 0; x < dw; x++) {
+            plasma1[dest] = (64 + 64 * Math.sin(Math.hypot(height - y, width - x) / 16)) | 0;
+            plasma2[dest] = (64 + 64 * (Math.sin(x / (37 + 15 * Math.cos(y / 74))) * Math.cos(y / (31 + 11 * Math.sin(x / 57))))) | 0;
+            dest++;
+        }
+    }
+}
+
+setPalette = function() {
+    for (let i = 0; i < 256; i++) {
+        let r = (32 + 31 * Math.cos(i * Math.PI / 128 + ticks / 74)) | 0;
+        let g = (32 + 31 * Math.sin(i * Math.PI / 128 + ticks / 63)) | 0;
+        let b = (32 - 31 * Math.cos(i * Math.PI / 128 + ticks / 81)) | 0;
+        palette[i * 3] = r;
+        palette[i * 3 + 1] = g;
+        palette[i * 3 + 2] = b;
+    }
+}
+
+updatePlasma = function() {
+    var x1 = (hw + hwmin1 * Math.cos(ticks / 97)) | 0;
+    var x2 = (hw + hwmin1 * Math.sin(-ticks / 114)) | 0;
+    var x3 = (hw + hwmin1 * Math.sin(-ticks / 137)) | 0;
+    var y1 = (hh + hhmin1 * Math.sin(ticks / 123)) | 0;
+    var y2 = (hh + hhmin1 * Math.cos(-ticks / 78)) | 0;
+    var y3 = (hh + hhmin1 * Math.cos(-ticks / 108)) | 0;
+    var src1 = y1 * dw + x1;
+    var src2 = y2 * dw + x2;
+    var src3 = y3 * dw + x3;
+    var dest = 0;
+    //tell image it won't need to update the images data for every setRGB call
+    //we will decide when it needs to update by calling endUpdate();
+    image.beginUpdate();
+    for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+            let colorIndex = ((plasma1[src1] + plasma2[src2] + plasma2[src3]) %256) * 3;
+            image.setRGB(x,y, palette[colorIndex], palette[colorIndex + 1], palette[colorIndex + 2])
+            dest++;
+            src1++;
+            src2++;
+            src3++;
+        }
+        src1 += width;
+        src2 += width;
+        src3 += width;
+    }
+    //end image update and put pixel data back to it
+    image.endUpdate();
+}
+
+init = function() {
+    plasma1 = new Uint8Array(dw * dh);
+    plasma2 = new Uint8Array(dw * dh); 
+    palette = new Uint8Array(256 * 3); // Using a flat array for RGB values
+    //create FastRGB image that allows for updating multiple pixels in one go
+    //in a speedy way
+    image = new FastRGB(width, height, false);
+    screen.setPixelated(true);
+    initticks = system.time();
+    ticks = system.time();
+    setPalette();
+    calculatePlasma();
+}
+
+update = function() {
+    //ticks = (system.time() - initticks) >> 5;
+    ticks = (system.time() >> 5);
+    setPalette();
+    updatePlasma();
+}
+
+draw = function() {
+    //draw the image to the screen keeping aspect ratio
+    screen.drawImage(image,0,0, screen.width);
+}
+
+
+
+</script></html>

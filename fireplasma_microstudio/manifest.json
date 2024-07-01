@@ -1,0 +1,33 @@
+{
+  "name": "Fire + Plasma Combined Scenes",
+  "short_name": "Fire + Plasma Combined Scenes",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "display": "fullscreen",
+  "orientation": "any",
+  "scope": "",
+  "start_url": ".",
+  "icons": [
+    {
+      "src": "icon192.png?v=0",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon196.png?v=0",
+      "type": "image/png",
+      "sizes": "196x196",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon512.png?v=0",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "icon1024.png?v=0",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    }
+  ]
+}
