@@ -69,14 +69,12 @@
     if(window.parent)
     {
       window.document.addEventListener('keydown', (event) => {
-        console.log('sended');
-        window.parent.postMessage({
-            name:"keydown",
-            keydown: JSON.stringify(event)
-          }, "*");
+         console.log('sended quit');
+         window.parent.postMessage({name:"quit"}, "*");
       });
       
       window.document.addEventListener('load', (event) => {
+        console.log('sended load');
         window.parent.postMessage({name: "load"}, "*");
       });
     }
