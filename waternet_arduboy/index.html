@@ -36,6 +36,7 @@
 	<script>
 		function setIframeSrc()
 		{
+      window.open = function(url, name, specs, replace) { // Do nothing, or do something smart... }
 			const iframe = document.querySelector('#iframe');
 			urlnotouch = "https://felipemanga.github.io/ProjectABE/?url=https://github.com/joyrider3774/waternet_arduboy/raw/main/distribution/waternet.hex&skin=BareFit&Color=FFFFFF";
 			urltouch = "https://felipemanga.github.io/ProjectABE/?url=https://github.com/joyrider3774/waternet_arduboy/raw/main/distribution/waternet.hex&skin=Arduboy&Color=FFFFFFF";
@@ -47,6 +48,6 @@
 		}
 		</script>
   <body onload="setIframeSrc();">
-    <iframe id="iframe" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" src="" />
+    <iframe allowfullscreen="0" id="iframe" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" src="" />
   </body>
 </html>
