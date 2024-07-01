@@ -33,7 +33,6 @@ var graphics = "M1";
       
       window.addEventListener('load', (event) => {
         console.log('sended start');
-        document.body.focus() ;
         window.parent.postMessage(JSON.stringify({name: "start"}), "*");
       });
     }

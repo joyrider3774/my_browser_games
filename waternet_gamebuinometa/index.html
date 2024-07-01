@@ -5,8 +5,33 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/style.css" />
-    <title>Waternet</title>
+    <title>Waternet Gamebuino Meta</title>
     <meta name="author" content="Willems Davy" />
+    <script>
+    if(window.parent)
+    {
+      window.document.addEventListener('keydown', (event) => {
+        if(event.key == "Escape")
+        {
+          console.log('sended quit');
+          window.parent.postMessage(JSON.stringify({name:"quit"}), "*");
+        }
+      });
+      
+      window.addEventListener('load', (event) => {
+        console.log('sended start');
+        window.parent.postMessage(JSON.stringify({name: "start"}), "*");
+      });
+    }
+    </script>
+    <script src="./gamecontroller.min.js" >
+      gameControl.on('connect', function(gamepad) {
+        gamepad.before('start', functions() {
+          console.log('sended gamepad quit');
+          window.parent.postMessage(JSON.stringify({name:"quit"}), "*");
+        });
+      });
+    </script>
   </head>
   <body>
     <div id="gameboy_shell">

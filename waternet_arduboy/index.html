@@ -7,6 +7,32 @@
     <title>Waternet Arduboy</title>
     <meta name="author" content="Willems Davy" />
   </head>
+  <script>
+    if(window.parent)
+    {
+      window.document.addEventListener('keydown', (event) => {
+        if(event.key == "Escape")
+        {
+          console.log('sended quit');
+          window.parent.postMessage(JSON.stringify({name:"quit"}), "*");
+        }
+      });
+      
+      window.addEventListener('load', (event) => {
+        console.log('sended start');
+        window.parent.postMessage(JSON.stringify({name: "start"}), "*");
+      });
+    }
+    </script>
+    <script src="./gamecontroller.min.js" >
+      gameControl.on('connect', function(gamepad) {
+        gamepad.before('start', functions() {
+          console.log('sended gamepad quit');
+          window.parent.postMessage(JSON.stringify({name:"quit"}), "*");
+        });
+      });
+    </script>
+</head>
 	<script>
 		function setIframeSrc()
 		{
@@ -17,6 +43,7 @@
 				iframe.setAttribute('src', urltouch);
 			else
 				iframe.setAttribute('src', urlnotouch);
+      iframe.contentWindow.focus();
 		}
 		</script>
   <body onload="setIframeSrc();">
