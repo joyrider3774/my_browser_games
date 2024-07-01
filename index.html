@@ -468,6 +468,7 @@ update = function()
    
   if mode == "browse" then
     if control.SORT then
+      audio.playSound("microfxr/switch",.125)
       if (sortdir == "▲") then
         sortdir = "▼"
         sortGames()
@@ -610,7 +611,7 @@ draw = function()
       screen.drawText("Sorted on: " + sortkey + sortdir, 0, -80, 8)
       screen.drawText("[A] to start game - [Y] to Sort - [MENU] to exit game",0,-90,8)
     else
-      screen.drawText("Tap to start game",-70,-90,8)
+      screen.drawText("Tap to start game",-75,-90,8)
       screen.drawText("Sorted on: " + sortkey + sortdir, 0, -90, 8)
       screen.drawText("exit game with",70,-90,8)
       screen.setAlpha(1)
