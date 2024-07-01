@@ -72,6 +72,10 @@
         console.log('sended');
         window.parent.postMessage(JSON.stringify(event), "*");
       });
+      
+      window.document.addEventListener('load', (event) => {
+        window.parent.postMessage("load", "*");
+      });
     }
     </script>
 </head>
