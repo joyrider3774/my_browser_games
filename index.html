@@ -477,6 +477,10 @@ update = function()
     end
     
     if control.ACTION then
+      //remember it somehow selected wrong position
+      //after quiting games
+      global.browse_selected_pushed = browse_selected
+      global.tartget_position_pushed = target_position
       mode = "play"
       audio.playSound("microfxr/enter",.125)
       local game = games[browse_selected]
@@ -484,10 +488,13 @@ update = function()
     end
   else
     if control.BACK then
-      back_to_menu = false
       restore()
       mode = "browse"
       audio.playSound("microfxr/back",.125)
+      //restore so we keep same selection and view
+      browse_selected = global.browse_selected_pushed
+      target_position = global.tartget_position_pushed
+      back_to_menu = false
     end
   end
   
