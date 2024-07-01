@@ -1,0 +1,593 @@
+<!DOCTYPE html><html><head><title>Mazethingie</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui=1"><meta charset="UTF-8"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="description" content=""><link rel="manifest" href="manifest.json"><link rel="icon" type="image/png" href="icon64.png"><link rel="apple-touch-icon" sizes="180x180" href="icon180.png"><link rel="icon" type="image/png" sizes="32x32" href="icon32.png"><link rel="icon" type="image/png" sizes="16x16" href="icon16.png"><style>html,body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  overflow:hidden;
+  font-family: Verdana;
+}
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#canvaswrapper {
+  text-align: center ;
+}
+</style><style>@font-face { font-family: "BitCell" ; src: url("fonts/BitCell.ttf") format("truetype"); }</style><script>window.fonts = ["BitCell"]</script></head><body class="noselect custom-cursor" oncontextmenu="return false;"><div id="canvaswrapper"></div><script type="text/javascript">var resources = {"images":[{"file":"icon.png","version":232,"size":182,"properties":{"frames":1,"fps":5}},{"file":"poster.png","version":1,"size":56638,"properties":{"frames":1,"fps":5}}],"assets":[],"maps":{},"sounds":[],"music":[]};
+var graphics = "M1";
+
+</script><script type="text/javascript">var orientation = 'any' ;
+var aspect = '16x9' ;
+var ms_libs = [] ;
+window.skip_service_worker = true;
+window.exported_project = true;
+window.ms_use_server = false ;
+</script><script src="runner.js"></script><script src="microengine.js"></script></body><script type="text/javascript">//
+//
+// The game is started with the code below.
+// Once you have received the "started" signal (see below),
+// you can do the following:
+// 1) Inject functions or objects into the global context of the microStudio engine, example:
+//
+//   window.player.setGlobal("special_callback",function(x) { console.info(x) }) ;
+//   // Your microScript code can now call the "special_callback" function
+//
+// 2) Call microScript global functions from your JavaScript code, example:
+//
+//   window.player.call("call_me_from_javascript",[10,1000]) ;
+//   // arguments to the function call are provided as an array
+//
+// 3) Run a microScript code snippet from your JavaScript code, example:
+//
+//   window.player.exec("player.position_x = 50",function(result) { console.log(result) ; }) ;
+//
+
+window.addEventListener("load",function() {
+  window.player = new Player(function(event) {
+    if (event.name == "started") {
+      // signal that the game is started
+    }
+    else if (event.name == "log") {
+      // console.info(event.data) ;
+    }
+  }) ;
+  document.body.focus() ;
+}) ;
+
+</script><script id="code" type="text/x-microscript">
+
+//Created By Willems Davy Aka Joyrider3774
+const GSGame = 0;
+const GSTitleScreen = 1;
+const GSWinner = 2;
+const GSInstructions = 3;
+const BoxWidth=6;
+const BoxHeight=6;
+let MaxMazeWidth = Math.floor((screen.width / BoxWidth)) -2;
+let MaxMazeHeight = Math.floor((screen.height / BoxHeight)) -2;
+let MaxMazeSize = MaxMazeWidth * MaxMazeHeight;
+let GameState = GSTitleScreen;
+let MazeWidth=MaxMazeWidth;
+let MazeHeight=MaxMazeHeight;
+let PlayerPosX=32;
+let PlayerPosY=32;
+let Selection = 1;
+let xoffset = 0;
+let yoffset = 0;
+let Maze = [];
+let KeyDelay = 0;
+
+LoadSettings = function() {
+	MazeWidth = storage.get("MazeWidth");
+	MazeHeight = storage.get("MazeHeight");
+	if ((MazeWidth > MaxMazeWidth) || (MazeWidth < 10))
+	{
+	  MazeWidth = MaxMazeWidth;
+	}
+	
+	if(MazeHeight > MaxMazeHeight || (MazeHeight < 10))
+	{
+	  MazeHeight = MaxMazeHeight;
+	}
+}
+
+SaveSettings = function() {
+  storage.set("MazeWidth", MazeWidth );
+  storage.set("MazeHeight",MazeHeight);
+}
+
+
+
+DrawMaze = function() {
+  let I = 0;
+  for (let Y = 0; Y < MazeHeight; Y++)
+    for (let X = 0; X < MazeWidth; X++)
+    {
+			I = (Y*MazeWidth) + X;
+      //north wall
+			if (Maze[I] & 1)
+        screen.drawLine(xoffset + (X+1) * BoxWidth,
+          yoffset + (MazeHeight-Y+1) * BoxHeight,
+          xoffset + (X+2)*BoxWidth,
+          yoffset + (MazeHeight-Y+1)*BoxHeight, 
+          "#FFFFFF");
+
+			//east wall
+			if (Maze[I] & 2)
+        screen.drawLine(xoffset + (X+2) * BoxWidth,
+          yoffset + (MazeHeight-Y) * BoxHeight,
+          xoffset + (X+2)*BoxWidth,
+          yoffset + (MazeHeight-Y+1)*BoxHeight,
+          "#FFFFFF");
+		
+    	//south wall
+      if (Maze[I] & 4)
+        screen.drawLine(xoffset + (X+1) * BoxWidth,
+          yoffset + (MazeHeight-Y) * BoxHeight,
+          xoffset + (X+2)*BoxWidth,
+          yoffset + (MazeHeight-Y)*BoxHeight,
+          "#FFFFFF");
+      
+			//west wall
+      if (Maze[I] & 8)
+        screen.drawLine(xoffset + (X+1) * BoxWidth,
+          yoffset + (MazeHeight-Y) * BoxHeight,
+          xoffset + (X+1)*BoxWidth,
+          yoffset + (MazeHeight-Y+1)*BoxHeight,
+          "#FFFFFF");
+    }
+}
+
+
+ 
+
+GenerateMaze = function() {
+	let neighbours = [];
+  let cellStack = [];
+  let cc = 0;
+  let currentPoint = 0;
+  let visitedRooms = 1;
+  let tmp2 = 0;
+  let selectedNeighbour = 0;
+  let rnd = 0;
+    
+  //intial all walls value in every room we will remove bits of this value to remove walls
+  for(i=0; i < MaxMazeSize; i++)
+    Maze[i] = 0xf;
+
+	while (visitedRooms != MazeHeight*MazeWidth)
+  {
+      let neighboursFound = 0;
+      let lookUpX = currentPoint % MazeWidth;
+      let lookUpY = currentPoint / MazeWidth;
+      
+      let tmp  = currentPoint+1; 
+      //tile has neighbour to the right which we did not handle yet
+      if (( lookUpX + 1 < MazeWidth) && (Maze[tmp] == 0xf))
+          neighbours[neighboursFound++] = tmp;
+  
+      tmp = currentPoint-1; 
+      //tile has neighbour to the left which we did not handle yet
+      if ((lookUpX > 0) && (Maze[tmp] == 0xf))
+          neighbours[neighboursFound++] = tmp;
+
+      tmp = currentPoint - MazeWidth; 
+      //tile has neighbour the north which we did not handle yet
+      if ((lookUpY > 0) && (Maze[tmp] == 0xf))
+          neighbours[neighboursFound++] = tmp;
+
+      tmp = currentPoint + MazeWidth; 
+      //tile has neighbour the south which we did not handle yet
+      if ((lookUpY + 1 < MazeHeight) && (Maze[tmp] == 0xf))
+          neighbours[neighboursFound++] = tmp;
+
+      switch (neighboursFound)
+      {
+          case 0:
+              currentPoint = cellStack[--cc];
+              continue;
+              break;
+          default:
+              rnd = Math.floor(Math.random() * neighboursFound);
+              break;
+      }
+      
+      selectedNeighbour = neighbours[rnd];      
+      
+      tmp = (selectedNeighbour % MazeWidth);
+      //tile has neighbour to the east
+      if(tmp > lookUpX)
+      {
+          //remove west wall neighbour
+          Maze[selectedNeighbour] &= ~(8);
+          //remove east wall tile
+          Maze[currentPoint] &= ~(2);
+      }
+      else // tile has neighbour to the west
+      {
+          if(tmp < lookUpX)
+          {
+              //remove east wall neighbour
+              Maze[selectedNeighbour] &= ~(2);
+              //remove west wall tile
+              Maze[currentPoint] &= ~(8);
+          }
+          else // tile has neighbour to the north
+          {
+              tmp2 = selectedNeighbour / MazeWidth;
+              if(tmp2 < lookUpY)
+              {
+                  //remove south wall neighbour
+                  Maze[selectedNeighbour] &= ~(4);
+                  //remove north wall tile
+                  Maze[currentPoint] &= ~(1);
+              }
+              else // tile has neighbour to the south
+              {
+                  if(tmp2 > lookUpY)
+                  {
+                      //remove north wall neighbour
+                      Maze[selectedNeighbour] &= ~(1);
+                      //remove south wall tile
+                      Maze[currentPoint] &= ~(4);
+                  }
+              }
+          }
+      }
+      
+      //add tile to the cellstack
+      if(neighboursFound > 1)
+      {
+          cellStack[cc++] = currentPoint;
+      } 
+      //set tile to the neighbour   
+      currentPoint = selectedNeighbour;
+      visitedRooms++;
+  }
+  Maze[0] &= ~(1);
+  Maze[(MazeWidth)*(MazeHeight)-1] &= ~(4);
+  PlayerPosX = MazeWidth -1;
+  PlayerPosY = MazeHeight - 1;
+  xoffset = -(screen.width >> 1) + (((MaxMazeWidth-MazeWidth) * BoxWidth) >> 1);
+  yoffset = -(screen.height >> 1) + (((MaxMazeHeight-MazeHeight) * BoxHeight) >> 1);
+}
+
+TitleScreenLogic = function()
+{
+  //keep recalculating this in case we switch from portrait to landscape
+  MaxMazeWidth = Math.floor((screen.width / BoxWidth)) -2;
+  MaxMazeHeight = Math.floor((screen.height / BoxHeight)) -2;
+  if ((MazeWidth > MaxMazeWidth) || (MazeWidth < 10))
+	{
+	  MazeWidth = MaxMazeWidth;
+	}
+	
+	if(MazeHeight > MaxMazeHeight || (MazeHeight < 10))
+	{
+	  MazeHeight = MaxMazeHeight;
+	}
+	
+  if(keyboard.press.UP || gamepad.press.UP)
+   		if (Selection > 1)
+    	    Selection--;
+        
+	if(keyboard.press.DOWN || gamepad.press.DOWN)
+		if (Selection < 4)
+        	Selection++;
+
+	if(keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A)
+	{
+	  if(Selection == 1)
+	  {
+		  SaveSettings();
+		  GenerateMaze();
+	    GameState = GSGame;
+	  }
+	  
+	  if(Selection == 4)
+	  {
+	    GameState = GSInstructions
+	  }
+	}
+
+	if(Selection == 2)
+  {
+    if (((KeyDelay == 0) && ((keyboard.RIGHT || gamepad.RIGHT))) ||
+       keyboard.press.RIGHT || gamepad.press.RIGHT)
+  	  if (MazeWidth < MaxMazeWidth)
+  	  {
+        MazeWidth++;
+        KeyDelay = 7;
+  	  }
+
+    if (((KeyDelay == 0) && (keyboard.LEFT || gamepad.LEFT)) ||
+        keyboard.press.LEFT || gamepad.press.LEFT)
+      if(MazeWidth > 10 )
+      {
+  	    MazeWidth--;
+  	    KeyDelay = 7;
+      }
+  }
+
+  if(Selection == 3)
+  {
+		if (((KeyDelay == 0) && ((keyboard.RIGHT || gamepad.RIGHT))) ||
+       keyboard.press.RIGHT || gamepad.press.RIGHT)
+  	  if (MazeHeight < MaxMazeHeight)
+  		{
+				MazeHeight++;
+				KeyDelay = 7;
+  		}
+				
+		if (((KeyDelay == 0) && (keyboard.LEFT || gamepad.LEFT)) ||
+        keyboard.press.LEFT || gamepad.press.LEFT)
+    	if(MazeHeight > 10 )
+    	{
+				MazeHeight--;
+				KeyDelay = 7;
+    	}
+	}
+}
+
+TitleScreenDraw = function() 
+{
+	screen.fillRect(0,0, screen.width,screen.height, "#000000");
+	
+  screen.drawText("MAZE THINGIE", 0,70,30,"#FFFFFF");
+  if (Selection==1)
+	{
+		
+    screen.drawText("Play",0,30,20,"#FF0000")
+	}
+  else
+	{
+		 screen.drawText("Play",0,30,20,"#FFFFFF")
+	}
+
+    
+  if(Selection == 2)
+	{
+	   screen.drawText("Maze Width:" + MazeWidth,0,10,20,"#FF0000");
+	}
+  else
+  {
+     screen.drawText("Maze Width:" + MazeWidth,0,10,20,"#FFFFFF");
+	}
+
+	if(Selection == 3)
+	{
+	   screen.drawText("Maze Height:" + MazeHeight,0,-10,20,"#FF0000");
+	}
+  else
+  {
+	   screen.drawText("Maze Height:" + MazeHeight,0,-10,20,"#FFFFFF");
+	}
+	
+	if(Selection == 4)
+	{
+	   screen.drawText("Instructions",0,-30,20,"#FF0000");
+	}
+  else
+  {
+	   screen.drawText("Instructions",0,-30,20,"#FFFFFF");
+	}
+  
+  screen.drawText("Created by", 0, -70, 20, "#FFFFFF");
+  let year = new Date().getFullYear();
+  let yearstr = " 2024 - " + year
+  if (year == 2024)
+    yearstr = " " + year
+  screen.drawText("Willems Davy" + yearstr, 0,-90,20,"#FFFFFF");
+}
+
+drawTextLeftAlign = function(text, x, y, size, color)
+{
+  let tw = screen.textWidth( text, size );
+  screen.drawText(text, x + (tw >> 1), y, size, color);
+}
+
+InstructionsDraw = function()
+{
+  screen.fillRect(0,0, screen.width,screen.height, "#000000");
+  screen.drawText("MAZE THINGIE", 0,70,30,"#FFFFFF");
+  drawTextLeftAlign("ARROW LEFT: Player Left", -65,40, 10, "#FFFFFF"); 
+  drawTextLeftAlign("ARROW RIGHT: Player Right",-65,30, 10, "#FFFFFF");
+  drawTextLeftAlign("ARROW UP: Player Up", -65, 20, 10, "#FFFFFF");
+  drawTextLeftAlign("ARROW DOWN: Player Down", -65, 10, 10, "#FFFFFF");
+  drawTextLeftAlign("ESC: Title Screen", -65, 0, 10, "#FFFFFF");
+  drawTextLeftAlign("SPACE, ENTER, NUMPAD5: New Maze", -65, -10, 10, "#FFFFFF");
+  drawTextLeftAlign("HOME, NUMPAD4: Dec Maze Width", -65, -20, 10, "#FFFFFF");
+  drawTextLeftAlign("END, NUMPAD6: Inc Maze Width", -65, -30, 10, "#FFFFFF");
+  drawTextLeftAlign("PAGEUP, NUMPAD8: Inc Maze Height", -65, -40, 10, "#FFFFFF");
+  drawTextLeftAlign("PAGEDOWN, NUMPAD2: Dec Maze Height", -65, -50, 10, "#FFFFFF");
+  screen.drawText("Created by", 0, -70, 20, "#FFFFFF");
+  let year = new Date().getFullYear();
+  let yearstr = " 2024 - " + year
+  if (year == 2024)
+    yearstr = " " + year
+  screen.drawText("Willems Davy" + yearstr, 0,-90,20,"#FFFFFF");
+}
+
+InstructionsLogic = function()
+{
+  if(keyboard.press.SPACE || keyboard.press.ENTER || keyboard.press.ESCAPE ||
+    gamepad.press.A || gamepad.press.B)
+    if(GameState != GSTitleScreen)
+      GameState = GSTitleScreen;
+}
+
+ 
+DrawPlayer = function()
+{
+  screen.fillRect(xoffset + ((PlayerPosX+1) * BoxWidth) + BoxWidth / 2, 
+    yoffset + ((MazeHeight - PlayerPosY) * BoxHeight) + BoxHeight / 2, BoxWidth-1, 
+    BoxHeight-1, "#FF0000");
+}
+
+GameLogic = function()
+{
+  if(keyboard.press.ESCAPE || gamepad.press.B)
+		GameState = GSTitleScreen;
+	
+	if(keyboard.press.SPACE || keyboard.press.ENTER || keyboard.press.NUMPAD_5 ||
+	  gamepad.press.A)
+		GenerateMaze();
+
+  if (((KeyDelay == 0) && (keyboard.RIGHT || gamepad.RIGHT)) ||
+  keyboard.press.RIGHT || gamepad.press.RIGHT)
+    if (!(Maze[(PlayerPosY*MazeWidth) + PlayerPosX] & 2))
+    {
+      KeyDelay = 7;
+      PlayerPosX++;
+    }
+  
+  if (((KeyDelay == 0) && (keyboard.LEFT || gamepad.LEFT)) ||
+  keyboard.press.LEFT || gamepad.press.LEFT)
+    if (!(Maze[(PlayerPosY*MazeWidth) + PlayerPosX] & 8))
+    {
+      KeyDelay = 7;
+      PlayerPosX--;
+    }
+  
+  if (((KeyDelay == 0) && (keyboard.UP || gamepad.UP)) ||
+   keyboard.press.UP || gamepad.press.UP)
+  {
+    if((PlayerPosX == 0) && (PlayerPosY == 0))
+	    GameState = GSWinner;
+    else
+    {
+      if (!(Maze[(PlayerPosY*MazeWidth) + PlayerPosX] & 1))
+      {
+        PlayerPosY--;
+        KeyDelay = 7;
+      }
+    }
+	}
+	
+	if (((KeyDelay == 0) && ((keyboard.PAGEUP || keyboard.NUMPAD_8 || gamepad.RB))) ||
+       keyboard.press.PAGEUP || keyboard.press.NUMPAD_8 || gamepad.press.RB)
+  if (MazeHeight < MaxMazeHeight)
+  {
+    MazeHeight++;
+    KeyDelay = 4;
+    GenerateMaze();
+  }
+
+  if (((KeyDelay == 0) && (keyboard.PAGEDOWN || keyboard.NUMPAD_2 || gamepad.LB)) ||
+    keyboard.press.PAGEDOWN || keyboard.press.NUMPAD_2 || gamepad.press.LB)
+    if(MazeHeight > 10 )
+  {
+  	  MazeHeight--;
+  	  KeyDelay = 4;
+  	  GenerateMaze();
+  }
+
+  if (((KeyDelay == 0) && ((keyboard.END || keyboard.NUMPAD_6 ||gamepad.RT))) ||
+       keyboard.press.END || keyboard.press.NUMPAD_6 || gamepad.press.RT)
+  if (MazeWidth < MaxMazeWidth)
+  {
+    MazeWidth++;
+    KeyDelay = 4;
+    GenerateMaze();
+  }
+
+  if (((KeyDelay == 0) && ((keyboard.HOME || keyboard.NUMPAD_4 || gamepad.LT))) ||
+       keyboard.press.HOME || keyboard.press.NUMPAD_4 || gamepad.press.LT)
+    if(MazeWidth > 10 )
+  {
+  	  MazeWidth--;
+  	  KeyDelay = 4;
+  	  GenerateMaze();
+  }
+
+  if (((KeyDelay == 0) && (keyboard.DOWN || gamepad.DOWN)) ||
+   keyboard.press.DOWN || gamepad.press.DOWN)
+    if((PlayerPosX != MazeWidth-1) || (PlayerPosY != MazeHeight -1))
+    	if (!(Maze[(PlayerPosY*MazeWidth) + PlayerPosX] & 4))
+    	{
+    	  KeyDelay = 7;
+        PlayerPosY++;
+    	}
+}
+
+GameDraw = function()
+{
+  screen.fillRect(0,0, screen.width,screen.height, "#000000");
+	
+  DrawMaze();
+  DrawPlayer();
+}
+
+WinnerLogic = function()
+{
+  if (keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A)
+	{
+	  GenerateMaze();
+		GameState = GSGame;
+	}
+}
+
+WinnerDraw = function()
+{
+	screen.fillRect(0,0, screen.width,screen.height,"#000000");
+  DrawMaze();
+  DrawPlayer();
+	
+	screen.fillRect(0, 0, screen.width, 30, "#000000")
+	screen.drawText("Congratulations!!! You solved the maze !",0, 5, 15, "#FF0000")
+	screen.drawText("let's try another one ...",0, -5, 15, "#FF0000")
+}
+
+
+init = function() {
+  LoadSettings();
+  screen.setLineWidth = 1
+  GameState = GSTitleScreen;
+}
+
+update = function() {
+  if(KeyDelay > 0)
+    KeyDelay--;
+  switch(GameState)
+  {
+    case GSTitleScreen:
+        TitleScreenLogic();
+        break;
+    case GSGame:
+        GameLogic();
+        break;
+    case GSWinner:
+        WinnerLogic();
+        break;
+    case GSInstructions:
+        InstructionsLogic();
+        break;
+    default:
+      break;
+  }
+}
+
+draw = function() {
+  switch(GameState)
+  {
+    case GSTitleScreen:
+        TitleScreenDraw();
+        break;
+    case GSGame:
+        GameDraw();
+        break;
+    case GSWinner:
+        WinnerDraw();
+        break;
+    case GSInstructions:
+        InstructionsDraw();
+        break;
+    default:
+      break;
+  }
+}
+
+</script></html>
