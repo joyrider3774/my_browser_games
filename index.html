@@ -65,7 +65,7 @@ function()
 //in order for games to load the following needs to be added to the html page of the game
 //you also need to add gamecontroller.min.js in same directory as your html file (for controller suppor)
 //from https://github.com/alvaromontoro/gamecontroller.js/blob/master/dist/gamecontroller.min.js
-/*
+/* <!--
 
 <script>
     if(window.parent)
@@ -93,7 +93,7 @@ function()
       });
     </script>
 
-*/
+-->*/
 
 addGame = function(title,engine,itemtype,gameiconurl, gameurl, isMicroStudioGame)
   games += object
@@ -329,7 +329,6 @@ end()
 
 function()
 init = function()
-  // embed()
   sortkey = "title"
   sortdir = "▲"
   addGames()
