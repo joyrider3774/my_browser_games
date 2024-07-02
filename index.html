@@ -197,6 +197,7 @@ this.embed = function(url,close_button, isMicroStudioGame) {
   var parent = canvas.parentNode ;
   var iframe = document.createElement("iframe") ;
   iframe.src = url;
+  //added fullscreen 'none' to prevent iframe page going fullscreen even on same domain
   iframe.allow = "autoplay; gamepad; midi; fullscreen 'none';";
   iframe.style = "position: absolute ; top: 0 ; left: 0 ; width: 100% ; height: 100% ; border: none ; z-index: 0 ; transition-property: opacity ; transition-duration: 2s ; opacity: 0";
   iframe.allowFullscreen = false ;
@@ -216,9 +217,11 @@ this.embed = function(url,close_button, isMicroStudioGame) {
       tmpframe.style.opacity = 1 ;
     }
     else
-      console.log("warning iframe2 not found");
+      console.log("warning iframe not found");
   })
   
+  //for handling events send by games html pages to notify quit from gamepad
+  //or start of game (so it fades from black to the game)
   window.addEventListener('message', (event) => {
     //console.log(event);
     data = JSON.parse(event.data);
@@ -236,7 +239,7 @@ this.embed = function(url,close_button, isMicroStudioGame) {
         tmpframe.style.opacity = 1 ;
       }
       else
-        console.log("warning frame not found");
+        console.log("warning iframe not found");
     }
     
   });
@@ -250,22 +253,11 @@ this.embed = function(url,close_button, isMicroStudioGame) {
   });
   
   if (close_button) {
-    // console.info("CLOSE BUTTON")
-    // var div = document.createElement("div");
-    // div.id = "exit-button";
-    // div.style = "width: 100%; text-align:right; z-index: 9999999;";
-    // var img = document.createElement("img");
-    // img.src = "sprites/exit.png" ;
-    // img.id = "exit-button-img" ;
-    // img.style = "width: 5vw ; height:5vw; margin-top: 10px; margin-right: 10px; opacity: .5 ; image-rendering: moz-crisp-edges; image-rendering: pixelated ; z-index: 9999999;" ;
-    // div.appendChild(img);
-    // document.body.appendChild(div) ;
-    // img.addEventListener("click",()=>{global.back_to_menu = true})
     var img = new Image() ;
     img.src = "sprites/exit.png" ;
     img.id = "exit-button" ;
     //increased the z-index
-    //because wasm4 games set the z-index to some higher value
+    //because wasm4 games set the z-index of the window (iframe) to some higher value
     img.style = "width: 5vw ; position: fixed ; top: 1.5vw ; right: 1.5vw ; opacity: .5 ; image-rendering: moz-crisp-edges; image-rendering: pixelated ; z-index: 9999999;" ;
     document.body.appendChild(img) ;
     img.addEventListener("click",()=>{global.back_to_menu = true})

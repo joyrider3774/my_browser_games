@@ -8,10 +8,10 @@ I modified the microBox app to be able to add it as a frontend to a repository o
 * added system to load any url (game) in the iframe
 * added extra fields like itemtype (game, demo, ...) and engine (wasm4, playdate, arduboy, microstudio, ...) 
 * added sorting options for the new fields
-* tried to fix an issue where the system could get stuck if you quickly quit or (re)launch a game (did not test if original microbox had same issue)
-* placed the exit button inside a 100% width div with text-align right and removed the positioning "fixed", as well as increased the z-index for it. The reason i did this is because of certain game "engines" like WASM4. It setted some fullscreen mode as well as a higher zindex, and the button was shown behind the player (wasm4 screen) on my phone, making you unable to exit certain things you launched. I tested this change on my android phone in chrome, brave, opera, firefox and vivaldi as well as on chrome, firefox and edge on my desktop and they all remained showing the exit button. I don't know if this change would work on all phones / browsers, i don't have an iphone to test on for example. 
+* increased z-index of the exit button image to 9999999 as wasm4 games set the window (iframe's) z-index to 999999
+* added "fullscreen 'none'" to allow property of iframe, to disallow pages inside the iframe going fullscreen and obscuring the exit image. By default same domain page can go fullscreen, adding none prevents this as well.
 * searched for the frame using document.getElementByID in the setTimeout functions as i was getting errors in the javascript console when using the iFrame variable starting from the 2nd time i launched something. (did not test to see if original microbox had same issue)
-* added an onmessage handler that goes togheter with a little script to notify microbox the game has started and so/
+* added an onmessage handler that goes together with a little script to notify microbox the game has started and so/
 
 ## Loading from different urls
 
