@@ -1,0 +1,2086 @@
+<!DOCTYPE html><html><head><title>Znax v1.1</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui=1"><meta charset="UTF-8"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="description" content=""><link rel="manifest" href="manifest.json"><link rel="icon" type="image/png" href="icon64.png"><link rel="apple-touch-icon" sizes="180x180" href="icon180.png"><link rel="icon" type="image/png" sizes="32x32" href="icon32.png"><link rel="icon" type="image/png" sizes="16x16" href="icon16.png"><style>html,body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  overflow:hidden;
+  font-family: Verdana;
+}
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#canvaswrapper {
+  text-align: center ;
+}
+</style><style>@font-face { font-family: "BitCell" ; src: url("fonts/BitCell.ttf") format("truetype"); }</style><script>window.fonts = ["BitCell"]</script></head><body class="noselect custom-cursor" oncontextmenu="return false;"><div id="canvaswrapper"></div><script type="text/javascript">var resources = {"images":[{"file":"icon.png","version":30,"size":6125,"properties":{"frames":1,"fps":5}},{"file":"poster.png","version":4,"size":196392,"properties":{"frames":1,"fps":5}},{"file":"skins-default-background.png","version":1,"size":7150,"properties":{}},{"file":"skins-default-blocks.png","version":1,"size":28892,"properties":{}},{"file":"skins-default-credits.png","version":1,"size":24715,"properties":{}},{"file":"skins-default-credits1.png","version":1,"size":3068,"properties":{}},{"file":"skins-default-credits2.png","version":1,"size":3286,"properties":{}},{"file":"skins-default-cursor.png","version":1,"size":7620,"properties":{}},{"file":"skins-default-fixedtimer1.png","version":1,"size":4291,"properties":{}},{"file":"skins-default-fixedtimer2.png","version":1,"size":4316,"properties":{}},{"file":"skins-default-go.png","version":1,"size":4817,"properties":{}},{"file":"skins-default-highscores.png","version":1,"size":18602,"properties":{}},{"file":"skins-default-highscores1.png","version":1,"size":3628,"properties":{}},{"file":"skins-default-highscores2.png","version":1,"size":3922,"properties":{}},{"file":"skins-default-intro1.png","version":1,"size":21946,"properties":{}},{"file":"skins-default-intro2.png","version":1,"size":24332,"properties":{}},{"file":"skins-default-intro3.png","version":1,"size":30470,"properties":{}},{"file":"skins-default-play1.png","version":1,"size":2025,"properties":{}},{"file":"skins-default-play2.png","version":1,"size":2269,"properties":{}},{"file":"skins-default-quit1.png","version":1,"size":2059,"properties":{}},{"file":"skins-default-quit2.png","version":1,"size":1998,"properties":{}},{"file":"skins-default-ready.png","version":1,"size":11811,"properties":{}},{"file":"skins-default-relativetimer1.png","version":1,"size":5373,"properties":{}},{"file":"skins-default-relativetimer2.png","version":1,"size":5562,"properties":{}},{"file":"skins-default-selectgame.png","version":1,"size":6870,"properties":{}},{"file":"skins-default-timeover.png","version":1,"size":14147,"properties":{}},{"file":"skins-default-titlescreen.png","version":1,"size":21874,"properties":{}},{"file":"skins-newblocks-background.png","version":1,"size":80587,"properties":{}},{"file":"skins-newblocks-blocks.png","version":1,"size":42224,"properties":{}},{"file":"skins-numbers-background.png","version":1,"size":8034,"properties":{}},{"file":"skins-numbers-blocks.png","version":1,"size":25295,"properties":{}},{"file":"skins-numbers-credits.png","version":1,"size":28392,"properties":{}},{"file":"skins-numbers-credits1.png","version":1,"size":5534,"properties":{}},{"file":"skins-numbers-credits2.png","version":1,"size":6503,"properties":{}},{"file":"skins-numbers-fixedtimer1.png","version":1,"size":5975,"properties":{}},{"file":"skins-numbers-fixedtimer2.png","version":1,"size":6431,"properties":{}},{"file":"skins-numbers-go.png","version":1,"size":10825,"properties":{}},{"file":"skins-numbers-highscores.png","version":1,"size":18365,"properties":{}},{"file":"skins-numbers-highscores1.png","version":1,"size":6412,"properties":{}},{"file":"skins-numbers-highscores2.png","version":1,"size":7933,"properties":{}},{"file":"skins-numbers-intro1.png","version":1,"size":23013,"properties":{}},{"file":"skins-numbers-intro2.png","version":1,"size":25502,"properties":{}},{"file":"skins-numbers-intro3.png","version":1,"size":32019,"properties":{}},{"file":"skins-numbers-play1.png","version":1,"size":3976,"properties":{}},{"file":"skins-numbers-play2.png","version":1,"size":4683,"properties":{}},{"file":"skins-numbers-quit1.png","version":1,"size":3925,"properties":{}},{"file":"skins-numbers-quit2.png","version":1,"size":4217,"properties":{}},{"file":"skins-numbers-ready.png","version":1,"size":15172,"properties":{}},{"file":"skins-numbers-relativetimer1.png","version":1,"size":7238,"properties":{}},{"file":"skins-numbers-relativetimer2.png","version":1,"size":7996,"properties":{}},{"file":"skins-numbers-selectgame.png","version":1,"size":9704,"properties":{}},{"file":"skins-numbers-timeover.png","version":1,"size":16558,"properties":{}},{"file":"skins-numbers-titlescreen.png","version":1,"size":23511,"properties":{}},{"file":"skins-portmaster-background.png","version":1,"size":121049,"properties":{}},{"file":"skins-portmaster-blocks.png","version":1,"size":28893,"properties":{}},{"file":"skins-portmaster-credits.png","version":1,"size":14164,"properties":{}},{"file":"skins-portmaster-credits1.png","version":1,"size":2479,"properties":{}},{"file":"skins-portmaster-credits2.png","version":1,"size":2044,"properties":{}},{"file":"skins-portmaster-cursor.png","version":1,"size":7620,"properties":{}},{"file":"skins-portmaster-fixedtimer1.png","version":1,"size":2668,"properties":{}},{"file":"skins-portmaster-fixedtimer2.png","version":1,"size":2292,"properties":{}},{"file":"skins-portmaster-go.png","version":1,"size":4920,"properties":{}},{"file":"skins-portmaster-highscores.png","version":1,"size":65822,"properties":{}},{"file":"skins-portmaster-highscores1.png","version":1,"size":2652,"properties":{}},{"file":"skins-portmaster-highscores2.png","version":1,"size":2278,"properties":{}},{"file":"skins-portmaster-intro1.png","version":1,"size":64212,"properties":{}},{"file":"skins-portmaster-intro2.png","version":1,"size":65053,"properties":{}},{"file":"skins-portmaster-intro3.png","version":1,"size":66010,"properties":{}},{"file":"skins-portmaster-play1.png","version":1,"size":1668,"properties":{}},{"file":"skins-portmaster-play2.png","version":1,"size":1595,"properties":{}},{"file":"skins-portmaster-quit1.png","version":1,"size":1725,"properties":{}},{"file":"skins-portmaster-quit2.png","version":1,"size":1389,"properties":{}},{"file":"skins-portmaster-ready.png","version":1,"size":8302,"properties":{}},{"file":"skins-portmaster-relativetimer1.png","version":1,"size":3240,"properties":{}},{"file":"skins-portmaster-relativetimer2.png","version":1,"size":2784,"properties":{}},{"file":"skins-portmaster-selectgame.png","version":1,"size":3239,"properties":{}},{"file":"skins-portmaster-timeover.png","version":1,"size":6034,"properties":{}},{"file":"skins-portmaster-titlescreen.png","version":1,"size":71138,"properties":{}},{"file":"skins-red-background.png","version":1,"size":4936,"properties":{}},{"file":"skins-red-blocks.png","version":1,"size":28893,"properties":{}},{"file":"skins-red-credits.png","version":1,"size":21484,"properties":{}},{"file":"skins-red-credits1.png","version":1,"size":2820,"properties":{}},{"file":"skins-red-credits2.png","version":1,"size":2873,"properties":{}},{"file":"skins-red-cursor.png","version":1,"size":7621,"properties":{}},{"file":"skins-red-fixedtimer1.png","version":1,"size":4175,"properties":{}},{"file":"skins-red-fixedtimer2.png","version":1,"size":3913,"properties":{}},{"file":"skins-red-go.png","version":1,"size":4817,"properties":{}},{"file":"skins-red-highscores.png","version":1,"size":16359,"properties":{}},{"file":"skins-red-highscores1.png","version":1,"size":3514,"properties":{}},{"file":"skins-red-highscores2.png","version":1,"size":3448,"properties":{}},{"file":"skins-red-intro1.png","version":1,"size":20090,"properties":{}},{"file":"skins-red-intro2.png","version":1,"size":22079,"properties":{}},{"file":"skins-red-intro3.png","version":1,"size":28185,"properties":{}},{"file":"skins-red-play1.png","version":1,"size":2076,"properties":{}},{"file":"skins-red-play2.png","version":1,"size":2139,"properties":{}},{"file":"skins-red-quit1.png","version":1,"size":1866,"properties":{}},{"file":"skins-red-quit2.png","version":1,"size":1822,"properties":{}},{"file":"skins-red-ready.png","version":1,"size":11811,"properties":{}},{"file":"skins-red-relativetimer1.png","version":1,"size":5041,"properties":{}},{"file":"skins-red-relativetimer2.png","version":1,"size":4961,"properties":{}},{"file":"skins-red-selectgame.png","version":1,"size":6992,"properties":{}},{"file":"skins-red-timeover.png","version":1,"size":14147,"properties":{}},{"file":"skins-red-titlescreen.png","version":1,"size":19831,"properties":{}}],"assets":[],"maps":{},"sounds":[{"file":"blockselect.wav","version":1,"size":15760,"properties":{}},{"file":"delete.wav","version":1,"size":55520,"properties":{}},{"file":"error.wav","version":1,"size":4158,"properties":{}},{"file":"fiveminute.wav","version":1,"size":81140,"properties":{}},{"file":"goodbye.wav","version":1,"size":28532,"properties":{}},{"file":"menu.wav","version":1,"size":6268,"properties":{}},{"file":"one.wav","version":1,"size":16370,"properties":{}},{"file":"oneminute.wav","version":1,"size":64658,"properties":{}},{"file":"readygo.wav","version":1,"size":57440,"properties":{}},{"file":"select.wav","version":1,"size":3028,"properties":{}},{"file":"three.wav","version":1,"size":20190,"properties":{}},{"file":"timeover.wav","version":1,"size":52416,"properties":{}},{"file":"two.wav","version":1,"size":18454,"properties":{}},{"file":"welcome.wav","version":1,"size":87760,"properties":{}}],"music":[{"file":"title.ogg","version":1,"size":1318741,"properties":{}}]};
+var graphics = "M1";
+
+</script><script type="text/javascript">var orientation = 'any' ;
+var aspect = '4x3' ;
+var ms_libs = [] ;
+window.skip_service_worker = true;
+window.exported_project = true;
+window.ms_use_server = false ;
+</script>
+<script>
+    if(window.parent)
+    {
+      window.document.addEventListener('keydown', (event) => {
+        if(event.key == "Escape")
+        {
+          console.log('sended quit');
+          window.parent.postMessage(JSON.stringify({name:"quit"}), "*");
+        }
+      });
+      
+      window.addEventListener('load', (event) => {
+        console.log('sended start');
+        window.parent.postMessage(JSON.stringify({name: "start"}), "*");
+      });
+    }
+</script>
+<script src="./gamecontroller.min.js" >
+      gameControl.on('connect', function(gamepad) {
+        gamepad.before('start', functions() {
+          console.log('sended gamepad quit');
+          window.parent.postMessage(JSON.stringify({name:"quit"}), "*");
+        });
+      });
+</script>
+<script src="runner.js"></script><script src="microengine.js"></script></body><script type="text/javascript">//
+//
+// The game is started with the code below.
+// Once you have received the "started" signal (see below),
+// you can do the following:
+// 1) Inject functions or objects into the global context of the microStudio engine, example:
+//
+//   window.player.setGlobal("special_callback",function(x) { console.info(x) }) ;
+//   // Your microScript code can now call the "special_callback" function
+//
+// 2) Call microScript global functions from your JavaScript code, example:
+//
+//   window.player.call("call_me_from_javascript",[10,1000]) ;
+//   // arguments to the function call are provided as an array
+//
+// 3) Run a microScript code snippet from your JavaScript code, example:
+//
+//   window.player.exec("player.position_x = 50",function(result) { console.log(result) ; }) ;
+//
+
+window.addEventListener("load",function() {
+  window.player = new Player(function(event) {
+    if (event.name == "started") {
+      // signal that the game is started
+    }
+    else if (event.name == "log") {
+      // console.info(event.data) ;
+    }
+  }) ;
+  document.body.focus() ;
+}) ;
+
+</script><script id="code" type="text/x-microscript">
+
+CBlock = class {
+  constructor(PlayFieldXin, PlayFieldYin, ColorIn, AIMGBlocks, CheatMode) {
+    this.IMGBlocks = AIMGBlocks;
+    this.AnimBase = 0;
+    this.AnimPhase = 0;
+    this.AnimCounter = 0;
+    this.AnimDelayCounter = 0;
+    this.AnimPhases = 1;
+    this.AnimDelay = 2;
+    this.PlayFieldX = PlayFieldXin;
+    this.PlayFieldY = PlayFieldYin;
+    this.Color = ColorIn;
+    this.bNeedToKill = false;
+    this.bSelected = false;
+    this.included = false;
+    this.CheatMode = CheatMode;
+  }
+
+  Select() {
+    this.AnimBase = 0;
+    this.AnimCounter = 0;
+    this.AnimPhases = 6;
+    this.bSelected = true;
+  }
+
+  DeSelect() {
+    this.AnimBase = 0;
+    this.AnimCounter = 0;
+    this.AnimPhases = 1;
+    this.bSelected = false;
+  }
+
+  Kill() {
+    this.AnimBase = 6;
+    this.AnimCounter = 0;
+    this.AnimPhases = 1;
+    this.bNeedToKill = true;
+  }
+
+  Draw(Renderer) {
+    const Src = {
+      x: this.AnimPhase * TileWidth,
+      y: this.Color * TileHeight,
+      w: TileWidth,
+      h: TileHeight
+    };
+
+    const Dst = {
+      x: this.PlayFieldX * TileWidth + 5,
+      y: this.PlayFieldY * TileHeight + 5,
+      w: TileWidth,
+      h: TileHeight
+    };
+
+    Renderer.drawSpritePart(this.IMGBlocks, Src.x, Src.y, Src.w, Src.h, Dst.x, Dst.y, Dst.w, Dst.h);
+
+    if(this.included && this.CheatMode)
+    {
+      Renderer.setLineWidth(3);
+      Renderer.drawRect(Dst.x+1, Dst.y+1, Dst.w-3, Dst.h-3, "#000000AA");
+    }
+    this.AnimPhase = this.AnimBase + this.AnimCounter;
+    if (this.AnimPhase !== this.AnimBase + this.AnimPhases - 1) {
+      this.AnimDelayCounter++;
+      if (this.AnimDelayCounter >= this.AnimDelay) {
+        this.AnimDelayCounter = 0;
+        this.AnimCounter++;
+        if (this.AnimCounter === this.AnimPhases) {
+          this.AnimCounter = 0;
+        }
+      }
+    }
+  }
+
+  GetColor() {
+    return this.Color;
+  }
+
+  IsSelected() {
+    return this.bSelected;
+  }
+
+  NeedToKill() {
+    return this.bNeedToKill;
+  }
+}
+
+CGameTypeMenu = class {
+  constructor(
+    AIMGTitleScreen,
+    AIMGSelectGame,
+    AIMGFixedTimer1,
+    AIMGFixedTimer2,
+    AIMGRelativeTimer1,
+    AIMGRelativeTimer2,
+    ASNDMenu,
+  ) {
+    this.Selection = GameTypes.Fixed;
+    this.IMGTitleScreen = AIMGTitleScreen;
+    this.IMGSelectGame = AIMGSelectGame;
+    this.IMGFixedTimer1 = AIMGFixedTimer1;
+    this.IMGFixedTimer2 = AIMGFixedTimer2;
+    this.IMGRelativeTimer1 = AIMGRelativeTimer1;
+    this.IMGRelativeTimer2 = AIMGRelativeTimer2;
+    this.SNDMenu = ASNDMenu;
+  }
+
+  // Increase the selection if it goes too far set it to the first selection
+  NextItem() {
+    this.Selection++;
+    if (this.Selection === 2) {
+      this.Selection = 0;
+    }
+    PlaySound(this.SNDMenu);
+  }
+  
+  SetNewGraphics(
+    AIMGTitleScreen,
+    AIMGSelectGame,
+    AIMGFixedTimer1,
+    AIMGFixedTimer2,
+    AIMGRelativeTimer1,
+    AIMGRelativeTimer2,
+    ASNDMenu,
+  ) {
+    this.IMGTitleScreen = AIMGTitleScreen;
+    this.IMGSelectGame = AIMGSelectGame;
+    this.IMGFixedTimer1 = AIMGFixedTimer1;
+    this.IMGFixedTimer2 = AIMGFixedTimer2;
+    this.IMGRelativeTimer1 = AIMGRelativeTimer1;
+    this.IMGRelativeTimer2 = AIMGRelativeTimer2;
+  }
+
+  // Decrease the selection if it goes too low set it to the last selection
+  PreviousItem() {
+    this.Selection--;
+    if (this.Selection === -1) {
+      this.Selection = 1;
+    }
+    PlaySound(this.SNDMenu);
+  }
+
+  GetMouseSelection(X, Y) {
+    if (X >= 68 && X <= 68 + 208) {
+      if (Y >= 114 && Y < 114 + 37) return 0;
+      if (Y >= 151 && Y < 151 + 37) return 1;
+    }
+    return -1;
+  }
+  
+  GetSelection() {
+    return this.Selection;
+  }
+  
+  SetSelection(sel) {
+    this.Selection = sel;
+  }
+
+  Draw(Renderer) {
+    Renderer.drawImage(this.IMGTitleScreen, 0, 0);
+
+    let Dest = { x: 68, y: 77, w: 0, h: 0 };
+    Renderer.drawImage(this.IMGSelectGame, Dest.x, Dest.y);
+
+    if (this.Selection === GameTypes.Fixed) {
+      Dest.y = 114;
+      Renderer.drawImage(this.IMGFixedTimer2, Dest.x, Dest.y);
+    } else {
+      Dest.y = 114;
+      Renderer.drawImage(this.IMGFixedTimer1, Dest.x, Dest.y);
+    }
+
+    if (this.Selection === GameTypes.Relative) {
+      Dest.y = 151;
+      Renderer.drawImage(this.IMGRelativeTimer2, Dest.x, Dest.y);
+    } else {
+      Dest.y = 151;
+      Renderer.drawImage(this.IMGRelativeTimer1, Dest.x, Dest.y);
+    }
+  }
+}
+
+CMainMenu = class {
+  constructor(
+    AIMGTitleScreen,
+    AIMGPlay1,
+    AIMGPlay2,
+    AIMGHighScores1,
+    AIMGHighScores2,
+    AIMGCredits1,
+    AIMGCredits2,
+    AIMGQuit1,
+    AIMGQuit2,
+    ASNDMenu,
+  ) {
+    this.Selection = 1;
+    this.IMGTitleScreen = AIMGTitleScreen;
+    this.IMGPlay1 = AIMGPlay1;
+    this.IMGPlay2 = AIMGPlay2;
+    this.IMGHighScores1 = AIMGHighScores1;
+    this.IMGHighScores2 = AIMGHighScores2;
+    this.IMGCredits1 = AIMGCredits1;
+    this.IMGCredits2 = AIMGCredits2;
+    this.IMGQuit1 = AIMGQuit1;
+    this.IMGQuit2 = AIMGQuit2;
+    this.SNDMenu = ASNDMenu;
+  }
+
+  SetNewGraphics(
+    AIMGTitleScreen,
+    AIMGPlay1,
+    AIMGPlay2,
+    AIMGHighScores1,
+    AIMGHighScores2,
+    AIMGCredits1,
+    AIMGCredits2,
+    AIMGQuit1,
+    AIMGQuit2,
+    ASNDMenu,
+  ) {
+    this.IMGTitleScreen = AIMGTitleScreen;
+    this.IMGPlay1 = AIMGPlay1;
+    this.IMGPlay2 = AIMGPlay2;
+    this.IMGHighScores1 = AIMGHighScores1;
+    this.IMGHighScores2 = AIMGHighScores2;
+    this.IMGCredits1 = AIMGCredits1;
+    this.IMGCredits2 = AIMGCredits2;
+    this.IMGQuit1 = AIMGQuit1;
+    this.IMGQuit2 = AIMGQuit2;
+  }
+  
+  // Increase the selection if it goes too far, set it to the first selection
+  NextItem() {
+    this.Selection++;
+    if (this.Selection === 4) {
+      this.Selection = 1;
+    }
+    PlaySound(this.SNDMenu);
+  }
+
+  // Decrease the selection if it goes too low, set it to the last selection
+  PreviousItem() {
+    this.Selection--;
+    if (this.Selection === 0) {
+      this.Selection = 3;
+    }
+    PlaySound(this.SNDMenu);
+  }
+
+  GetMouseSelection(X, Y) {
+    if (X >= 98 && X <= 98 + 123) {
+      if (Y >= 73 && Y < 73 + 32) return 1;
+      if (Y >= 105 && Y < 105 + 32) return 2;
+      if (Y >= 137 && Y < 137 + 32) return 3;
+    //  if (Y >= 169 && Y < 169 + 32) return 4;
+    }
+    return -1;
+  }
+  
+  GetSelection() {
+    return this.Selection;
+  }
+  
+  SetSelection(sel) {
+    this.Selection = sel;
+  }
+
+  Draw(Renderer) {
+    Renderer.drawImage(this.IMGTitleScreen, 0, 0);
+
+    let Dest = { x: 98, y: 73 };
+
+    if (this.Selection === 1) {
+      Renderer.drawImage(this.IMGPlay2, Dest.x, Dest.y);
+    } else {
+      Renderer.drawImage(this.IMGPlay1, Dest.x, Dest.y);
+    }
+
+    Dest.y = 105;
+    if (this.Selection === 2) {
+      Renderer.drawImage(this.IMGHighScores2, Dest.x, Dest.y);
+    } else {
+      Renderer.drawImage(this.IMGHighScores1, Dest.x, Dest.y);
+    }
+
+    Dest.y = 137;
+    if (this.Selection === 3) {
+      Renderer.drawImage(this.IMGCredits2, Dest.x, Dest.y);
+    } else {
+      Renderer.drawImage(this.IMGCredits1, Dest.x, Dest.y);
+    }
+
+    // Dest.y = 169;
+    // if (this.Selection === 4) {
+    //   Renderer.drawImage(this.IMGQuit2, Dest.x, Dest.y);
+    // } else {
+    //   Renderer.drawImage(this.IMGQuit1, Dest.x, Dest.y);
+    // }
+  }
+}
+
+CSelector = class {
+  constructor(AIMGCursor, PlayFieldXin, PlayFieldYin) {
+    this.SelectedPoint = new SPoint(0, 0);
+    this.CurrentPoint = new SPoint(PlayFieldXin, PlayFieldYin);
+    this.IMGCursor = AIMGCursor;
+    this.HasSelection = false;
+  }
+
+  // Will set the position only if it lies within the board boundary
+  SetPosition(PlayFieldXin, PlayFieldYin) {
+    if (PlayFieldYin >= 0 && PlayFieldYin < NrOfRows && PlayFieldXin >= 0 && PlayFieldXin < NrOfCols) {
+      this.CurrentPoint.X = PlayFieldXin;
+      this.CurrentPoint.Y = PlayFieldYin;
+    } else {
+      if (PlayFieldYin < 0) {
+        this.CurrentPoint.X = PlayFieldXin;
+        this.CurrentPoint.Y = NrOfRows - 1;
+      }
+
+      if (PlayFieldYin >= NrOfRows) {
+        this.CurrentPoint.X = PlayFieldXin;
+        this.CurrentPoint.Y = 0;
+      }
+
+      if (PlayFieldXin < 0) {
+        this.CurrentPoint.X = NrOfCols - 1;
+        this.CurrentPoint.Y = PlayFieldYin;
+      }
+
+      if (PlayFieldXin >= NrOfCols) {
+        this.CurrentPoint.X = 0;
+        this.CurrentPoint.Y = PlayFieldYin;
+      }
+    }
+  }
+
+  // Select will set the current position as the selected position
+  Select() {
+    this.SelectedPoint.X = this.CurrentPoint.X;
+    this.SelectedPoint.Y = this.CurrentPoint.Y;
+    this.HasSelection = true;
+  }
+
+  // Return the selected position
+  GetSelection() {
+    return this.SelectedPoint;
+  }
+
+  // Return the current position
+  GetPosition() {
+    return this.CurrentPoint;
+  }
+
+  // DeSelect will reset the selection
+  DeSelect() {
+    this.HasSelection = false;
+  }
+
+  // Draw the blue box on the current position, with the offsets in mind
+  Draw(Renderer) {
+    const DstRect = {
+      x: this.CurrentPoint.X * TileWidth + 5,
+      y: this.CurrentPoint.Y * TileHeight + 5,
+      w: TileWidth,
+      h: TileHeight
+    };
+    Renderer.drawSprite(this.IMGCursor, DstRect.x, DstRect.y, DstRect.w, DstRect.h);
+  }
+}
+
+CWorldParts = class {
+  constructor(AIMGBlocks, ASNDDelete, ASNDError, ASNDBlockSelect) {
+    this.IMGBlocks = AIMGBlocks;
+    this.SNDDelete = ASNDDelete;
+    this.SNDError = ASNDError;
+    this.SNDBlockSelect = ASNDBlockSelect;
+    this.Items = Array.from({ length: NrOfCols }, () => Array(NrOfRows).fill(null));
+    this.Selects = Array.from({ length: 4 }, () => ({ X: 0, Y: 0 }));
+    this.NumSelected = 0;
+    this.SelectedColor = -1;
+    this.Time = 0;
+    this.NeedToKillBlocks = false;
+    this.NeedToAddBlocks = false;
+    this.CheatMode = false;
+    for (let Y = 0; Y < NrOfRows; Y++) {
+      for (let X = 0; X < NrOfCols; X++) {
+        this.Items[X][Y] = null;
+      }
+    }
+  }
+
+  SetNewGraphics(AIMGBlocks) {
+    this.IMGBlocks = AIMGBlocks;
+    for (let Y = 0; Y < NrOfRows; Y++) {
+      for (let X = 0; X < NrOfCols; X++) {
+        if (this.Items[X][Y]) this.Items[X][Y].IMGBlocks = AIMGBlocks;
+      }
+    }
+  }
+
+  NewGame() {
+    for (let Y = 0; Y < NrOfRows; Y++) {
+      for (let X = 0; X < NrOfCols; X++) {
+        if (this.Items[X][Y]) this.Items[X][Y] = null;
+        this.Items[X][Y] = new CBlock(X, Y, Math.floor(Math.random() * NrOfBlockColors), this.IMGBlocks, this.CheatMode);
+      }
+    }
+    //make sure inital state got at least 10 rectangles to find
+    while(this.MovesLeft() < 10) {
+      for (let Y = 0; Y < NrOfRows; Y++) {
+        for (let X = 0; X < NrOfCols; X++) {
+          if (this.Items[X][Y]) this.Items[X][Y] = null;
+          this.Items[X][Y] = new CBlock(X, Y, Math.floor(Math.random() * NrOfBlockColors), this.IMGBlocks, this.CheatMode);
+        }
+      }
+    }
+    this.NeedToKillBlocks = false;
+    this.NeedToAddBlocks = false;
+    this.NumSelected = 0;
+    this.SelectedColor = -1;
+  }
+  
+  MovesLeft() {
+    let count = 0;
+    
+    //reset included
+    for (let x1 = 0; x1 < NrOfRows; x1++) 
+      for (let y1 = 0; y1 < NrOfCols; y1++) 
+        this.Items[x1][y1].included = false;
+          
+    // Iterate over all possible pairs of top-left and bottom-right corners
+    for (let x1 = 0; x1 < NrOfRows; x1++) {
+      for (let y1 = 0; y1 < NrOfCols; y1++) {
+        for (let x2 = x1 + 1; x2 < NrOfCols; x2++) {
+          for (let y2 = y1 + 1; y2 < NrOfCols; y2++) {
+            // Check if the corners are the same
+            if (this.Items[x1][y1].GetColor() === this.Items[x1][y2].GetColor() &&
+                this.Items[x1][y1].GetColor() === this.Items[x2][y1].GetColor() &&
+                this.Items[x1][y1].GetColor() === this.Items[x2][y2].GetColor() &&
+                //no lines
+                (x2 - x1 > 0) && (y2 - y1 > 0)) {
+                count++;
+                this.Items[x1][y1].included = true;
+                this.Items[x1][y2].included = true;
+                this.Items[x2][y2].included = true;
+                this.Items[x2][y1].included = true;
+            }
+          }
+        }
+      }
+    }
+
+    return count;
+  }
+
+  Draw(Renderer) {
+    if (this.NeedToKillBlocks && (this.Time < system.time())) {
+      this.KillBlocks();
+      this.NeedToKillBlocks = false;
+      this.NeedToAddBlocks = true;
+      this.Time = system.time() + 350;
+      PlaySound(this.SNDDelete);
+    }
+
+    if (this.NeedToAddBlocks && (this.Time < system.time())) {
+      this.AddBlocks();
+      this.NeedToAddBlocks = false;
+      this.NumSelected = 0;
+    }
+
+    for (let Y = 0; Y < NrOfRows; Y++) {
+      for (let X = 0; X < NrOfCols; X++) {
+        if(this.Items[X][Y])
+          this.Items[X][Y].Draw(Renderer);
+      }
+    }
+  }
+
+  DeSelect(PlaySnd) {
+    if (PlaySnd) {
+      PlaySound(this.SNDError);
+    }
+    for (let Teller = 0; Teller < this.NumSelected; Teller++) {
+      this.Items[this.Selects[Teller].X][this.Selects[Teller].Y].DeSelect();
+    }
+    this.NumSelected = 0;
+    this.SelectedColor = -1;
+  }
+
+  Select(PlayFieldX, PlayFieldY) {
+    let Score = 0;
+    if (!this.NeedToKillBlocks && !this.NeedToAddBlocks) {
+      if (!this.Items[PlayFieldX][PlayFieldY].IsSelected()) {
+        if (this.NumSelected === 0) {
+          this.Items[PlayFieldX][PlayFieldY].Select();
+          this.SelectedColor = this.Items[PlayFieldX][PlayFieldY].GetColor();
+          this.Selects[this.NumSelected].X = PlayFieldX;
+          this.Selects[this.NumSelected].Y = PlayFieldY;
+          this.NumSelected++;
+          PlaySound(this.SNDBlockSelect);
+        } else {
+          if (this.Items[PlayFieldX][PlayFieldY].GetColor() === this.SelectedColor) {
+            let NumEqualY = 0, NumEqualX = 0;
+
+            this.Items[PlayFieldX][PlayFieldY].Select();
+            this.Selects[this.NumSelected].X = PlayFieldX;
+            this.Selects[this.NumSelected].Y = PlayFieldY;
+            this.NumSelected++;
+            if (this.NumSelected > 2) {
+              for (let Teller1 = 0; Teller1 < this.NumSelected; Teller1++) {
+                for (let Teller2 = 0; Teller2 < this.NumSelected; Teller2++) {
+                  if (Teller1 !== Teller2) {
+                    if (this.Selects[Teller1].X === this.Selects[Teller2].X) NumEqualX++;
+                    if (this.Selects[Teller1].Y === this.Selects[Teller2].Y) NumEqualY++;
+                  }
+                }
+              }
+              if ((NumEqualX > 4) || (NumEqualY > 4)) this.DeSelect(true);
+            }
+
+            if (this.NumSelected === 3) {
+              if (!((NumEqualX === 2) && (NumEqualY === 2))) this.DeSelect(true);
+            }
+
+            if (this.NumSelected === 4) {
+              if ((NumEqualX === 4) && (NumEqualY === 4)) {
+                let EndX = -1, EndY = -1, StartX = NrOfCols, StartY = NrOfRows;
+                for (let Teller1 = 0; Teller1 < this.NumSelected; Teller1++) {
+                  if (this.Selects[Teller1].X > EndX) EndX = this.Selects[Teller1].X;
+                  if (this.Selects[Teller1].X < StartX) StartX = this.Selects[Teller1].X;
+                  if (this.Selects[Teller1].Y > EndY) EndY = this.Selects[Teller1].Y;
+                  if (this.Selects[Teller1].Y < StartY) StartY = this.Selects[Teller1].Y;
+                }
+                Score = (EndY - StartY + 1) * (EndX - StartX + 1) * 100;
+                this.NeedToKillBlocks = true;
+                this.Time = system.time() + 350;
+              } else this.DeSelect(true);
+            }
+
+            if (this.NumSelected > 0 && this.NumSelected <= 4) {
+              PlaySound(this.SNDBlockSelect);
+            }
+          } else this.DeSelect(true);
+        }
+      } else this.DeSelect(true);
+    }
+    return Score;
+  }
+
+  KillBlocks() {
+    this.KillStartX = NrOfCols, this.KillStartY = NrOfRows, this.KillEndX = -1, this.KillEndY = -1;
+    for (let Teller = 0; Teller < this.NumSelected; Teller++) {
+      if (this.Selects[Teller].X > this.KillEndX) this.KillEndX = this.Selects[Teller].X;
+      if (this.Selects[Teller].X < this.KillStartX) this.KillStartX = this.Selects[Teller].X;
+      if (this.Selects[Teller].Y > this.KillEndY) this.KillEndY = this.Selects[Teller].Y;
+      if (this.Selects[Teller].Y < this.KillStartY) this.KillStartY = this.Selects[Teller].Y;
+    }
+    for (let Y = this.KillStartY; Y <= this.KillEndY; Y++) {
+      for (let X = this.KillStartX; X <= this.KillEndX; X++) {
+        this.Items[X][Y].Kill();
+      }
+    }
+  }
+
+  AddBlocks() {
+   for (let Y = 0; Y < NrOfRows; Y++) {
+      for (let X = 0; X < NrOfCols; X++) {
+        if (this.Items[X][Y].NeedToKill()) {
+          this.Items[X][Y] = null;
+          this.Items[X][Y] = new CBlock(X, Y, Math.floor(Math.random() * NrOfBlockColors), this.IMGBlocks, this.CheatMode);
+        }
+      }
+    }
+    
+    //Make sure there is a always a move
+    while (this.MovesLeft() == 0)
+    {
+      for (let Y = this.KillStartY; Y <= this.KillEndY; Y++) {
+        for (let X = this.KillStartX; X <= this.KillEndX; X++) {
+          this.Items[X][Y].Kill();
+        }
+      }
+
+      for (let Y = 0; Y < NrOfRows; Y++) {
+        for (let X = 0; X < NrOfCols; X++) {
+          if (this.Items[X][Y].NeedToKill()) {
+            this.Items[X][Y] = null;
+            this.Items[X][Y] = new CBlock(X, Y, Math.floor(Math.random() * NrOfBlockColors), this.IMGBlocks, this.CheatMode);
+          }
+        }
+      }
+    }
+  }
+}
+
+DrawStatusBar = function() {
+  let Text = "";
+  let TextColor = "#FFFFFFC0";
+  Text = "Timer:"
+  ScreenImage.drawText(Text, 247, 4, 18, TextColor);
+  Text = Math.floor(Timer / 60) + ":" + ("0" + (Timer % 60)).slice(-2);
+  ScreenImage.drawText(Text, 248, 22, 16, TextColor);
+  Text = "Score:" 
+  ScreenImage.drawText(Text, 247, 55, 18, TextColor);
+  Text = Score;
+  ScreenImage.drawText(Text, 247, 73, 16, TextColor);
+  Text = "Left " + World.MovesLeft();
+  ScreenImage.drawText(Text, 247, 110, 16, TextColor);
+  TextColor = (SubMenuSelection == 1 ? "#FFFFFFFF":"#FFFFFFC0");
+  Text = "Skin " + (Skin + 1);
+  ScreenImage.drawText(Text, 247, 125, 16, TextColor);
+  TextColor = (SubMenuSelection == 2 ? "#FFFFFFFF":"#FFFFFFC0");
+  Text = "Music " + (MusicOn ? "on": "off");
+  ScreenImage.drawText(Text, 247, 155, 16, TextColor);
+  TextColor = (SubMenuSelection == 3 ? "#FFFFFFFF":"#FFFFFFC0");
+  Text = "Sound " + (SoundOn ? "on": "off");;
+  ScreenImage.drawText(Text, 247, 185, 16, TextColor);
+  TextColor = (SubMenuSelection == 4 ? "#FFFFFFFF":"#FFFFFFC0");
+  Text = "Quit";
+  ScreenImage.drawText(Text, 247, 215, 16, TextColor);
+}
+
+LogicStatusBar = function() {
+  let RealX = Math.floor(MousePosToScreen().x);
+  let RealY = Math.floor(MousePosToScreen().y);
+  
+  SubMenuSelection = -1;
+  if ((RealX > (247 * 1)) && (RealX < (285 * 1)) &&
+      (RealY > (125 * 1)) && (RealY < (140 * 1)))
+      
+  {
+    SubMenuSelection = 1;
+    if (mouse.left && mouse.press)
+    {
+      PlaySound(SND_SELECT);
+      NextSkin();
+    }
+  }
+  
+  if ((RealX > (247 * 1)) && (RealX < (308 * 1)) &&
+      (RealY > (155 * 1)) && (RealY < (170 * 1)))    
+  {
+    SubMenuSelection = 2;
+    if (mouse.left && mouse.press)
+    {
+      MusicOn = !MusicOn;
+      if(!MusicOn && MusicPlaying())
+        StopMusic();
+      else
+        PlayMusic("title", 1, true);
+      SaveMusicOn();
+      PlaySound(SND_SELECT);
+    }
+  }
+  
+  if ((RealX > (247 * 1)) && (RealX < (308 * 1)) &&
+      (RealY > (185 * 1)) && (RealY < (200 * 1)))
+  {
+    SubMenuSelection = 3;
+    if(mouse.left && mouse.press)
+    {
+      SoundOn = !SoundOn;
+      SaveSoundOn();
+      PlaySound(SND_SELECT);
+    }
+  }
+
+  if ((RealX > (247 * 1)) && (RealX < (275 * 1)) &&
+      (RealY > (215 * 1)) && (RealY < (230 * 1)))
+  {
+    SubMenuSelection = 4;
+    if (mouse.left && mouse.press)
+    {
+      PlaySound(SND_SELECT);
+      GameState = GameStates.GSTitleScreenInit;
+    }
+  }
+}
+
+CommonLogic = function()
+{
+  if (keyboard.press.T || gamepad.press.LB) {
+    PlaySound(SND_SELECT);
+    NextSkin();
+  }
+  
+  if (keyboard.press.U || gamepad.press.RT) {
+    SoundOn = !SoundOn;
+    SaveSoundOn();
+    PlaySound(SND_SELECT);
+  }
+  
+  if (keyboard.press.Y || gamepad.press.LT) {
+    MusicOn = !MusicOn;
+    if(!MusicOn && MusicPlaying())
+      StopMusic();
+    else
+      PlayMusic("title", 1, true);
+    SaveMusicOn();
+    PlaySound(SND_SELECT);
+  }
+  
+}
+
+PlayMusic = function(music, volume, loop)
+{
+  Music = null;
+  if(MusicOn)
+    Music = audio.playMusic(music, volume, loop);
+}
+
+MusicPlaying = function()
+{
+  return Music != null;
+}
+
+ResumeMusicPlaying = function()
+{
+  if (Music && MusicOn)
+    Music.play();
+}
+
+StopMusic = function()
+{
+  if(Music)
+  {
+    Music.stop();
+    Music = null;
+  }
+}
+
+DrawTextMonoSpace = function(Renderer, Text, x, y, textsize, widthsize, color)
+{
+  for (let i = 0; i < Text.length; i++)
+    Renderer.drawText(Text.substring(i,i+1), x + i * widthsize, y, textsize, color);
+}
+
+MousePosToScreen = function()  
+{
+  let x = ((mouse.x  + (screen.width/2)) * 320 / screen.width);
+  let yw = screen.width * 3 / 4;
+  let y = ((yw - ((mouse.y+(yw/2)))) * 240/ yw);
+  return {
+    "x" : x,
+    "y" : y
+  };
+}
+
+PlaySound = function(sound)
+{
+  if(SoundOn)
+    audio.playSound(sound);
+}
+
+PadScore = function(Score)
+{  
+  let val = 1000000;
+  let result = Score;
+  while(val >= 10)
+  {
+    if (Score < val)
+      result = "0" + result;
+    val = val / 10;
+  }
+  return result;
+}
+
+var NrOfSounds = 14;
+var BlockBlue = 0;
+var BlockYellow = 1;
+var BlockOrange = 2;
+var BlockGreen = 3;
+var BlockRed = 4;
+
+var SND_READYGO = "readygo";
+var SND_5MINUTE = "fiveminute";
+var SND_1MINUTE = "oneminute";
+var SND_3 = "three";
+var SND_2 = "two";
+var SND_1 = "one";
+var SND_TIMEOVER = "timeover";
+var SND_MENU = "menu";
+var SND_SELECT = "select";
+var SND_WELCOME = "welcome";
+var SND_GOODBYE = "goodbye";
+var SND_DELETE = "delete";
+var SND_BLOCKSELECT = "blockselect";
+var SND_ERROR = "error";
+
+var NrOfRows = 10;
+var NrOfCols = 10;
+var TileWidth = 23;
+var TileHeight = 23;
+var NrOfBlockColors = 5;
+var GSInitDiff = 50;
+var MaxSkins = 5;
+
+//enum mappings
+var GameStates = {
+  GSQuit: 0,
+  GSIntro: 1,
+  GSGame: 2,
+  GSTitleScreen: 3,
+  GSTimeOver: 4,
+  GSReadyGo: 5,
+  GSCredits: 6,
+  GSGameTypeMenu: 7,
+  GSShowHighScores: 8,
+  GSHighScoreSubmit: 9,
+  GSIntroInit: 1 + GSInitDiff,
+  GSGameInit: 2 + GSInitDiff,
+  GSTitleScreenInit: 3 + GSInitDiff,
+  GSTimeOverInit: 4 + GSInitDiff,
+  GSReadyGoInit: 5 + GSInitDiff,
+  GSCreditsInit: 6 + GSInitDiff,
+  GSGameTypeMenuInit: 7 + GSInitDiff,
+  GSShowHighScoresInit: 8 + GSInitDiff,
+  GSHighScoreSubmitInit: 9 + GSInitDiff
+};
+
+var GameTypes = {
+  Fixed: 0,
+  Relative: 1
+};
+
+
+//structs
+SPoint = class {
+  constructor(x, y) {
+    this.X = x;
+    this.Y = y;
+  }
+}
+
+SHighScore = class {
+  constructor(pName, pScore) {
+    this.PName = pName;
+    this.PScore = pScore;
+  }
+}
+
+InitGlobals = function()
+{
+  //i wanted top left 0,0 origin was easier to port the game
+  //the screenimage will be scaled later on when drawn
+  ScreenImage = new msImage(320,240);
+  GameState = GameStates.GSIntroInit;
+  MouseMoved = false;
+  PrevMouseX = Math.floor(mouse.x);
+  PrevMouseY = Math.floor(mouse.y);
+  Score = 0;
+  AddToScore = 0;
+  ScoreTimer = 0;
+  Time1 = 0;
+  Time2 = 0;
+  Timer = 0;
+  Skin = 0;
+  Counter = 0;
+  ScoreType = 0;
+  Selector = null;
+  Music = null;
+  MusicOn = true;
+  SoundOn = true;
+  World = null; // Assuming CWorldParts instance
+  GameType = GameTypes.Fixed;
+  MainMenu = null;
+  GameTypeMenu = null;
+  HighScoreName = "";
+  HighScoreSubState = 0;
+  HighScorePlace = 0;
+  HighScoreSelection = 0;
+  HighScoreSubmitChanges = false;
+  HighScoreAsci = 0;
+  IntroScreenNr = 1;
+  SubMenuSelection = -1;
+  HighScores = Array.from({ length: 2 }, () => Array.from({ length: 10 }, () => ({ PName: "player", PScore: 0 })));
+}
+
+init = function() {
+  InitGlobals();
+  LoadHighScores();
+  LoadMusicOn();
+  LoadSoundOn();
+  LoadSkin();
+  SelectSkin(Skin);
+  GameState = GameStates.GSIntroInit;
+  Selector = new CSelector(SelectedSkin.IMGCursor, NrOfCols >>1, NrOfRows >> 1);
+  World = new CWorldParts(SelectedSkin.IMGBlocks, SND_DELETE, SND_ERROR, SND_BLOCKSELECT);
+  MainMenu = new CMainMenu(SelectedSkin.IMGTitleScreen, SelectedSkin.IMGPlay1, SelectedSkin.IMGPlay2, SelectedSkin.IMGHighScores1,
+    SelectedSkin.IMGHighScores2, SelectedSkin.IMGCredits1, SelectedSkin.IMGCredits2, SelectedSkin.IMGQuit1,
+    SelectedSkin.IMGQuit2, SND_MENU);
+  GameTypeMenu = new CGameTypeMenu(SelectedSkin.IMGTitleScreen, SelectedSkin.IMGSelectGame, SelectedSkin.IMGFixedTimer1,
+    SelectedSkin.IMGFixedTimer2, SelectedSkin.IMGRelativeTimer1, SelectedSkin.IMGRelativeTimer2,
+    SND_MENU);
+}
+
+update = function() {
+  MouseMoved = Math.floor(mouse.x) != PrevMouseX || Math.floor(mouse.y) != PrevMouseY;
+  PrevMouseX = Math.floor(mouse.x);
+  PrevMouseY = Math.floor(mouse.y);
+
+  //music could stop sometimes
+  ResumeMusicPlaying();
+  
+  switch (GameState) {
+    case GameStates.GSIntroInit:
+    case GameStates.GSIntro:
+      IntroLogic();
+      break;
+    case GameStates.GSHighScoreSubmitInit:
+    case GameStates.GSHighScoreSubmit:
+      HighScoreSubmitLogic();
+      break;
+    case GameStates.GSShowHighScoresInit:
+    case GameStates.GSShowHighScores:
+      ShowHighScoresLogic();
+      break;
+    case GameStates.GSCreditsInit:
+    case GameStates.GSCredits:
+      CreditsLogic();
+      break;
+    case GameStates.GSGameTypeMenuInit:
+    case GameStates.GSGameTypeMenu:
+      GameTypeMenuLogic();
+      break;
+    case GameStates.GSTitleScreenInit:
+    case GameStates.GSTitleScreen:
+      TitleScreenLogic();
+      break;
+    case GameStates.GSReadyGoInit:
+    case GameStates.GSReadyGo:
+      ReadyGoLogic();
+      break;
+    case GameStates.GSGameInit:
+    case GameStates.GSGame:
+      GameLogic();
+      break;
+    case GameStates.GSTimeOverInit:
+    case GameStates.GSTimeOver:
+      TimeOverLogic();
+    default:
+      break;
+  }
+}
+
+
+draw = function() {
+  //need to clear it in case of portrait mode
+  screen.clear("#000000");
+  
+  switch (GameState) {
+    case GameStates.GSIntroInit:
+    case GameStates.GSIntro:
+      IntroDraw();
+      break;
+    case GameStates.GSHighScoreSubmitInit:
+    case GameStates.GSHighScoreSubmit:
+      HighScoreSubmitDraw();
+      break;
+    case GameStates.GSShowHighScoresInit:
+    case GameStates.GSShowHighScores:
+      ShowHighScoresDraw();
+      break;
+    case GameStates.GSCreditsInit:
+    case GameStates.GSCredits:
+      CreditsDraw();
+      break;
+    case GameStates.GSGameTypeMenuInit:
+    case GameStates.GSGameTypeMenu:
+      GameTypeMenuDraw();
+      break;
+    case GameStates.GSTitleScreenInit:
+    case GameStates.GSTitleScreen:
+      TitleScreenDraw();
+      break;
+    case GameStates.GSReadyGoInit:
+    case GameStates.GSReadyGo:
+      ReadyGoDraw();
+      break;
+    case GameStates.GSGameInit:
+    case GameStates.GSGame:
+      GameDraw();
+      break;
+    case GameStates.GSTimeOverInit:
+    case GameStates.GSTimeOver:
+      TimeOverDraw();
+    default:
+      break;
+  }
+  screen.drawImage(ScreenImage, 0, 0, screen.width, screen.width * 3/4);
+}
+
+LoadSoundOn = function() {
+  SoundOn = storage.get("SoundOn");
+  //i added +1 when saving because false === 0
+  //this way i can detect if the data was never saved before 
+  //and enable sound on first run
+  if(SoundOn == 0)
+    SoundOn = 1;
+  else
+    SoundOn--;
+}
+
+LoadMusicOn = function() {
+  MusicOn = storage.get("MusicOn");
+  if(MusicOn == 0 )
+    MusicOn = 1;
+  else
+    MusicOn--;
+}
+
+LoadSkin = function() {
+  Skin = storage.get("Skin");
+  if(Skin < 0 || Skin >= MaxSkins)
+    Skin = 0;
+}
+
+LoadHighScores = function() {
+  for (let Teller = 0; Teller < 10; Teller++) {
+    let name = storage.get("HighScoreNameFixed" + Teller);
+    //it is number if data was never saved otherwise string
+    if (typeof name == "number")
+      name = "player";
+    HighScores[GameTypes.Fixed][Teller].PName = name;
+    HighScores[GameTypes.Fixed][Teller].PScore = storage.get("HighScoreScoreFixed" + Teller);
+    
+    name = storage.get("HighScoreNameRelative" + Teller);
+    if (typeof name == "number")
+      name = "player";
+
+    HighScores[GameTypes.Relative][Teller].PName = name;
+    HighScores[GameTypes.Relative][Teller].PScore = storage.get("HighScoreScoreRelative" + Teller);
+  }
+}
+
+SaveMusicOn = function()
+{
+  storage.set("MusicOn", MusicOn + 1);
+}
+
+SaveSoundOn = function()
+{
+  storage.set("SoundOn", SoundOn + 1);
+}
+
+SaveSkin = function()
+{
+  storage.set("Skin", Skin);
+}
+
+SaveHighScores = function() {
+  for (let Teller = 0; Teller < 10; Teller++) {
+    storage.set("HighScoreNameFixed" + Teller, HighScores[GameTypes.Fixed][Teller].PName);
+    storage.set("HighScoreScoreFixed" + Teller, HighScores[GameTypes.Fixed][Teller].PScore);
+    
+    storage.set("HighScoreNameRelative" + Teller, HighScores[GameTypes.Relative][Teller].PName);
+    storage.set("HighScoreScoreRelative" + Teller, HighScores[GameTypes.Relative][Teller].PScore);
+  }
+}
+
+
+SetDefaultSkin = function()
+{
+  SelectedSkin = {
+    "IMGBackground" : "skins/default/background.png",
+    "IMGBlocks" : "skins/default/blocks.png",
+    "IMGCursor" : "skins/default/cursor.png",
+    "IMGReady" : "skins/default/ready.png",
+    "IMGGo" : "skins/default/go.png",
+    "IMGTimeOver" : "skins/default/timeover.png",
+    "IMGIntro1" : "skins/default/intro1.png",
+    "IMGIntro2" : "skins/default/intro2.png",
+    "IMGIntro3" : "skins/default/intro3.png",
+    "IMGTitleScreen" : "skins/default/titlescreen.png",
+    "IMGQuit1" : "skins/default/quit1.png",
+    "IMGQuit2" : "skins/default/quit2.png",
+    "IMGPlay1" : "skins/default/play1.png",
+    "IMGPlay2" : "skins/default/play2.png",
+    "IMGHighScores1" : "skins/default/highscores1.png",
+    "IMGHighScores2" : "skins/default/highscores2.png",
+    "IMGCredits1" : "skins/default/credits1.png",
+    "IMGCredits2" : "skins/default/credits2.png",
+    "IMGCredits" : "skins/default/credits.png",
+    "IMGSelectGame" : "skins/default/selectgame.png",
+    "IMGFixedTimer1" : "skins/default/fixedtimer1.png",
+    "IMGFixedTimer2" : "skins/default/fixedtimer2.png",
+    "IMGRelativeTimer1" : "skins/default/relativetimer1.png",
+    "IMGRelativeTimer2" : "skins/default/relativetimer2.png",
+    "IMGHighScores" : "skins/default/highscores.png"
+  }
+}
+
+SetRedSkin = function()
+{
+  SelectedSkin = {
+    "IMGBackground" : "skins/red/background.png",
+    "IMGBlocks" : "skins/red/blocks.png",
+    "IMGCursor" : "skins/default/cursor.png",
+    "IMGReady" : "skins/red/ready.png",
+    "IMGGo" : "skins/red/go.png",
+    "IMGTimeOver" : "skins/red/timeover.png",
+    "IMGIntro1" : "skins/red/intro1.png",
+    "IMGIntro2" : "skins/red/intro2.png",
+    "IMGIntro3" : "skins/red/intro3.png",
+    "IMGTitleScreen" : "skins/red/titlescreen.png",
+    "IMGQuit1" : "skins/red/quit1.png",
+    "IMGQuit2" : "skins/red/quit2.png",
+    "IMGPlay1" : "skins/red/play1.png",
+    "IMGPlay2" : "skins/red/play2.png",
+    "IMGHighScores1" : "skins/red/highscores1.png",
+    "IMGHighScores2" : "skins/red/highscores2.png",
+    "IMGCredits1" : "skins/red/credits1.png",
+    "IMGCredits2" : "skins/red/credits2.png",
+    "IMGCredits" : "skins/red/credits.png",
+    "IMGSelectGame" : "skins/red/selectgame.png",
+    "IMGFixedTimer1" : "skins/red/fixedtimer1.png",
+    "IMGFixedTimer2" : "skins/red/fixedtimer2.png",
+    "IMGRelativeTimer1" : "skins/red/relativetimer1.png",
+    "IMGRelativeTimer2" : "skins/red/relativetimer2.png",
+    "IMGHighScores" : "skins/red/highscores.png"
+  }
+}
+
+SetNumbersSkin = function()
+{
+  SelectedSkin = {
+    "IMGBackground" : "skins/numbers/background.png",
+    "IMGBlocks" : "skins/numbers/blocks.png",
+    "IMGCursor" : "skins/default/cursor.png",
+    "IMGReady" : "skins/numbers/ready.png",
+    "IMGGo" : "skins/numbers/go.png",
+    "IMGTimeOver" : "skins/numbers/timeover.png",
+    "IMGIntro1" : "skins/numbers/intro1.png",
+    "IMGIntro2" : "skins/numbers/intro2.png",
+    "IMGIntro3" : "skins/numbers/intro3.png",
+    "IMGTitleScreen" : "skins/numbers/titlescreen.png",
+    "IMGQuit1" : "skins/numbers/quit1.png",
+    "IMGQuit2" : "skins/numbers/quit2.png",
+    "IMGPlay1" : "skins/numbers/play1.png",
+    "IMGPlay2" : "skins/numbers/play2.png",
+    "IMGHighScores1" : "skins/numbers/highscores1.png",
+    "IMGHighScores2" : "skins/numbers/highscores2.png",
+    "IMGCredits1" : "skins/numbers/credits1.png",
+    "IMGCredits2" : "skins/numbers/credits2.png",
+    "IMGCredits" : "skins/numbers/credits.png",
+    "IMGSelectGame" : "skins/numbers/selectgame.png",
+    "IMGFixedTimer1" : "skins/numbers/fixedtimer1.png",
+    "IMGFixedTimer2" : "skins/numbers/fixedtimer2.png",
+    "IMGRelativeTimer1" : "skins/numbers/relativetimer1.png",
+    "IMGRelativeTimer2" : "skins/numbers/relativetimer2.png",
+    "IMGHighScores" : "skins/numbers/highscores.png"
+  }
+}
+
+SetNewBlocksSkin = function()
+{
+  SelectedSkin = {
+    "IMGBackground" : "skins/newblocks/background.png",
+    "IMGBlocks" : "skins/newblocks/blocks.png",
+    "IMGCursor" : "skins/default/cursor.png",
+    "IMGReady" : "skins/default/ready.png",
+    "IMGGo" : "skins/default/go.png",
+    "IMGTimeOver" : "skins/default/timeover.png",
+    "IMGIntro1" : "skins/default/intro1.png",
+    "IMGIntro2" : "skins/default/intro2.png",
+    "IMGIntro3" : "skins/default/intro3.png",
+    "IMGTitleScreen" : "skins/default/titlescreen.png",
+    "IMGQuit1" : "skins/default/quit1.png",
+    "IMGQuit2" : "skins/default/quit2.png",
+    "IMGPlay1" : "skins/default/play1.png",
+    "IMGPlay2" : "skins/default/play2.png",
+    "IMGHighScores1" : "skins/default/highscores1.png",
+    "IMGHighScores2" : "skins/default/highscores2.png",
+    "IMGCredits1" : "skins/default/credits1.png",
+    "IMGCredits2" : "skins/default/credits2.png",
+    "IMGCredits" : "skins/default/credits.png",
+    "IMGSelectGame" : "skins/default/selectgame.png",
+    "IMGFixedTimer1" : "skins/default/fixedtimer1.png",
+    "IMGFixedTimer2" : "skins/default/fixedtimer2.png",
+    "IMGRelativeTimer1" : "skins/default/relativetimer1.png",
+    "IMGRelativeTimer2" : "skins/default/relativetimer2.png",
+    "IMGHighScores" : "skins/default/highscores.png"
+  }
+}
+
+SetRedSkin = function()
+{
+  SelectedSkin = {
+    "IMGBackground" : "skins/red/background.png",
+    "IMGBlocks" : "skins/red/blocks.png",
+    "IMGCursor" : "skins/default/cursor.png",
+    "IMGReady" : "skins/red/ready.png",
+    "IMGGo" : "skins/red/go.png",
+    "IMGTimeOver" : "skins/red/timeover.png",
+    "IMGIntro1" : "skins/red/intro1.png",
+    "IMGIntro2" : "skins/red/intro2.png",
+    "IMGIntro3" : "skins/red/intro3.png",
+    "IMGTitleScreen" : "skins/red/titlescreen.png",
+    "IMGQuit1" : "skins/red/quit1.png",
+    "IMGQuit2" : "skins/red/quit2.png",
+    "IMGPlay1" : "skins/red/play1.png",
+    "IMGPlay2" : "skins/red/play2.png",
+    "IMGHighScores1" : "skins/red/highscores1.png",
+    "IMGHighScores2" : "skins/red/highscores2.png",
+    "IMGCredits1" : "skins/red/credits1.png",
+    "IMGCredits2" : "skins/red/credits2.png",
+    "IMGCredits" : "skins/red/credits.png",
+    "IMGSelectGame" : "skins/red/selectgame.png",
+    "IMGFixedTimer1" : "skins/red/fixedtimer1.png",
+    "IMGFixedTimer2" : "skins/red/fixedtimer2.png",
+    "IMGRelativeTimer1" : "skins/red/relativetimer1.png",
+    "IMGRelativeTimer2" : "skins/red/relativetimer2.png",
+    "IMGHighScores" : "skins/red/highscores.png"
+  }
+}
+
+SetPortmasterSkin = function()
+{
+  SelectedSkin = {
+    "IMGBackground" : "skins/portmaster/background.png",
+    "IMGBlocks" : "skins/portmaster/blocks.png",
+    "IMGCursor" : "skins/portmaster/cursor.png",
+    "IMGReady" : "skins/portmaster/ready.png",
+    "IMGGo" : "skins/portmaster/go.png",
+    "IMGTimeOver" : "skins/portmaster/timeover.png",
+    "IMGIntro1" : "skins/portmaster/intro1.png",
+    "IMGIntro2" : "skins/portmaster/intro2.png",
+    "IMGIntro3" : "skins/portmaster/intro3.png",
+    "IMGTitleScreen" : "skins/portmaster/titlescreen.png",
+    "IMGQuit1" : "skins/portmaster/quit1.png",
+    "IMGQuit2" : "skins/portmaster/quit2.png",
+    "IMGPlay1" : "skins/portmaster/play1.png",
+    "IMGPlay2" : "skins/portmaster/play2.png",
+    "IMGHighScores1" : "skins/portmaster/highscores1.png",
+    "IMGHighScores2" : "skins/portmaster/highscores2.png",
+    "IMGCredits1" : "skins/portmaster/credits1.png",
+    "IMGCredits2" : "skins/portmaster/credits2.png",
+    "IMGCredits" : "skins/portmaster/credits.png",
+    "IMGSelectGame" : "skins/portmaster/selectgame.png",
+    "IMGFixedTimer1" : "skins/portmaster/fixedtimer1.png",
+    "IMGFixedTimer2" : "skins/portmaster/fixedtimer2.png",
+    "IMGRelativeTimer1" : "skins/portmaster/relativetimer1.png",
+    "IMGRelativeTimer2" : "skins/portmaster/relativetimer2.png",
+    "IMGHighScores" : "skins/portmaster/highscores.png"
+  }
+}
+
+NextSkin = function()
+{
+  Skin++;
+  if ((Skin >= MaxSkins) || (Skin < 0))
+    Skin = 0;
+  SelectSkin(Skin);
+  SaveSkin();
+}
+
+SelectSkin = function(val)
+{
+  switch (val)
+  {
+    case 1:
+      SetNewBlocksSkin();
+      break;
+    case 2: 
+      SetRedSkin();
+      break;
+    case 3:
+      SetPortmasterSkin();
+      break;
+    case 4:
+      SetNumbersSkin();
+      break;
+    default:
+      SetDefaultSkin();
+      break;
+  }
+  if (World)
+    World.SetNewGraphics(SelectedSkin.IMGBlocks);
+  if (MainMenu)
+    MainMenu.SetNewGraphics(SelectedSkin.IMGTitleScreen, SelectedSkin.IMGPlay1, SelectedSkin.IMGPlay2, SelectedSkin.IMGHighScores1,
+    SelectedSkin.IMGHighScores2, SelectedSkin.IMGCredits1, SelectedSkin.IMGCredits2, SelectedSkin.IMGQuit1,
+    SelectedSkin.IMGQuit2);
+  if (GameTypeMenu)
+    GameTypeMenu.SetNewGraphics(SelectedSkin.IMGTitleScreen, SelectedSkin.IMGSelectGame, SelectedSkin.IMGFixedTimer1,
+    SelectedSkin.IMGFixedTimer2, SelectedSkin.IMGRelativeTimer1, SelectedSkin.IMGRelativeTimer2)
+}
+
+CreditsInit = function()
+{
+
+}
+
+CreditsLogic = function()
+{
+  if (GameState == GameStates.GSCreditsInit)
+  {
+    CreditsInit();
+    GameState -= GSInitDiff;
+  }
+  
+  CommonLogic();
+  
+  if ((mouse.left && mouse.press || keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A) ||
+     (mouse.right && mouse.press || keyboard.press.ESCAPE || gamepad.press.B)) {
+    GameState = GameStates.GSTitleScreenInit;
+    PlaySound(SND_SELECT);
+  }
+}
+
+CreditsDraw = function()
+{
+  ScreenImage.drawImage(SelectedSkin.IMGTitleScreen, 0, 0);
+  ScreenImage.drawImage(SelectedSkin.IMGCredits, 48, 76);
+}
+  
+
+GameInit = function() {
+  Time1 = system.time();
+  ScoreTimer = 0;
+  Score = 0;
+  Timer = (GameType === GameTypes.Relative) ? 150 : 300;
+  Selector = new CSelector(SelectedSkin.IMGCursor, NrOfCols >> 1, NrOfRows >> 1);
+  AddToScore = 0;
+}
+
+GameLogic = function() {
+  if(GameState == GameStates.GSGameInit)
+  {
+    GameInit();
+    GameState = GameStates.GSGameInit - GSInitDiff;
+  }
+
+  CommonLogic();
+  LogicStatusBar();
+  
+  let RealX = Math.floor(MousePosToScreen().x);
+  let RealY = Math.floor(MousePosToScreen().y);
+  let MouseInRange = false;  
+  if (((RealX - (NrOfCols >> 1)) > 0) &&
+    ((RealY - (NrOfRows >> 1)) > 0) && 
+    ((RealX - (NrOfCols >> 1)) < NrOfCols * TileWidth) &&
+    ((RealY - (NrOfRows >> 1)) < NrOfRows * TileHeight))
+  {
+    if(MouseMoved)
+      Selector.SetPosition( Math.floor((RealX - (NrOfCols >> 1)) / TileWidth),
+        Math.floor((RealY - (NrOfRows >> 1)) / TileHeight));
+  
+    MouseInRange = true;
+  }
+  
+  if (mouse.right && mouse.press || keyboard.press.ESCAPE || gamepad.press.B) {
+    PlaySound(SND_SELECT);
+    GameState = GameStates.GSTitleScreenInit;
+  }
+
+  if (mouse.left && mouse.press && MouseInRange || keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A) {
+    AddToScore += World.Select(Selector.GetPosition().X, Selector.GetPosition().Y);
+    if (AddToScore !== 0) {
+      ScoreTimer = system.time() + 700;
+    }
+  }
+
+  if (keyboard.press.LEFT || gamepad.press.LEFT) {
+    Selector.SetPosition(Selector.GetPosition().X - 1, Selector.GetPosition().Y);
+  }
+
+  if (keyboard.press.RIGHT || gamepad.press.RIGHT) {
+    Selector.SetPosition(Selector.GetPosition().X + 1, Selector.GetPosition().Y);
+  }
+
+  if (keyboard.press.UP || gamepad.press.UP) {
+    Selector.SetPosition(Selector.GetPosition().X, Selector.GetPosition().Y - 1);
+  }
+
+  if (keyboard.press.DOWN || gamepad.press.DOWN) {
+    Selector.SetPosition(Selector.GetPosition().X, Selector.GetPosition().Y + 1);
+  }
+
+  if (Time1 + 1000 < system.time()) {
+    Timer -= 1;
+    switch (Timer) {
+      case 300:
+        PlaySound(SND_5MINUTE);
+        break;
+      case 60:
+          PlaySound(SND_1MINUTE);
+        break;
+      case 3:
+          PlaySound(SND_3);
+        break;
+      case 2:
+          PlaySound(SND_2);
+        break;
+      case 1:
+          PlaySound(SND_1);
+        break;
+      case 0:
+        if (ScoreTimer !== 0) {
+          Score += AddToScore;
+          if (GameType === GameTypes.Relative) {
+            Timer += Math.floor(AddToScore / 300);
+          }
+        }
+        if(Timer === 0)
+        {
+          PlaySound(SND_TIMEOVER);
+          GameState = GameStates.GSTimeOverInit;
+        }
+        break;
+    }
+    Time1 = system.time();
+  }
+}
+
+
+GameDraw = function()
+{
+  //don't draw if not initialized
+  //otherwise selector can quickly be shown on wrong position
+  //as drawing happens faster than logic
+  if(GameState != GameStates.GSGame)
+    return;
+  let Text = "";
+  let TextColor = "#FFFFFFC0";
+  ScreenImage.drawSprite(SelectedSkin.IMGBackground, 0, 0)
+  World.Draw(ScreenImage);
+  Selector.Draw(ScreenImage);
+
+  if (AddToScore !== 0) {
+    if (ScoreTimer > system.time()) {
+      Text = "+" + AddToScore;
+      ScreenImage.drawText(Text, 247, 96, 15, TextColor)
+      if (GameType === GameTypes.Relative) {
+        Text = "+" + Math.floor(AddToScore / 300);
+        ScreenImage.drawText(Text, 247, 40, 15, TextColor);
+      }
+    } else {
+      ScoreTimer = 0;
+      Score += AddToScore;
+      if (GameType === GameTypes.Relative) {
+        Timer += Math.floor(AddToScore / 300);
+      }
+      AddToScore = 0;
+    }
+  }
+
+  DrawStatusBar();
+}
+
+
+GameTypeMenuInit = function() {
+  
+}
+
+GameTypeMenuLogic = function() {
+  
+  if (GameState == GameStates.GSGameTypeMenuInit)
+  {
+    GameTypeMenuInit();
+    GameState -= GSInitDiff;
+  }
+  
+  CommonLogic();
+  
+  if (mouse.right && mouse.press || keyboard.press.ESCAPE || gamepad.press.B) {
+    PlaySound(SND_SELECT);
+    GameState = GameStates.GSTitleScreenInit;
+  }
+  
+  if (keyboard.press.UP || gamepad.press.UP) {
+    GameTypeMenu.PreviousItem();
+  }
+  
+  if (keyboard.press.DOWN || gamepad.press.DOWN) {
+    GameTypeMenu.NextItem();
+  }
+  let MouseSel = GameTypeMenu.GetMouseSelection(MousePosToScreen().x, MousePosToScreen().y);
+  if (MouseSel > -1)
+    if(MouseMoved)
+      GameTypeMenu.SetSelection(MouseSel);
+
+  if (MouseSel > -1 && mouse.left && mouse.press ||
+     keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A) {
+    PlaySound(SND_SELECT);
+    GameType = GameTypeMenu.GetSelection();
+    GameState = GameStates.GSReadyGoInit;
+  }
+}
+
+GameTypeMenuDraw = function() {
+  GameTypeMenu.Draw(ScreenImage); 
+}
+
+ShowHighScoresInit = function() {
+  
+}
+
+ShowHighScoresLogic = function() {
+  
+  if (GameState == GameStates.GSShowHighScoresInit)
+  {
+    ShowHighScoresInit();
+    GameState -= GSInitDiff;
+  }
+  
+  CommonLogic();
+  
+  if ((mouse.right && mouse.press) || keyboard.press.ESCAPE || gamepad.press.B) {
+    PlaySound(SND_SELECT);
+    GameState = GameStates.GSTitleScreenInit;
+  }
+  
+  if (keyboard.press.UP || gamepad.press.UP) {
+    MainMenu.PreviousItem();
+  }
+  
+  if (keyboard.press.DOWN || gamepad.press.DOWN) {
+    MainMenu.NextItem();
+  }
+  
+  if ((mouse.left && mouse.press) ||keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A) {
+    if (ScoreType == GameTypes.Fixed)
+      ScoreType = GameTypes.Relative;
+    else
+      GameState = GameStates.GSTitleScreenInit;
+    PlaySound(SND_SELECT)
+  }
+}
+
+ShowHighScoresDraw = function() {
+  ScreenImage.drawImage(SelectedSkin.IMGHighScores, 0, 0);
+  let Text = "";
+  let TextColor = "#FFFFFFC0";
+  switch (ScoreType) {
+    case GameTypes.Fixed:
+      Text = "Gametype: Fixed Timer";
+      break;
+    case GameTypes.Relative:
+       Text = "Gametype: Relative Timer";
+      break;
+  }
+
+  ScreenImage.drawText(Text, 85, 67, 16, TextColor);
+  for (Teller = 0; Teller < 10; Teller++) {
+    Text =  (Teller+1) + ".";
+    if (Text.length < 3)
+      Text = " " + Text;
+    DrawTextMonoSpace(ScreenImage, Text, 40, (88 + Teller * 13), 14, 8, TextColor);
+    Text =  HighScores[ScoreType][Teller].PName;
+    ScreenImage.drawText(Text, 67, (88 + Teller * 13), 14, TextColor);
+    Text = PadScore(HighScores[ScoreType][Teller].PScore);
+    DrawTextMonoSpace(ScreenImage,Text, 220, (88 + Teller * 13), 14, 8, TextColor);
+  }
+}
+
+HighScoreSubmitInit = function()
+{
+  Timer = 0;
+  HighScoreSubState = 1;
+  HighScorePlace = 0;
+  HighScoreSelection = 0, HighScoreAsci = 97;
+  HighScoreSubmitChanges = false;
+  for (let Teller1 = 0; Teller1 < 10; Teller1++) {
+    if (HighScores[GameType][Teller1].PScore < Score) {
+      //force a copy
+      HighScoreName = (' ' + HighScores[GameType][Teller1].PName).slice(1)
+      HighScoreSubState = 0;
+      HighScorePlace = Teller1;
+      break;
+    }
+  }
+  MaxHighScoreSelection = HighScoreName.length;
+  if(MaxHighScoreSelection < 1)
+    MaxHighScoreSelection = 1;
+  HighScoreSelection = MaxHighScoreSelection-1;
+}
+
+HighScoreSubmitLogic = function()
+{
+  if (GameState == GameStates.GSHighScoreSubmitInit)
+  {
+    HighScoreSubmitInit();
+    GameState -= GSInitDiff;
+  }
+  
+  CommonLogic();
+  
+  if (HighScoreSubState === 0)
+  {
+    
+    if ((mouse.right && mouse.press) || keyboard.press.ESCAPE || gamepad.press.B) {
+      PlaySound(SND_SELECT);
+      HighScoreSubState = 1;
+      HighScoreSubmitChanges = false;
+    }
+  
+    if ((mouse.left && mouse.press) || keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A) {
+      PlaySound(SND_SELECT);
+      HighScoreSubState = 1;
+      HighScoreSubmitChanges = true;
+    }
+    
+    if (keyboard.press.LEFT || gamepad.press.LEFT) {
+      if (HighScoreSelection > 0) {
+        HighScoreSelection--;
+        HighScoreAsci = HighScoreName.charCodeAt(HighScoreSelection);
+      }
+    }
+
+    if (keyboard.press.RIGHT || gamepad.press.RIGHT) {
+      if (HighScoreSelection < 13) {
+        HighScoreSelection++;
+        if (HighScoreSelection >= MaxHighScoreSelection) {
+          HighScoreName += String.fromCharCode(97);
+          MaxHighScoreSelection = HighScoreSelection + 1;
+        }
+        HighScoreAsci = HighScoreName.charCodeAt(HighScoreSelection);
+      }
+    }
+
+    if (keyboard.press.UP || gamepad.press.UP) {
+      HighScoreAsci++;
+      if (HighScoreAsci === 123) HighScoreAsci = 32;
+      if (HighScoreAsci === 33) HighScoreAsci = 48;
+      if (HighScoreAsci === 58) HighScoreAsci = 97;
+      HighScoreName = HighScoreName.substring(0, HighScoreSelection) + String.fromCharCode(HighScoreAsci) + HighScoreName.substring(HighScoreSelection + 1);
+    }
+
+    if (keyboard.press.DOWN || gamepad.press.DOWN) {
+      HighScoreAsci--;
+      if (HighScoreAsci === 96) HighScoreAsci = 57;
+      if (HighScoreAsci === 47) HighScoreAsci = 32;
+      if (HighScoreAsci === 31) HighScoreAsci = 122;
+      HighScoreName = HighScoreName.substring(0, HighScoreSelection) + String.fromCharCode(HighScoreAsci) + HighScoreName.substring(HighScoreSelection + 1);
+    }
+  }
+  else
+  {
+    if(HighScoreSubmitChanges)
+    {
+      HighScoreSubmitChanges = false;
+      for (Teller1 = 0; Teller1 < 10; Teller1++) {
+        if (HighScores[GameType][Teller1].PScore < Score) {
+          for (Teller2 = 8; Teller2 >= Teller1; Teller2--)
+          {
+            HighScores[GameType][Teller2 + 1].PName = HighScores[GameType][Teller2].PName;
+            HighScores[GameType][Teller2 + 1].PScore = HighScores[GameType][Teller2].PScore;
+          }
+          HighScores[GameType][Teller1].PName = HighScoreName.trim()
+          HighScores[GameType][Teller1].PScore = Score;
+          SaveHighScores();
+          break;
+        }
+      }
+    }
+    ScoreType = GameType;
+    GameState = GameStates.GSShowHighScores;
+  }
+  
+}
+
+HighScoreSubmitDraw = function()
+{
+  //don't draw if not initialized
+  //otherwise things can quickly be shown on wrong position
+  //as drawing happens faster than logic
+  if(GameState != GameStates.GSHighScoreSubmit)
+    return;
+    
+  let TextColor = "#E0E0E0C0";
+  let TextColor1 = "#FFFFFFC0"
+  let Text = "";
+  ScreenImage.drawSprite(SelectedSkin.IMGHighScores, 0, 0)
+  switch (GameType) {
+    case GameTypes.Fixed:
+      Text = "Gametype: Fixed Timer";
+      break;
+    case GameTypes.Relative:
+       Text = "Gametype: Relative Timer";
+      break;
+  }
+
+  ScreenImage.drawText(Text, 85, 67, 16, TextColor1);
+  //draw higher scores
+  for (let Teller = 0; Teller < HighScorePlace; Teller++) 
+  {
+      Text =  (Teller+1) + ".";
+      if (Text.length < 3)
+        Text = " " + Text;
+      DrawTextMonoSpace(ScreenImage, Text, 40, (88 + Teller * 13), 14, 8, TextColor);
+      Text =  HighScores[GameType][Teller].PName;
+      ScreenImage.drawText(Text, 67, (88 + Teller * 13), 14, TextColor);
+      Text = PadScore(HighScores[GameType][Teller].PScore)
+      DrawTextMonoSpace(ScreenImage, Text, 220, (88 + Teller * 13), 14, 8, TextColor);
+  }
+  
+  //Draw Lower Scores
+  for (let Teller = HighScorePlace + 1; Teller < 10; Teller++) 
+  {
+      Text =  (Teller+1) + ".";
+      if (Text.length < 3)
+        Text = " " + Text;
+      DrawTextMonoSpace(ScreenImage, Text, 40, (88 + Teller * 13), 14, 8, TextColor);
+      Text =  HighScores[GameType][Teller-1].PName;
+      ScreenImage.drawText(Text, 67, (88 + Teller * 13), 14, TextColor);
+      Text = PadScore(HighScores[GameType][Teller-1].PScore)
+      DrawTextMonoSpace(ScreenImage, Text, 220, (88 + Teller * 13), 14, 8, TextColor);
+  }  
+    
+  //Draw Current Score
+  Text = (HighScorePlace+1) + ".";
+  if (Text.length < 3)
+    Text = " " + Text;
+  DrawTextMonoSpace(ScreenImage, Text, 40, (88 + HighScorePlace * 13), 14, 8, TextColor1);
+  Text = HighScoreName;
+  ScreenImage.drawText(Text, 67, (88 + HighScorePlace * 13), 14, TextColor1);
+  Text = PadScore(Score);
+  DrawTextMonoSpace(ScreenImage, Text, 220, (88 + HighScorePlace * 13), 14, 8, TextColor1);
+  
+  //Draw Selector
+  let x = screen.textWidth(HighScoreName.substring(0, HighScoreSelection),14);
+  Text = '_'
+  ScreenImage.drawText(Text, 67 + x, (88 + (HighScorePlace) * 13 + 3), 14, TextColor1);
+
+  Text = "Use Up,Down,Left,Right. Enter/Space = Confirm, Esc = Cancel";
+  ScreenImage.drawText(Text, 15, 227, 12, TextColor1);
+}
+  
+
+IntroInit = function()
+{
+  IntroScreenNr = 1;
+  Time1 = system.time();
+}
+
+IntroLogic = function()
+{
+  if (GameState == GameStates.GSIntroInit)
+  {
+    IntroInit();
+    GameState -= GSInitDiff;
+  }
+  
+  CommonLogic();
+  
+  if ((mouse.left && mouse.press) ||
+    (keyboard.press.ESCAPE || gamepad.press.B) || 
+    (keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A)) {
+    GameState = GameStates.GSTitleScreenInit;
+  }
+
+  if (Time1 + 1500 < system.time()) 
+  {
+    IntroScreenNr++;
+    if (IntroScreenNr > 3)
+      GameState = GameStates.GSTitleScreenInit;
+    Time1 = system.time();
+  }
+}
+
+IntroDraw = function()
+{
+  switch (IntroScreenNr) {
+  case 1:
+    ScreenImage.drawImage(SelectedSkin.IMGIntro1, 0, 0);
+    break;
+  case 2:
+    ScreenImage.drawImage(SelectedSkin.IMGIntro2, 0, 0);
+    break;
+  case 3:
+    ScreenImage.drawImage(SelectedSkin.IMGIntro3, 0, 0);
+    break;
+  }
+}
+  
+
+ReadyGoInit = function()
+{
+  Timer = (GameType === GameTypes.Relative) ? 150 : 300;
+  Score = 0;
+  World.NewGame();
+  Counter = 0;
+  Time2 = system.time() + 500;
+}
+
+ReadyGoLogic = function()
+{
+  if (GameState == GameStates.GSReadyGoInit)
+  {
+    ReadyGoInit();
+    GameState -= GSInitDiff;
+  }
+  
+  CommonLogic();
+  LogicStatusBar();
+  
+  if (mouse.right && mouse.press || keyboard.press.ESCAPE || gamepad.press.B) {
+    PlaySound(SND_SELECT);
+    GameState = GameStates.GSTitleScreenInit;
+  }
+  
+  if (Time2 < system.time()) {
+    Counter++;
+    if (Counter == 1)
+    {
+      PlaySound(SND_READYGO);
+    }
+    if (Counter == 2) {
+      Time2 = system.time() + 400;
+    } 
+    else
+      Time2 = system.time() + 900;
+  }
+    
+  if(Counter == 3)
+    GameState = GameStates.GSGameInit;
+  
+}
+
+ReadyGoDraw = function()
+{
+  //don't draw if not initialized
+  //otherwise things can quickly be shown on wrong position
+  //as drawing happens faster than logic
+  if(GameState != GameStates.GSReadyGo)
+    return;
+  ScreenImage.drawSprite(SelectedSkin.IMGBackground, 0, 0)
+  World.Draw(ScreenImage);
+  ScreenImage.drawSprite(SelectedSkin.IMGReadyGo, 23, 85)
+  switch (Counter) {
+    case 1:
+      ScreenImage.drawSprite(SelectedSkin.IMGReady, 46, 85)
+      break;
+    case 2:
+      ScreenImage.drawSprite(SelectedSkin.IMGGo, 93, 85)
+      break;
+  } 
+  DrawStatusBar();
+}
+
+TimeOverInit = function()
+{
+  Time2 = system.time() + 1250;
+  Timer = 0;
+}
+
+TimeOverLogic = function()
+{
+  if (GameState == GameStates.GSTimeOverInit)
+  {
+    TimeOverInit();
+    GameState -= GSInitDiff;
+  }
+  
+  CommonLogic();
+  LogicStatusBar();
+  
+  if (keyboard.press.ESCAPE || gamepad.press.B) {
+    PlaySound(SND_SELECT);
+    GameState = GameStates.GSHighScoreSubmitInit;
+  }
+
+  if (keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A) {
+    GameState = GameStates.GSHighScoreSubmitInit;
+  }
+  
+  if (Time2 < system.time()) {
+      GameState = GameStates.GSHighScoreSubmitInit;
+  }
+}
+
+TimeOverDraw = function()
+{
+  //don't draw if not initialized
+  //otherwise things can quickly be shown on wrong position
+  //as drawing happens faster than logic
+  if(GameState != GameStates.GSTimeOver)
+    return;
+  ScreenImage.drawSprite(SelectedSkin.IMGBackground, 0, 0)
+  World.Draw(ScreenImage);
+  ScreenImage.drawSprite(SelectedSkin.IMGTimeOver, 23, 85)
+  
+  DrawStatusBar();
+}
+  
+
+
+TitleScreenInit = function() {
+  SubMenuSelection = -1;
+  PlayMusic("title", 1, true);  
+}
+
+TitleScreenLogic = function() {
+  
+  if (GameState == GameStates.GSTitleScreenInit)
+  {
+    TitleScreenInit();
+    GameState -= GSInitDiff;
+  }
+  
+  CommonLogic();
+
+  if (keyboard.press.UP || gamepad.press.UP) {
+    MainMenu.PreviousItem();
+  }
+  
+  if (keyboard.press.DOWN || gamepad.press.DOWN) {
+    MainMenu.NextItem();
+  }
+  
+  let MouseSel = MainMenu.GetMouseSelection(MousePosToScreen().x, MousePosToScreen().y);
+  if (MouseSel > -1)
+    if(MouseMoved)
+      MainMenu.SetSelection(MouseSel);
+  
+  if (MouseSel > -1 && mouse.left && mouse.press ||
+      keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A) {
+      PlaySound(SND_SELECT);
+      switch (MainMenu.GetSelection()) {
+        case 1:
+          GameState = GameStates.GSGameTypeMenuInit;
+          break;
+        case 2:
+          //set scoretype (it is usesd in showhighscores) so it won't affect
+          //currently selected gametype and set always to fixed from main menu
+          //so we cycle through both score panels
+          ScoreType = GameTypes.Fixed;
+          GameState = GameStates.GSShowHighScoresInit;
+          break;
+        case 3:
+          GameState = GameStates.GSCreditsInit;
+          break;
+      }
+    }
+  
+  SubMenuSelection = -1;
+  let RealX = Math.floor(MousePosToScreen().x);
+  let RealY = Math.floor(MousePosToScreen().y);
+  
+  
+  if ((RealX > (43 * 1)) && (RealX < (106 * 1)) &&
+      (RealY > (175 * 1)) && (RealY < (188 * 1)))
+  {
+    SubMenuSelection = 1; 
+    if (mouse.left && mouse.press)
+    {
+      PlaySound(SND_SELECT);
+      NextSkin();
+    }
+  }
+  
+  if  ((RealX > (112 * 1)) && (RealX < (198 * 1)) &&
+      (RealY > (175 * 1)) && (RealY < (188 * 1)))
+  {
+    SubMenuSelection = 2;
+    if (mouse.left && mouse.press)
+    {
+      MusicOn = !MusicOn;
+      if(!MusicOn && MusicPlaying())
+        StopMusic();
+      else
+        PlayMusic("title", 1, true);
+      SaveMusicOn();
+      PlaySound(SND_SELECT);
+    }
+  }
+  
+  if  ((RealX > (203 * 1)) && (RealX < (288 * 1)) &&
+      (RealY > (175 * 1)) && (RealY < (188 * 1)))
+  {
+    SubMenuSelection = 3;
+    if (mouse.left && mouse.press)
+    {
+      SoundOn = !SoundOn;
+      SaveSoundOn();
+      PlaySound(SND_SELECT);
+    }
+  }
+
+  
+}
+
+TitleScreenDraw = function() {
+  MainMenu.Draw(ScreenImage);
+  let Text = "";
+  let TextColor = "";
+  TextColor = (SubMenuSelection == 1 ? "#FFFFFFFF":"#FFFFFFC0");
+  Text = "[T] Skin " + (Skin + 1);
+  ScreenImage.drawText(Text, 45, 175, 16, TextColor);
+  TextColor = (SubMenuSelection == 2 ? "#FFFFFFFF":"#FFFFFFC0");
+  Text = "[Y] Music " + (MusicOn ? "on": "off");
+  ScreenImage.drawText(Text, 115, 175, 16, TextColor);
+  TextColor = (SubMenuSelection == 3 ? "#FFFFFFFF":"#FFFFFFC0");
+  Text = "[U] Sound " + (SoundOn ? "on": "off");
+  ScreenImage.drawText(Text, 205, 175, 16, TextColor);
+}
+
+</script></html>
