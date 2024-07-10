@@ -1,7 +1,8 @@
 # Znax
 Znax is a remake of a game by Nick Kouvaris.
 It is a sort of puzzle / arcade game where you as the player need to select 4 blocks of the same color and 
-form rectangles as big as you can. By doing this you will erase all blocks in this rectangle and they will be replaced 
+form rectangles as big as you can where the corners of the rectangle are those 4 selected same colored blocks. 
+By doing this you will erase all blocks in this rectangle and they will be replaced 
 by new blocks. You keep on doing this untill the time runs out, and try to gain your highest score possible. 
 There are two game modes, Relative Timer and Fixed Timer, in the first mode you'll also gain extra time for 
 deleting blocks so you can play longer if you are fast enough. With the second mode you don't get extra time 
@@ -21,6 +22,10 @@ Small changes have been done compared to my other versions like:
 * Specific changes required for microStudio like saving of highscores, sound, music and skin options, Input handling, drawing functions etc
 
 ## ChangeLog 
+### Version 1.2
+* Added Crossfading between the different states / screens
+* Added Crossfading when highlighting or selecting menu items
+* Added Crossfading when selecting a new skin
 ### Version 1.1
 * Shows how many rectangles are possible to form in the statusbar on the right
 * Made sure when a game starts there are always at least 10 rectangles to form

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><title>Znax v1.1</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui=1"><meta charset="UTF-8"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="description" content=""><link rel="manifest" href="manifest.json"><link rel="icon" type="image/png" href="icon64.png"><link rel="apple-touch-icon" sizes="180x180" href="icon180.png"><link rel="icon" type="image/png" sizes="32x32" href="icon32.png"><link rel="icon" type="image/png" sizes="16x16" href="icon16.png"><style>html,body {
+<!DOCTYPE html><html><head><title>Znax v1.2</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui=1"><meta charset="UTF-8"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="description" content=""><link rel="manifest" href="manifest.json"><link rel="icon" type="image/png" href="icon64.png"><link rel="apple-touch-icon" sizes="180x180" href="icon180.png"><link rel="icon" type="image/png" sizes="32x32" href="icon32.png"><link rel="icon" type="image/png" sizes="16x16" href="icon16.png"><style>html,body {
   margin: 0;
   padding: 0;
   background-color: #000;
@@ -25,33 +25,7 @@ var ms_libs = [] ;
 window.skip_service_worker = true;
 window.exported_project = true;
 window.ms_use_server = false ;
-</script>
-<script>
-    if(window.parent)
-    {
-      window.document.addEventListener('keydown', (event) => {
-        if(event.key == "Escape")
-        {
-          console.log('sended quit');
-          window.parent.postMessage(JSON.stringify({name:"quit"}), "*");
-        }
-      });
-      
-      window.addEventListener('load', (event) => {
-        console.log('sended start');
-        window.parent.postMessage(JSON.stringify({name: "start"}), "*");
-      });
-    }
-</script>
-<script src="./gamecontroller.min.js" >
-      gameControl.on('connect', function(gamepad) {
-        gamepad.before('start', functions() {
-          console.log('sended gamepad quit');
-          window.parent.postMessage(JSON.stringify({name:"quit"}), "*");
-        });
-      });
-</script>
-<script src="runner.js"></script><script src="microengine.js"></script></body><script type="text/javascript">//
+</script><script src="runner.js"></script><script src="microengine.js"></script></body><script type="text/javascript">//
 //
 // The game is started with the code below.
 // Once you have received the "started" signal (see below),
@@ -708,6 +682,11 @@ DrawStatusBar = function() {
   ScreenImage.drawText(Text, 247, 215, 16, TextColor);
 }
 
+StartFade = function(){
+  FadeImage.drawImage(ScreenImage, 0,0, 320, 240);
+  FadeValue = 1.0;
+}
+
 LogicStatusBar = function() {
   let RealX = Math.floor(MousePosToScreen().x);
   let RealY = Math.floor(MousePosToScreen().y);
@@ -731,6 +710,7 @@ LogicStatusBar = function() {
     SubMenuSelection = 2;
     if (mouse.left && mouse.press)
     {
+      StartFade();
       MusicOn = !MusicOn;
       if(!MusicOn && MusicPlaying())
         StopMusic();
@@ -747,6 +727,7 @@ LogicStatusBar = function() {
     SubMenuSelection = 3;
     if(mouse.left && mouse.press)
     {
+      StartFade();
       SoundOn = !SoundOn;
       SaveSoundOn();
       PlaySound(SND_SELECT);
@@ -773,12 +754,14 @@ CommonLogic = function()
   }
   
   if (keyboard.press.U || gamepad.press.RT) {
+    StartFade();
     SoundOn = !SoundOn;
     SaveSoundOn();
     PlaySound(SND_SELECT);
   }
   
   if (keyboard.press.Y || gamepad.press.LT) {
+    StartFade();
     MusicOn = !MusicOn;
     if(!MusicOn && MusicPlaying())
       StopMusic();
@@ -931,7 +914,10 @@ InitGlobals = function()
 {
   //i wanted top left 0,0 origin was easier to port the game
   //the screenimage will be scaled later on when drawn
+  FadeValue = 0.0;
+  FadeDec = 0.032;
   ScreenImage = new msImage(320,240);
+  FadeImage = new msImage(320,240);
   GameState = GameStates.GSIntroInit;
   MouseMoved = false;
   PrevMouseX = Math.floor(mouse.x);
@@ -949,7 +935,7 @@ InitGlobals = function()
   Music = null;
   MusicOn = true;
   SoundOn = true;
-  World = null; // Assuming CWorldParts instance
+  World = null;
   GameType = GameTypes.Fixed;
   MainMenu = null;
   GameTypeMenu = null;
@@ -1029,6 +1015,9 @@ update = function() {
     default:
       break;
   }
+  FadeValue -= FadeDec;
+  if(FadeValue < 0.0)
+    FadeValue = 0.0;
 }
 
 
@@ -1074,6 +1063,12 @@ draw = function() {
       TimeOverDraw();
     default:
       break;
+  }
+  if(FadeValue > 0)
+  {
+    ScreenImage.setAlpha(FadeValue);
+    ScreenImage.drawImage(FadeImage, 0, 0);
+    ScreenImage.setAlpha(1.0);
   }
   screen.drawImage(ScreenImage, 0, 0, screen.width, screen.width * 3/4);
 }
@@ -1338,6 +1333,7 @@ NextSkin = function()
   Skin++;
   if ((Skin >= MaxSkins) || (Skin < 0))
     Skin = 0;
+  StartFade();
   SelectSkin(Skin);
   SaveSkin();
 }
@@ -1390,6 +1386,7 @@ CreditsLogic = function()
   
   if ((mouse.left && mouse.press || keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A) ||
      (mouse.right && mouse.press || keyboard.press.ESCAPE || gamepad.press.B)) {
+    StartFade();
     GameState = GameStates.GSTitleScreenInit;
     PlaySound(SND_SELECT);
   }
@@ -1430,14 +1427,18 @@ GameLogic = function() {
     ((RealY - (NrOfRows >> 1)) < NrOfRows * TileHeight))
   {
     if(MouseMoved)
-      Selector.SetPosition( Math.floor((RealX - (NrOfCols >> 1)) / TileWidth),
-        Math.floor((RealY - (NrOfRows >> 1)) / TileHeight));
-  
+    {
+      let NewX = Math.floor((RealX - (NrOfCols >> 1)) / TileWidth);
+      let NewY =  Math.floor((RealY - (NrOfRows >> 1)) / TileHeight);
+      if(Selector.GetPosition().X !=  NewX || Selector.GetPosition().Y != NewY)
+        Selector.SetPosition(NewX,NewY);
+    }
     MouseInRange = true;
   }
   
   if (mouse.right && mouse.press || keyboard.press.ESCAPE || gamepad.press.B) {
     PlaySound(SND_SELECT);
+    StartFade();
     GameState = GameStates.GSTitleScreenInit;
   }
 
@@ -1552,25 +1553,32 @@ GameTypeMenuLogic = function() {
   
   if (mouse.right && mouse.press || keyboard.press.ESCAPE || gamepad.press.B) {
     PlaySound(SND_SELECT);
+    StartFade();
     GameState = GameStates.GSTitleScreenInit;
   }
   
   if (keyboard.press.UP || gamepad.press.UP) {
+    StartFade();
     GameTypeMenu.PreviousItem();
   }
   
   if (keyboard.press.DOWN || gamepad.press.DOWN) {
+    StartFade();
     GameTypeMenu.NextItem();
   }
   let MouseSel = GameTypeMenu.GetMouseSelection(MousePosToScreen().x, MousePosToScreen().y);
   if (MouseSel > -1)
     if(MouseMoved)
+    {
+      StartFade();
       GameTypeMenu.SetSelection(MouseSel);
+    }
 
   if (MouseSel > -1 && mouse.left && mouse.press ||
      keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A) {
     PlaySound(SND_SELECT);
     GameType = GameTypeMenu.GetSelection();
+    StartFade();
     GameState = GameStates.GSReadyGoInit;
   }
 }
@@ -1595,6 +1603,7 @@ ShowHighScoresLogic = function() {
   
   if ((mouse.right && mouse.press) || keyboard.press.ESCAPE || gamepad.press.B) {
     PlaySound(SND_SELECT);
+    StartFade();
     GameState = GameStates.GSTitleScreenInit;
   }
   
@@ -1608,9 +1617,15 @@ ShowHighScoresLogic = function() {
   
   if ((mouse.left && mouse.press) ||keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A) {
     if (ScoreType == GameTypes.Fixed)
+    {
+      StartFade();
       ScoreType = GameTypes.Relative;
+    }
     else
+    {
+      StartFade();
       GameState = GameStates.GSTitleScreenInit;
+    }
     PlaySound(SND_SELECT)
   }
 }
@@ -1741,6 +1756,7 @@ HighScoreSubmitLogic = function()
         }
       }
     }
+    StartFade();
     ScoreType = GameType;
     GameState = GameStates.GSShowHighScores;
   }
@@ -1834,11 +1850,13 @@ IntroLogic = function()
   if ((mouse.left && mouse.press) ||
     (keyboard.press.ESCAPE || gamepad.press.B) || 
     (keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A)) {
+    StartFade();
     GameState = GameStates.GSTitleScreenInit;
   }
 
   if (Time1 + 1500 < system.time()) 
   {
+    StartFade();
     IntroScreenNr++;
     if (IntroScreenNr > 3)
       GameState = GameStates.GSTitleScreenInit;
@@ -1884,6 +1902,7 @@ ReadyGoLogic = function()
   
   if (mouse.right && mouse.press || keyboard.press.ESCAPE || gamepad.press.B) {
     PlaySound(SND_SELECT);
+    StartFade();
     GameState = GameStates.GSTitleScreenInit;
   }
   
@@ -1945,15 +1964,18 @@ TimeOverLogic = function()
   
   if (keyboard.press.ESCAPE || gamepad.press.B) {
     PlaySound(SND_SELECT);
+    StartFade();
     GameState = GameStates.GSHighScoreSubmitInit;
   }
 
   if (keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A) {
+    StartFade();
     GameState = GameStates.GSHighScoreSubmitInit;
   }
   
   if (Time2 < system.time()) {
-      GameState = GameStates.GSHighScoreSubmitInit;
+    StartFade();
+    GameState = GameStates.GSHighScoreSubmitInit;
   }
 }
 
@@ -1989,33 +2011,41 @@ TitleScreenLogic = function() {
   CommonLogic();
 
   if (keyboard.press.UP || gamepad.press.UP) {
+    StartFade();
     MainMenu.PreviousItem();
   }
   
   if (keyboard.press.DOWN || gamepad.press.DOWN) {
+    StartFade();
     MainMenu.NextItem();
   }
   
   let MouseSel = MainMenu.GetMouseSelection(MousePosToScreen().x, MousePosToScreen().y);
   if (MouseSel > -1)
     if(MouseMoved)
+    {
+      StartFade();
       MainMenu.SetSelection(MouseSel);
+    }
   
   if (MouseSel > -1 && mouse.left && mouse.press ||
       keyboard.press.SPACE || keyboard.press.ENTER || gamepad.press.A) {
       PlaySound(SND_SELECT);
       switch (MainMenu.GetSelection()) {
         case 1:
+          StartFade();
           GameState = GameStates.GSGameTypeMenuInit;
           break;
         case 2:
           //set scoretype (it is usesd in showhighscores) so it won't affect
           //currently selected gametype and set always to fixed from main menu
           //so we cycle through both score panels
+          StartFade();
           ScoreType = GameTypes.Fixed;
           GameState = GameStates.GSShowHighScoresInit;
           break;
         case 3:
+          StartFade();
           GameState = GameStates.GSCreditsInit;
           break;
       }
@@ -2032,6 +2062,7 @@ TitleScreenLogic = function() {
     SubMenuSelection = 1; 
     if (mouse.left && mouse.press)
     {
+      //nextskin already does a startfade
       PlaySound(SND_SELECT);
       NextSkin();
     }
@@ -2043,6 +2074,7 @@ TitleScreenLogic = function() {
     SubMenuSelection = 2;
     if (mouse.left && mouse.press)
     {
+      StartFade();
       MusicOn = !MusicOn;
       if(!MusicOn && MusicPlaying())
         StopMusic();
@@ -2059,6 +2091,7 @@ TitleScreenLogic = function() {
     SubMenuSelection = 3;
     if (mouse.left && mouse.press)
     {
+      StartFade();
       SoundOn = !SoundOn;
       SaveSoundOn();
       PlaySound(SND_SELECT);
