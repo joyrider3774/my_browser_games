@@ -14,22 +14,24 @@
 
   var TARGET_NOT_SUPPORTED = 2147483647;
 
-  var currentNodeVersion = typeof process !== 'undefined' && process?.versions?.node ? humanReadableVersionToPacked(process.versions.node) : TARGET_NOT_SUPPORTED;
+  // Note: We use a typeof check here instead of optional chaining using
+  // globalThis because older browsers might not have globalThis defined.
+  var currentNodeVersion = typeof process !== 'undefined' && process.versions?.node ? humanReadableVersionToPacked(process.versions.node) : TARGET_NOT_SUPPORTED;
   if (currentNodeVersion < 160000) {
     throw new Error(`This emscripten-generated code requires node v${ packedVersionToHumanReadable(160000) } (detected v${packedVersionToHumanReadable(currentNodeVersion)})`);
   }
 
-  var currentSafariVersion = typeof navigator !== 'undefined' && navigator?.userAgent?.includes("Safari/") && navigator.userAgent.match(/Version\/(\d+\.?\d*\.?\d*)/) ? humanReadableVersionToPacked(navigator.userAgent.match(/Version\/(\d+\.?\d*\.?\d*)/)[1]) : TARGET_NOT_SUPPORTED;
+  var currentSafariVersion = typeof navigator !== 'undefined' && navigator.userAgent?.includes("Safari/") && navigator.userAgent.match(/Version\/(\d+\.?\d*\.?\d*)/) ? humanReadableVersionToPacked(navigator.userAgent.match(/Version\/(\d+\.?\d*\.?\d*)/)[1]) : TARGET_NOT_SUPPORTED;
   if (currentSafariVersion < 150000) {
     throw new Error(`This emscripten-generated code requires Safari v${ packedVersionToHumanReadable(150000) } (detected v${currentSafariVersion})`);
   }
 
-  var currentFirefoxVersion = typeof navigator !== 'undefined' && navigator?.userAgent?.match(/Firefox\/(\d+(?:\.\d+)?)/) ? parseFloat(navigator.userAgent.match(/Firefox\/(\d+(?:\.\d+)?)/)[1]) : TARGET_NOT_SUPPORTED;
+  var currentFirefoxVersion = typeof navigator !== 'undefined' && navigator.userAgent?.match(/Firefox\/(\d+(?:\.\d+)?)/) ? parseFloat(navigator.userAgent.match(/Firefox\/(\d+(?:\.\d+)?)/)[1]) : TARGET_NOT_SUPPORTED;
   if (currentFirefoxVersion < 79) {
     throw new Error(`This emscripten-generated code requires Firefox v79 (detected v${currentFirefoxVersion})`);
   }
 
-  var currentChromeVersion = typeof navigator !== 'undefined' && navigator?.userAgent?.match(/Chrome\/(\d+(?:\.\d+)?)/) ? parseFloat(navigator.userAgent.match(/Chrome\/(\d+(?:\.\d+)?)/)[1]) : TARGET_NOT_SUPPORTED;
+  var currentChromeVersion = typeof navigator !== 'undefined' && navigator.userAgent?.match(/Chrome\/(\d+(?:\.\d+)?)/) ? parseFloat(navigator.userAgent.match(/Chrome\/(\d+(?:\.\d+)?)/)[1]) : TARGET_NOT_SUPPORTED;
   if (currentChromeVersion < 85) {
     throw new Error(`This emscripten-generated code requires Chrome v85 (detected v${currentChromeVersion})`);
   }
@@ -64,7 +66,7 @@ var ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIR
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// include: /tmp/tmp8ucv9zfg.js
+// include: /tmp/tmp8fr646hm.js
 
   if (!Module['expectedDataFileDownloads']) Module['expectedDataFileDownloads'] = 0;
   Module['expectedDataFileDownloads']++;
@@ -200,21 +202,21 @@ Module['FS_createPath']("/", "metadata", true, true);
 
   })();
 
-// end include: /tmp/tmp8ucv9zfg.js
-// include: /tmp/tmp2ah199gv.js
+// end include: /tmp/tmp8fr646hm.js
+// include: /tmp/tmpmnbm146g.js
 
     // All the pre-js content up to here must remain later on, we need to run
     // it.
     if ((typeof ENVIRONMENT_IS_WASM_WORKER != 'undefined' && ENVIRONMENT_IS_WASM_WORKER) || (typeof ENVIRONMENT_IS_PTHREAD != 'undefined' && ENVIRONMENT_IS_PTHREAD) || (typeof ENVIRONMENT_IS_AUDIO_WORKLET != 'undefined' && ENVIRONMENT_IS_AUDIO_WORKLET)) Module['preRun'] = [];
     var necessaryPreJSTasks = Module['preRun'].slice();
-  // end include: /tmp/tmp2ah199gv.js
-// include: /tmp/tmpzbyajexe.js
+  // end include: /tmp/tmpmnbm146g.js
+// include: /tmp/tmpfbibdsu1.js
 
     if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
     necessaryPreJSTasks.forEach((task) => {
       if (Module['preRun'].indexOf(task) < 0) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
     });
-  // end include: /tmp/tmpzbyajexe.js
+  // end include: /tmp/tmpfbibdsu1.js
 
 
 var arguments_ = [];
@@ -2065,7 +2067,9 @@ async function createWasm() {
         });
       },
   quit:() => {
-        Object.values(IDBFS.dbs).forEach((value) => value.close());
+        for (var value of Object.values(IDBFS.dbs)) {
+          value.close()
+        }
         IDBFS.dbs = {};
       },
   getDB:(name, callback) => {
@@ -2263,22 +2267,21 @@ async function createWasm() {
         var total = 0;
   
         var create = [];
-        Object.keys(src.entries).forEach((key) => {
-          var e = src.entries[key];
+        for (var [key, e] of Object.entries(src.entries)) {
           var e2 = dst.entries[key];
           if (!e2 || e['timestamp'].getTime() != e2['timestamp'].getTime()) {
             create.push(key);
             total++;
           }
-        });
+        }
   
         var remove = [];
-        Object.keys(dst.entries).forEach((key) => {
+        for (var key of Object.keys(dst.entries)) {
           if (!src.entries[key]) {
             remove.push(key);
             total++;
           }
-        });
+        }
   
         if (!total) {
           return callback(null);
@@ -2310,7 +2313,7 @@ async function createWasm() {
   
         // sort paths in ascending order so directory entries are created
         // before the files inside them
-        create.sort().forEach((path) => {
+        for (const path of create.sort()) {
           if (dst.type === 'local') {
             IDBFS.loadRemoteEntry(store, path, (err, entry) => {
               if (err) return done(err);
@@ -2322,17 +2325,17 @@ async function createWasm() {
               IDBFS.storeRemoteEntry(store, path, entry, done);
             });
           }
-        });
+        }
   
         // sort paths in descending order so files are deleted before their
         // parent directories
-        remove.sort().reverse().forEach((path) => {
+        for (var path of remove.sort().reverse()) {
           if (dst.type === 'local') {
             IDBFS.removeLocalEntry(path, done);
           } else {
             IDBFS.removeRemoteEntry(store, path, done);
           }
-        });
+        }
       },
   };
   
@@ -3011,12 +3014,13 @@ async function createWasm() {
         };
   
         // sync all mounts
-        mounts.forEach((mount) => {
-          if (!mount.type.syncfs) {
-            return done(null);
+        for (var mount of mounts) {
+          if (mount.type.syncfs) {
+            mount.type.syncfs(mount, populate, done);
+          } else {
+            done(null);
           }
-          mount.type.syncfs(mount, populate, done);
-        });
+        }
       },
   mount(type, opts, mountpoint) {
         if (typeof type == 'string') {
@@ -3083,9 +3087,7 @@ async function createWasm() {
         var mount = node.mounted;
         var mounts = FS.getMounts(mount);
   
-        Object.keys(FS.nameTable).forEach((hash) => {
-          var current = FS.nameTable[hash];
-  
+        for (var [hash, current] of Object.entries(FS.nameTable)) {
           while (current) {
             var next = current.name_next;
   
@@ -3095,7 +3097,7 @@ async function createWasm() {
   
             current = next;
           }
-        });
+        }
   
         // no longer a mountpoint
         node.mounted = null;
@@ -4140,14 +4142,12 @@ async function createWasm() {
         });
         // override each stream op with one that tries to force load the lazy file first
         var stream_ops = {};
-        var keys = Object.keys(node.stream_ops);
-        keys.forEach((key) => {
-          var fn = node.stream_ops[key];
+        for (const [key, fn] of Object.entries(node.stream_ops)) {
           stream_ops[key] = (...args) => {
             FS.forceLoadFile(node);
             return fn(...args);
           };
-        });
+        }
         function writeChunks(stream, buffer, offset, length, position) {
           var contents = stream.node.contents;
           if (position >= contents.length)
@@ -5678,14 +5678,14 @@ async function createWasm() {
           GLctx.disjointTimerQueryExt = GLctx.getExtension("EXT_disjoint_timer_query");
         }
   
-        getEmscriptenSupportedExtensions(GLctx).forEach((ext) => {
+        for (var ext of getEmscriptenSupportedExtensions(GLctx)) {
           // WEBGL_lose_context, WEBGL_debug_renderer_info and WEBGL_debug_shaders
           // are not enabled by default.
           if (!ext.includes('lose_context') && !ext.includes('debug')) {
             // Call .getExtension() to enable that extension permanently.
             GLctx.getExtension(ext);
           }
-        });
+        }
       },
   };
   
@@ -9202,18 +9202,14 @@ async function createWasm() {
 
 
 
-  /** @param {Object=} elements */
-  var autoResumeAudioContext = (ctx, elements) => {
-      if (!elements) {
-        elements = [document, document.getElementById('canvas')];
-      }
-      ['keydown', 'mousedown', 'touchstart'].forEach((event) => {
-        elements.forEach((element) => {
+  var autoResumeAudioContext = (ctx) => {
+      for (var event of ['keydown', 'mousedown', 'touchstart']) {
+        for (var element of [document, document.getElementById('canvas')]) {
           element?.addEventListener(event, () => {
             if (ctx.state === 'suspended') ctx.resume();
           }, { 'once': true });
-        });
-      });
+        }
+      }
     };
 
 
@@ -11010,10 +11006,10 @@ function callMain(args = []) {
   var argc = args.length;
   var argv = stackAlloc((argc + 1) * 4);
   var argv_ptr = argv;
-  args.forEach((arg) => {
+  for (var arg of args) {
     HEAPU32[((argv_ptr)>>2)] = stringToUTF8OnStack(arg);
     argv_ptr += 4;
-  });
+  }
   HEAPU32[((argv_ptr)>>2)] = 0;
 
   try {
@@ -11110,7 +11106,7 @@ function checkUnflushedContent() {
   try { // it doesn't matter if it fails
     _fflush(0);
     // also flush in the JS FS layer
-    ['stdout', 'stderr'].forEach((name) => {
+    for (var name of ['stdout', 'stderr']) {
       var info = FS.analyzePath('/dev/' + name);
       if (!info) return;
       var stream = info.object;
@@ -11119,7 +11115,7 @@ function checkUnflushedContent() {
       if (tty?.output?.length) {
         has = true;
       }
-    });
+    }
   } catch(e) {}
   out = oldOut;
   err = oldErr;
